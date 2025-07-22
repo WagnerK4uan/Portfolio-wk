@@ -17,9 +17,9 @@ Sou um desenvolvedor em formação com experiência em importação de dados e i
 
 ## 📁 Estrutura do Projeto
 
-├── index.html # Página principal do portfólio
-├── style.css # Estilos aplicados à interface
-├── /assets # Imagens e ícones utilizados
+- index.html # Página principal do portfólio
+- style.css # Estilos aplicados à interface
+- /assets # Imagens e ícones utilizados
 
 ## 🧩 Funcionalidades
 
