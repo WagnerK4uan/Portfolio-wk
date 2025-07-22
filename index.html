@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img src="img/foto Wagner.jpg" alt="Foto de perfil" />
+          <span>WK</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <aside class="social-icons">
+        <a href="https://www.instagram.com/_wagnerkauan/" target="_blank">
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/wagner-kauan/"
+          target="_blank"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a
+          href="https://github.com/WagnerK4uan"
+          target="_blank"
+          aria-label="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      </aside>
+      <h1>Olá, eu sou Wagner Kauan</h1>
+      <p>
+        Desenvolvedor em formação com experiência em dados e integração de
+        sistemas. 
+      </p>
+      <a href="#projects" class="btn">Projetos</a>
+    </section>
+
+    <section class="about-section" id="sobre">
+      <div class="container">
+        <h2 class="section-title">Sobre mim</h2>
+        <p class="section-subtitle">
+          Aqui você encontrará mais informações sobre mim, o que faço e minhas
+          principais habilidades no mundo da programação e tecnologia.
+        </p>
+
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Me conheça melhor!</h3>
+            <p>
+              Sempre fui apaixonado por tecnologia. Desde criança, sonhava em
+              criar jogos e explorar esse universo. Aos 16 anos, conheci o curso
+              técnico em Análise e Desenvolvimento de Sistemas na escola onde
+              estudava. Entrei por curiosidade e pela famosa frase
+              <strong>"programador é o profissional do futuro"</strong>, mas
+              logo me encantei de verdade pela programação.
+            </p>
+            <p>
+              Comecei a ver sentido em quebrar a cabeça com pequenos problemas e
+              sentir aquela satisfação ao encontrar a solução. Durante minha
+              formação, participei de feiras de ciência, desenvolvendo projetos
+              com <strong>Java</strong>, programando robôs com
+              <strong>Python</strong> e utilizando
+              <strong>ESP e Arduino</strong> para soluções embarcadas.
+            </p>
+            <p>
+              Iniciei minha trajetória profissional como estagiário na
+              <strong>Bruning Sistemas</strong>, onde atuo até hoje com
+              importação de dados. Apesar do foco atual ser mais técnico, nunca
+              parei de estudar e praticar <strong>desenvolvimento web</strong>.
+              Tenho explorado tecnologias como <strong>Laravel</strong>,
+              <strong>Vue.js</strong>, <strong>PHP</strong>, entre outras, e
+              mantenho um portfólio ativo no
+              <a href="https://github.com/WagnerK4uan" target="_blank">GitHub</a
+              >.
+            </p>
+            <p>
+              Hoje, busco uma oportunidade para fazer parte de um projeto web,
+              aplicar meus conhecimentos e continuar evoluindo como
+              desenvolvedor.
+            </p>
+
+            <p>
+              Gosto de compartilhar conteúdos que aprendo ao longo da jornada no
+              <strong>desenvolvimento web</strong>, ajudando outros devs a
+              evoluírem também. Me acompanhe no
+              <a
+                href="https://www.linkedin.com/in/wagner-kauan/"
+                target="_blank"
+                ><strong>LinkedIn</strong></a
+              >
+              e
+              <a href="https://www.instagram.com/_wagnerkauan/" target="_blank"
+                ><strong>Instagram</strong></a
+              >
+              para conteúdos sobre mim ou do meu dia a dia.
+            </p>
+            <p>
+              Estou aberto a <strong>oportunidades de trabalho</strong> onde eu
+              possa contribuir, aprender e crescer. Se você tem uma boa
+              oportunidade que combine com meu perfil,
+              <strong>entre em contato</strong>!
+            </p>
+            <a href="https://www.linkedin.com/in/wagner-kauan/" class="btn"
+              >Contato</a
+            >
+          </div>
+
+          <div class="about-skills">
+            <h3>Minhas Habilidades</h3>
+            <ul class="skills-grid">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>PHP</li>
+              <li>Laravel</li>
+              <li>Vue.js</li>
+              <li>Git</li>
+              <li>Github</li>
+              <li>Responsive Design</li>
+              <li>MySQL</li>
+              <li>Java</li>
+              <li>Nuxt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <h2 class="section-title">Projetos</h2>
+        <p class="section-subtitle">
+          Aqui você encontrará alguns dos projetos que desenvolvi, cada um com
+          foco em design, performance e experiência do usuário.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3>Sistema de RH (projeto-rh)</h3>
+            <p>
+              Sistema completo de Recursos Humanos desenvolvido com Laravel
+              (PHP) no backend e Vue.js no frontend, com CRUD de colaboradores,
+              rotas protegidas e APIs REST.
+            </p>
+            <a
+              href="https://github.com/WagnerK4uan/projeto-rh"
+              target="_blank"
+              class="project-link"
+              >Repositório</a
+            >
+          </article>
+
+          <article class="project-card">
+            <h3>Cookin-Up (template Vue3 + Vite)</h3>
+            <p>
+              Template inicial para desenvolvimento com Vue 3 e Vite,
+              configurado para TypeScript e suporte a `.vue`, visando agilizar
+              novos projetos front-end.
+            </p>
+            <a
+              href="https://github.com/WagnerK4uan/Cookin-Up"
+              target="_blank"
+              class="project-link"
+              >Repositório</a
+            >
+          </article>
+
+          <article class="project-card">
+            <h3>aluGames</h3>
+            <p>
+              Projeto de treino de lógica de programação do curso da Alura, com
+              exercícios interativos em HTML, CSS e JavaScript para prática de
+              algoritmos.
+            </p>
+            <a
+              href="https://github.com/WagnerK4uan/aluGames"
+              target="_blank"
+              class="project-link"
+              >Repositório</a
+            >
+          </article>
+
+          <article class="project-card">
+            <h3>Sorteador</h3>
+            <p>
+              Aplicação em HTML/CSS/JavaScript para sorteio de nomes/imagens,
+              útil em situações como distribuição de tarefas ou amigos secretos.
+            </p>
+            <a
+              href="https://github.com/WagnerK4uan/sorteador"
+              target="_blank"
+              class="project-link"
+              >Repositório</a
+            >
+          </article>
+
+          <article class="project-card">
+            <h3>Carrinho de Compra</h3>
+            <p>
+              Simulação de carrinho de compras em puro HTML/CSS/JavaScript,
+              demonstrando manipulação de itens, cálculos de totais e interação
+              dinâmica.
+            </p>
+            <a
+              href="https://github.com/WagnerK4uan/carrinho-compra"
+              target="_blank"
+              class="project-link"
+              >Repositório</a
+            >
+          </article>
+
+          <article class="project-card">
+            <h3>Amigo Secreto</h3>
+            <p>
+              Página estática em HTML/CSS/JS para realizar sorteio de amigo
+              secreto, incluindo interface e lógica de alocação aleatória.
+            </p>
+            <a
+              href="https://github.com/WagnerK4uan/amigo-secreto"
+              target="_blank"
+              class="project-link"
+              >Repositório</a
+            >
+          </article>
+        </div>
+      </div>
+    </section>
+    <footer style="background-color: #000; color: #fff; padding: 40px 0">
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+        "
+      >
+        <div style="max-width: 600px">
+          <h2 style="font-weight: bold; margin-bottom: 10px">Wagner Kauan</h2>
+          <p style="line-height: 1.6">
+            Esse projeto foi feito para demonstrar minhas habilidades em
+            desenvolvimento web, utilizando HTML e CSS. Sinta-se à vontade para
+            explorar os projetos e entrar em contato para colaborações ou
+            oportunidades de trabalho.
+          </p>
+        </div>
+      </div>
+
+      <hr style="margin: 30px 0; border-color: #333" />
+
+      <div style="text-align: center; font-size: 14px; color: #aaa">
+        © Copyright 2025 . Desenvolvido por
+        <span style="color: #fff; font-weight: bold"
+          >Wagner Kauan Machado de Paula</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>
