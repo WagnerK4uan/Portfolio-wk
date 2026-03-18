@@ -11,9 +11,11 @@ Sou um desenvolvedor em formação com experiência em importação de dados e i
 - HTML5
 - CSS3
 - JavaScript
+- React (em projetos demonstrados)
 - PHP (em projetos demonstrados)
 - Laravel (em projetos demonstrados)
 - Vue.js (em projetos demonstrados)
+- Next.js (em projetos demonstrados)
 
 ## 📁 Estrutura do Projeto
 
@@ -34,3 +36,4 @@ Sou um desenvolvedor em formação com experiência em importação de dados e i
 
 ```bash
 git clone https://github.com/WagnerK4uan/Portfolio-wk
+```
