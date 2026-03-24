@@ -228,8 +228,29 @@ nav ul li a:hover::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   padding: 6rem 1.5rem 3rem;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 860px;
+  width: 100%;
+}
+
+.hero-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+  box-shadow: 0 8px 32px var(--primary-shadow);
+  flex-shrink: 0;
+}
+
+.hero-text {
+  text-align: left;
 }
 
 .hero h1 {
@@ -437,6 +458,8 @@ nav ul li a:hover::after {
   box-shadow: var(--card-shadow-hover);
 }
 
+
+
 /* GIF / preview placeholder */
 .project-preview {
   width: 100%;
@@ -580,6 +603,20 @@ nav ul li a:hover::after {
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-photo {
+    width: 170px;
+    height: 170px;
+  }
+
   .hero h1 {
     font-size: 2rem;
   }

@@ -19,7 +19,6 @@
     <header>
       <div class="container">
         <div class="logo">
-          <img src="img/foto Wagner.jpg" alt="Foto de perfil" />
           <span>WK</span>
         </div>
         <nav>
@@ -60,15 +59,24 @@
           <i class="fas fa-envelope"></i>
         </a>
       </aside>
-      <h1>Olá, eu sou Wagner Kauan</h1>
-      <p>
-        Desenvolvedor em formação com experiência em dados e integração de
-        sistemas.
-      </p>
-      <a href="#projects" class="btn">Ver Projetos</a>
+      <div class="hero-content">
+        <img
+          src="img/foto Wagner.jpg"
+          alt="Foto de Wagner Kauan"
+          class="hero-photo"
+        />
+        <div class="hero-text">
+          <h1>Olá, eu sou Wagner Kauan</h1>
+          <p>
+            Desenvolvedor em formação com experiência em dados e integração de
+            sistemas.
+          </p>
+          <a href="#projects" class="btn">Ver Projetos</a>
+        </div>
+      </div>
     </section>
     <!-- ===== ME CONHEÇA MELHOR (branco) ===== -->
-    <section class="about-section" id="conheca">
+    <section class="about-section" id="sobre">
       <div class="container">
         <h2 class="section-title">Sobre mim</h2>
         <p class="section-subtitle">
@@ -185,7 +193,7 @@
               <div class="highlight-item">
                 <i class="fas fa-briefcase"></i>
                 <div>
-                  <strong>Estagiário na Bruning Sistemas</strong>
+                  <strong>Dev em migração de dados na Bruning Sistemas</strong>
                   <span>Importação e integração de dados</span>
                 </div>
               </div>
@@ -194,6 +202,13 @@
                 <div>
                   <strong>Análise e Dev. de Sistemas</strong>
                   <span>Curso técnico + estudos contínuos</span>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-graduation-cap"></i>
+                <div>
+                  <strong>Engenharia de Software</strong>
+                  <span>Bacharel em Engenharia de Software em andamento</span>
                 </div>
               </div>
             </div>
@@ -242,7 +257,11 @@
 
         <div class="projects-grid">
           <article class="project-card">
-            <img src="" alt="Preview Sistema de RH" class="project-preview" />
+            <img
+              src="/img/projeto rh.gif"
+              alt="Preview Sistema de RH"
+              class="project-preview"
+            />
             <div class="project-card-body">
               <h3>Sistema de RH</h3>
               <p>
@@ -257,18 +276,24 @@
                 <span>MySQL</span>
                 <span>REST API</span>
               </div>
-              <a
-                href="https://github.com/WagnerK4uan/projeto-rh"
-                target="_blank"
-                class="project-link"
-              >
-                <i class="fab fa-github"></i> Repositório
-              </a>
+              <div class="project-links">
+                <a
+                  href="https://github.com/WagnerK4uan/projeto-rh"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repositório
+                </a>
+              </div>
             </div>
           </article>
 
           <article class="project-card">
-            <img src="" alt="Preview Cookin-Up" class="project-preview" />
+            <img
+              src="/img/cookin-up.gif"
+              alt="Preview Cookin-Up"
+              class="project-preview"
+            />
             <div class="project-card-body">
               <h3>Cookin-Up</h3>
               <p>
@@ -281,18 +306,25 @@
                 <span>TypeScript</span>
                 <span>Vite</span>
               </div>
-              <a
-                href="https://github.com/WagnerK4uan/Cookin-Up"
-                target="_blank"
-                class="project-link"
-              >
-                <i class="fab fa-github"></i> Repositório
-              </a>
+              <div class="project-links">
+            
+                <a
+                  href="https://github.com/WagnerK4uan/Cookin-Up"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repositório
+                </a>
+              </div>
             </div>
           </article>
 
           <article class="project-card">
-            <img src="" alt="Preview Xadrez" class="project-preview" />
+            <img
+              src="img/xadrez.gif"
+              alt="Preview Xadrez"
+              class="project-preview"
+            />
             <div class="project-card-body">
               <h3>Xadrez</h3>
               <p>
@@ -305,90 +337,19 @@
                 <span>Next.js</span>
                 <span>JavaScript</span>
               </div>
-              <a
-                href="https://github.com/WagnerK4uan/xadrez-react-next"
-                target="_blank"
-                class="project-link"
-              >
-                <i class="fab fa-github"></i> Repositório
-              </a>
+              <div class="project-links">
+                <a
+                  href="https://github.com/WagnerK4uan/xadrez-react-next"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repositório
+                </a>
+              </div>
             </div>
           </article>
 
-          <article class="project-card">
-            <img src="" alt="Preview Sorteador" class="project-preview" />
-            <div class="project-card-body">
-              <h3>Sorteador</h3>
-              <p>
-                Aplicação em HTML/CSS/JavaScript para sorteio de nomes/imagens,
-                útil em situações como distribuição de tarefas ou amigos
-                secretos.
-              </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-              <a
-                href="https://github.com/WagnerK4uan/sorteador"
-                target="_blank"
-                class="project-link"
-              >
-                <i class="fab fa-github"></i> Repositório
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img
-              src=""
-              alt="Preview Carrinho de Compras"
-              class="project-preview"
-            />
-            <div class="project-card-body">
-              <h3>Carrinho de Compra</h3>
-              <p>
-                Simulação de carrinho de compras em puro HTML/CSS/JavaScript,
-                demonstrando manipulação de itens, cálculos de totais e
-                interação dinâmica.
-              </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-              <a
-                href="https://github.com/WagnerK4uan/carrinho-compra"
-                target="_blank"
-                class="project-link"
-              >
-                <i class="fab fa-github"></i> Repositório
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="" alt="Preview Amigo Secreto" class="project-preview" />
-            <div class="project-card-body">
-              <h3>Amigo Secreto</h3>
-              <p>
-                Página estática em HTML/CSS/JS para realizar sorteio de amigo
-                secreto, incluindo interface e lógica de alocação aleatória.
-              </p>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-              <a
-                href="https://github.com/WagnerK4uan/amigo-secreto"
-                target="_blank"
-                class="project-link"
-              >
-                <i class="fab fa-github"></i> Repositório
-              </a>
-            </div>
-          </article>
+     
         </div>
       </div>
     </section>
@@ -400,8 +361,8 @@
           <h2>Wagner Kauan</h2>
           <p>
             Esse projeto foi feito para demonstrar minhas habilidades em
-            desenvolvimento web, utilizando HTML e CSS. Sinta-se à vontade para
-            explorar os projetos e entrar em contato para colaborações ou
+            desenvolvimento no geral, utilizando HTML e CSS. Sinta-se à vontade
+            para explorar os projetos e entrar em contato para colaborações ou
             oportunidades de trabalho.
           </p>
         </div>
