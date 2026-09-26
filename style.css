@@ -51,6 +51,10 @@ a {
   color: inherit;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* ============================================
    LAYOUT HELPERS
    ============================================ */
@@ -270,7 +274,7 @@ nav ul li a:hover::after {
 }
 
 /* ============================================
-   INTRO SECTION — cinza claro
+   INTRO SECTION cinza claro
    ============================================ */
 .intro-section {
   background: var(--bg-alt);
@@ -283,7 +287,7 @@ nav ul li a:hover::after {
 }
 
 /* ============================================
-   ABOUT SECTION — branco
+   ABOUT SECTION branco
    ============================================ */
 .about-section {
   background: var(--bg-alt);
@@ -383,7 +387,7 @@ nav ul li a:hover::after {
 }
 
 /* ============================================
-   SKILLS SECTION — cinza claro
+   SKILLS SECTION cinza claro
    ============================================ */
 .skills-section {
   background: var(--bg-white);
@@ -393,38 +397,87 @@ nav ul li a:hover::after {
 }
 
 .skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 1rem;
   padding: 0;
   list-style: none;
-  justify-content: center;
-  max-width: 800px;
+  max-width: 920px;
   margin: 0 auto;
 }
 
-.skills-grid li {
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.25rem 0.5rem;
   background: var(--bg-white);
   border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.5rem 1.1rem;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  text-align: center;
   transition:
-    background var(--transition),
-    color var(--transition),
-    border-color var(--transition);
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
 }
 
-.skills-grid li:hover {
-  background: var(--primary);
-  color: #fff;
+.skill img,
+.skill i {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.skill i {
+  font-size: 2.3rem;
+  line-height: 44px;
+  color: var(--primary);
+}
+
+.skill span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.skill:hover {
+  transform: translateY(-4px);
   border-color: var(--primary);
+  box-shadow: 0 10px 24px var(--primary-shadow);
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .skill {
+    padding: 1rem 0.4rem;
+  }
+
+  .skill span {
+    font-size: 0.78rem;
+  }
+
+  .skill img,
+  .skill i {
+    width: 36px;
+    height: 36px;
+  }
+
+  .skill i {
+    font-size: 1.9rem;
+    line-height: 36px;
+  }
 }
 
 /* ============================================
-   PROJECTS SECTION — branco
+   PROJECTS SECTION branco
    ============================================ */
 .projects {
    background: var(--bg-alt);
@@ -534,6 +587,14 @@ nav ul li a:hover::after {
 .project-link:hover {
   background: var(--primary-dark);
   transform: translateY(-1px);
+}
+
+/* Private repo badge */
+.project-link--private,
+.project-link--private:hover {
+  background: var(--text-muted);
+  cursor: default;
+  transform: none;
 }
 
 /* ============================================
@@ -671,6 +732,31 @@ nav ul li a:hover::after {
   .social-icons a:last-child {
     border-right: none;
   }
+
+  /* O .container já tem padding lateral; evita margem dupla no mobile */
+  .about-section,
+  .skills-section,
+  .projects,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Espaço para a barra fixa de redes sociais não cobrir o rodapé */
+  .footer {
+    padding-bottom: 100px;
+  }
+
+  .footer-contact {
+    width: 100%;
+  }
+
+  .btn-footer {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1rem;
+    overflow-wrap: anywhere;
+  }
 }
 
 @media (max-width: 480px) {
@@ -684,5 +770,17 @@ nav ul li a:hover::after {
 
   .logo span {
     display: none;
+  }
+
+  nav ul {
+    gap: 0.9rem;
+  }
+
+  nav ul li a {
+    font-size: 0.8rem;
+  }
+
+  .btn-footer {
+    font-size: 0.8rem;
   }
 }
