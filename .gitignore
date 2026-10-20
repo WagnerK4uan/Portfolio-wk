@@ -1,0 +1,7 @@
+# Ferramentas locais
+.gstack/
+.agents/skills/impeccable/
+.claude/skills/impeccable/
+.claude/agents/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
