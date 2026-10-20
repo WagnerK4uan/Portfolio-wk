@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T12:18:07.361413-03:00",
+  "title": "Design System: Portfólio Wagner Kauan",
+  "extensions": {
+    "colorMeta": {
+      "violeta-eletrico": {
+        "role": "primary",
+        "displayName": "Violeta Elétrico",
+        "canonical": "oklch(59.7% 0.224 280)",
+        "tonalRamp": [
+          "#0a0035",
+          "#1e0867",
+          "#35209d",
+          "#4f3ad6",
+          "#6a61fc",
+          "#898aff",
+          "#b1b8ff",
+          "#e0e8ff"
+        ]
+      },
+      "violeta-acao": {
+        "role": "primary",
+        "displayName": "Violeta Ação",
+        "tonalRamp": [
+          "#0a0035",
+          "#1e0867",
+          "#35209d",
+          "#4f3ad6",
+          "#6a61fc",
+          "#898aff",
+          "#b1b8ff",
+          "#e0e8ff"
+        ]
+      },
+      "violeta-profundo": {
+        "role": "primary",
+        "displayName": "Violeta Profundo",
+        "tonalRamp": [
+          "#0a0035",
+          "#1e0867",
+          "#35209d",
+          "#4f3ad6",
+          "#6a61fc",
+          "#898aff",
+          "#b1b8ff",
+          "#e0e8ff"
+        ]
+      },
+      "violeta-noturno": {
+        "role": "primary",
+        "displayName": "Violeta Noturno",
+        "tonalRamp": [
+          "#0a0035",
+          "#1e0867",
+          "#35209d",
+          "#4f3ad6",
+          "#6a61fc",
+          "#898aff",
+          "#b1b8ff",
+          "#e0e8ff"
+        ]
+      },
+      "lavanda-nevoa": {
+        "role": "primary",
+        "displayName": "Lavanda Névoa",
+        "canonical": "oklch(94.3% 0.028 295)",
+        "tonalRamp": [
+          "#0c0916",
+          "#252131",
+          "#403d4e",
+          "#5e5b6c",
+          "#7e7a8d",
+          "#9f9baf",
+          "#c5c1d5",
+          "#efebff"
+        ]
+      },
+      "papel-branco": {
+        "role": "neutral",
+        "displayName": "Papel Branco"
+      },
+      "gelo-ardosia": {
+        "role": "neutral",
+        "displayName": "Gelo Ardósia"
+      },
+      "tinta-noturna": {
+        "role": "neutral",
+        "displayName": "Tinta Noturna",
+        "canonical": "oklch(24.3% 0.030 284)",
+        "tonalRamp": [
+          "#0a0917",
+          "#222232",
+          "#3d3e50",
+          "#5b5c6f",
+          "#7b7b8f",
+          "#9c9cb1",
+          "#c1c2d8",
+          "#ebecff"
+        ]
+      },
+      "ardosia-media": {
+        "role": "neutral",
+        "displayName": "Ardósia Média",
+        "canonical": "oklch(55.4% 0.041 257)",
+        "tonalRamp": [
+          "#020b1c",
+          "#172438",
+          "#324155",
+          "#4f5f75",
+          "#6e7e96",
+          "#8fa0b8",
+          "#b4c6df",
+          "#def0ff"
+        ]
+      },
+      "linha-neblina": {
+        "role": "neutral",
+        "displayName": "Linha Neblina"
+      },
+      "noite-funda": {
+        "role": "neutral",
+        "displayName": "Noite Funda",
+        "canonical": "oklch(17.4% 0.023 284)",
+        "tonalRamp": [
+          "#0a0a14",
+          "#22232f",
+          "#3e3e4c",
+          "#5c5c6a",
+          "#7b7c8b",
+          "#9c9dac",
+          "#c2c2d3",
+          "#ecedfe"
+        ]
+      },
+      "ardosia-clara": {
+        "role": "neutral",
+        "displayName": "Ardósia Clara"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nome no hero, caixa alta."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção centralizados, caixa alta."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de card, da seção Sobre e do rodapé."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido em Ardósia Média."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navegação, rótulos de habilidade, tags."
+      },
+      "title-lg": {
+        "displayName": "Title LG",
+        "purpose": "Subtítulo da seção Sobre."
+      },
+      "title-md": {
+        "displayName": "Title MD",
+        "purpose": "Título do rodapé."
+      },
+      "body-sm": {
+        "displayName": "Body SM",
+        "purpose": "Descrições de projeto e rodapé."
+      },
+      "label-lg": {
+        "displayName": "Label LG",
+        "purpose": "Navegação e botões."
+      },
+      "label-sm": {
+        "displayName": "Label SM",
+        "purpose": "Tags e navegação em telas pequenas."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 4px 20px rgba(0,0,0,0.06)",
+        "purpose": "Cards de projeto e habilidade em repouso."
+      },
+      {
+        "name": "card-hover",
+        "value": "0 12px 32px rgba(0,0,0,0.12)",
+        "purpose": "Card de projeto levantado."
+      },
+      {
+        "name": "violet-glow",
+        "value": "0 5px 15px rgba(108,99,255,0.3)",
+        "purpose": "Botão principal em repouso."
+      },
+      {
+        "name": "violet-glow-hover",
+        "value": "0 8px 24px rgba(87,79,214,0.45)",
+        "purpose": "Botão principal em hover."
+      },
+      {
+        "name": "photo-halo",
+        "value": "0 8px 32px rgba(108,99,255,0.3)",
+        "purpose": "Foto do hero."
+      },
+      {
+        "name": "header",
+        "value": "0 2px 8px rgba(0,0,0,0.06)",
+        "purpose": "Header fixo."
+      },
+      {
+        "name": "header-scrolled",
+        "value": "0 6px 20px rgba(0,0,0,0.08)",
+        "purpose": "Header fixo depois que o hero sai de vista."
+      }
+    ],
+    "motion": [
+      {
+        "name": "transition",
+        "value": "0.3s ease",
+        "purpose": "Transição única de todo o sistema."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entradas do hero e revelações ao rolar."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "sm",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal: Ver Projetos, Contato.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Ver Projetos</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:#625af0;color:#fff;border-radius:6px;font-family:Poppins,sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.5px;text-decoration:none;box-shadow:0 5px 15px rgba(108,99,255,.3);transition:background .3s ease,box-shadow .3s ease,transform .3s ease}.ds-btn:hover{background:#574fd6;box-shadow:0 8px 24px rgba(87,79,214,.45);transform:translateY(-2px)}.ds-btn:focus-visible{outline:2px solid #574fd6;outline-offset:3px}"
+    },
+    {
+      "name": "Link de repositório",
+      "kind": "button",
+      "refersTo": "button-repo",
+      "description": "Botão compacto na base do card de projeto.",
+      "html": "<a class=\"ds-repo\" href=\"#\">Repositório</a> <span class=\"ds-repo ds-repo--private\">Repositório privado</span>",
+      "css": ".ds-repo{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.2rem;background:#625af0;color:#fff;border-radius:6px;font-family:Poppins,sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;transition:background .3s ease,transform .3s ease}.ds-repo:hover{background:#574fd6;transform:translateY(-1px)}.ds-repo--private,.ds-repo--private:hover{background:#64748b;transform:none;cursor:default}"
+    },
+    {
+      "name": "Tag de tecnologia",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Pílulas de stack nos cards de projeto.",
+      "html": "<div class=\"ds-tags\"><span>Laravel</span><span>Vue.js</span><span>MySQL</span></div>",
+      "css": ".ds-tags{display:flex;flex-wrap:wrap;gap:.4rem}.ds-tags span{background:#ede9fe;color:#574fd6;font-family:Poppins,sans-serif;font-size:.78rem;font-weight:600;padding:.3rem .75rem;border-radius:100px}"
+    },
+    {
+      "name": "Card de projeto",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "Preview, descrição, tags e link de repositório.",
+      "html": "<article class=\"ds-project\"><div class=\"ds-project-img\"></div><div class=\"ds-project-body\"><h3>Task Manager</h3><p>Quadro kanban com API REST em Java 21 e Spring Boot.</p></div></article>",
+      "css": ".ds-project{max-width:340px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.06);overflow:hidden;font-family:Poppins,sans-serif;transition:transform .3s ease,box-shadow .3s ease}.ds-project:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,.12)}.ds-project-img{height:160px;background:linear-gradient(135deg,#ede9fe 0%,#e0e7ff 100%)}.ds-project-body{padding:1.5rem}.ds-project-body h3{margin:0 0 .5rem;font-size:1.1rem;font-weight:700;color:#1e1e2e}.ds-project-body p{margin:0;font-size:.92rem;line-height:1.7;color:#64748b}"
+    },
+    {
+      "name": "Card de habilidade",
+      "kind": "card",
+      "refersTo": "card-skill",
+      "description": "Ícone de tecnologia com rótulo na grade de habilidades.",
+      "html": "<div class=\"ds-skill\"><svg width=\"44\" height=\"44\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#6c63ff\" stroke-width=\"2\"><polyline points=\"16 18 22 12 16 6\"/><polyline points=\"8 6 2 12 8 18\"/></svg><span>APIs REST</span></div>",
+      "css": ".ds-skill{width:112px;display:flex;flex-direction:column;align-items:center;gap:.7rem;padding:1.25rem .5rem;background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.06);font-family:Poppins,sans-serif;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}.ds-skill span{font-size:.85rem;font-weight:600;color:#1e1e2e}.ds-skill:hover{transform:translateY(-4px);border-color:#6c63ff;box-shadow:0 10px 24px rgba(108,99,255,.3)}"
+    },
+    {
+      "name": "Navegação",
+      "kind": "nav",
+      "refersTo": "nav-header",
+      "description": "Links do header com sublinhado violeta animado.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Home</a><a href=\"#\">Sobre</a><a href=\"#\">Habilidades</a><a href=\"#\">Projetos</a></nav>",
+      "css": ".ds-nav{display:flex;gap:2rem;padding:1rem 1.5rem;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);font-family:Poppins,sans-serif}.ds-nav a{position:relative;display:inline-block;padding:.6rem 0;color:#1e1e2e;font-weight:600;font-size:.95rem;text-decoration:none;transition:color .3s ease}.ds-nav a::after{content:\"\";position:absolute;left:0;bottom:.45rem;width:0;height:2px;background:#6c63ff;transition:width .3s ease}.ds-nav a:hover,.ds-nav a:focus-visible{color:#574fd6;outline:none}.ds-nav a:hover::after,.ds-nav a:focus-visible::after{width:100%}"
+    },
+    {
+      "name": "Destaque",
+      "kind": "custom",
+      "refersTo": "card-highlight",
+      "description": "Linha de destaque da seção Sobre.",
+      "html": "<div class=\"ds-hl\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#6c63ff\" stroke-width=\"2\"><ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\"/><path d=\"M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5\"/></svg><div><strong>Dados & Integração</strong><span>SQL · MySQL · PostgreSQL</span></div></div>",
+      "css": ".ds-hl{display:flex;gap:1rem;align-items:flex-start;max-width:320px;padding:1.1rem 1.2rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;font-family:Poppins,sans-serif;transition:box-shadow .3s ease}.ds-hl:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}.ds-hl div{display:flex;flex-direction:column;gap:.2rem}.ds-hl strong{font-size:.95rem;font-weight:600;color:#1e1e2e}.ds-hl span{font-size:.85rem;color:#64748b}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Bancada Organizada",
+    "overview": "O portfólio é uma bancada de trabalho limpa: superfície clara, cada peça no seu lugar, ferramentas à vista. O fundo alterna entre branco e um gelo levemente azulado, e sobre ele os blocos de conteúdo ficam em cards alinhados em grade, com borda fina e sombra quase imperceptível. O Violeta Elétrico é a única cor com voz: marca ação, identidade e resposta ao visitante. Os componentes são acessíveis e responsivos: cantos arredondados, sombra suave que cresce no hover, elementos que sobem alguns pixels quando o cursor passa.",
+    "keyCharacteristics": [
+      "Fundo claro com alternância branco / gelo entre seções; rodapé noturno como fechamento.",
+      "Um único acento cromático, o Violeta Elétrico, com variante profunda para hover.",
+      "Poppins em todos os níveis; títulos de seção em caixa alta com 1px de tracking.",
+      "Cards com borda de 1px e sombra difusa, levantando no hover.",
+      "Hover em 0.3s ease; entradas e revelações em 0.6s a 0.8s com desaceleração cubic-bezier(0.16, 1, 0.3, 1)."
+    ],
+    "rules": [
+      {
+        "name": "A Regra da Voz Única",
+        "body": "O violeta é o único acento. Ele aparece apenas em ação, identidade ou resposta a interação, nunca como fundo de seção ou decoração solta.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Hover Profundo",
+        "body": "Todo elemento violeta escurece um degrau no hover (Ação para Profundo, Profundo para Noturno); não existe outra cor de estado.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Texto Legível",
+        "body": "O Violeta Elétrico nunca é cor de texto nem fundo de texto. Texto violeta usa o Violeta Profundo; texto branco sobre violeta usa o Violeta Ação ou mais escuro.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Peso, Não da Fonte",
+        "body": "Hierarquia se faz com peso, tamanho e caixa alta dentro da Poppins. Não introduzir uma segunda família.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Levantar",
+        "body": "Elementos interativos sobem no hover: botão 2px, link de repositório 1px, habilidade 4px, projeto 6px. Quanto maior a superfície, maior o deslocamento.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar a família violeta só em ação, identidade e resposta a interação, sempre escurecendo um degrau no hover.",
+      "Do manter Poppins como única família, com hierarquia por peso (400, 600, 700) e caixa alta com 1px de tracking nos títulos de seção.",
+      "Do alternar fundo branco e Gelo Ardósia entre seções, separadas por bordas de 1px em Linha Neblina.",
+      "Do dar a todo card novo borda de 1px, cantos de 12px e a sombra de repouso `0 4px 20px rgba(0,0,0,0.06)`.",
+      "Do usar 0.3s ease no hover, `cubic-bezier(0.16, 1, 0.3, 1)` em entradas, e fazer elementos interativos subirem no hover (1px a 6px, proporcional ao tamanho).",
+      "Do usar tags em pílula Lavanda Névoa para listar tecnologias.",
+      "Do seguir a Regra do Texto Legível: Violeta Ação (#625af0) como fundo de texto branco, Violeta Profundo (#574fd6) como cor de texto. Todo par de texto fica em 4.5:1 ou mais."
+    ],
+    "donts": [
+      "Don't introduzir uma segunda cor de acento ou trocar o roxo; o visual roxo com Poppins é compromisso da marca.",
+      "Don't usar o violeta como fundo de seção inteira ou em degradês decorativos.",
+      "Don't criar sombras escuras e duras; toda sombra neutra fica entre 6% e 12% de opacidade.",
+      "Don't usar cantos retos ou raios fora da escala (6px, 12px, pílula, círculo).",
+      "Don't depender só do hover para indicar interação: todo componente novo precisa manter o foco visível global (contorno de 2px em Violeta Profundo, 3px de afastamento) para cumprir o WCAG AA.",
+      "Don't repetir a coreografia do hero em outras seções; ela é o único momento autoral, o resto é revelação discreta."
+    ]
+  }
+}
