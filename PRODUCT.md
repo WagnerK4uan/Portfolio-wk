@@ -36,7 +36,7 @@ Visitas curtas, muitas vezes no celular a partir do LinkedIn, ou no desktop dura
 
 ## Brand Commitments
 
-- Visual roxo com tipografia Poppins é a identidade atual e deve ser mantido; redesign só quando pedido explicitamente.
+- Visual roxo com tipografia Poppins é a identidade da `master`. Em 2026-10-24 o Wagner pediu explicitamente um redesign experimental na branch `redesign/escuro`: fundo escuro, violeta mantido como cor de marca, mais movimento e leitura mais objetiva. A fonte pode mudar se a direção visual escolhida pedir.
 - Textos em pt-BR, primeira pessoa, tom profissional, sem clichês ("apaixonado", "ninja", "revolucionário").
 - Nunca usar travessão (— ou –) nos textos; usar vírgula, dois pontos ou ponto médio (·).
 
