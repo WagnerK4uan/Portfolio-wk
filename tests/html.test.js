@@ -33,7 +33,7 @@ describe("dist/index.html", () => {
   });
 
   it("CA-1.3 · as seções atuais existem e todo link da nav aponta para um id existente", () => {
-    for (const id of ["home", "sobre", "habilidades", "projects", "conteudo"]) {
+    for (const id of ["home", "sobre", "experiencia", "habilidades", "projetos", "contato", "conteudo"]) {
       expect(documento.getElementById(id), `id "${id}"`).not.toBeNull();
     }
 

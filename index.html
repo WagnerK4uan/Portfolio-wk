@@ -16,15 +16,16 @@
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header>
       <div class="container">
-        <div class="logo">
+        <a class="logo" href="#home" aria-label="Wagner Kauan, voltar ao topo">
           <span>WK</span>
-        </div>
-        <nav>
+        </a>
+        <nav aria-label="Seções">
           <ul>
-            <li><a href="#home">Home</a></li>
             <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#experiencia">Experiência</a></li>
             <li><a href="#habilidades">Habilidades</a></li>
-            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
       </div>
@@ -33,35 +34,6 @@
     <main id="conteudo" tabindex="-1">
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
-      <aside class="social-icons">
-        <a
-          href="https://www.instagram.com/_wagnerkauan/"
-          target="_blank"
-          rel="noopener"
-          aria-label="Instagram"
-        >
-          <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/wagner-kauan/"
-          target="_blank"
-          rel="noopener"
-          aria-label="LinkedIn"
-        >
-          <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-        </a>
-        <a
-          href="https://github.com/WagnerK4uan"
-          target="_blank"
-          rel="noopener"
-          aria-label="GitHub"
-        >
-          <i class="fab fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="mailto:w.kauanmachado@gmail.com" aria-label="Email">
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-        </a>
-      </aside>
       <div class="hero-content">
         <img
           src="img/foto-wagner.webp"
@@ -72,481 +44,112 @@
           fetchpriority="high"
         />
         <div class="hero-text">
-          <h1>Olá, eu sou Wagner Kauan</h1>
-          <p>
-            Desenvolvedor Web
+          <h1>Wagner Kauan</h1>
+          <p class="hero-cargo">Desenvolvedor Web e Migração de Dados na Bruning Sistemas</p>
+          <p class="hero-posicionamento">
+            Desenvolvo sistemas web com Laravel e Nuxt.js, migro dados reais de
+            clientes entre sistemas e estou em transição para
+            <span class="hero-mark">Cloud e DevOps</span>.
           </p>
-          <a href="#projects" class="btn">Ver Projetos</a>
+          <div class="hero-acoes">
+            <a href="#projetos" class="btn">Ver projetos</a>
+            <a href="#contato" class="btn btn-secundario">Entrar em contato</a>
+          </div>
         </div>
       </div>
     </section>
-    <!-- ===== ME CONHEÇA MELHOR (branco) ===== -->
+
+    <!-- ===== SOBRE ===== -->
     <section class="about-section" id="sobre">
       <div class="container">
-        <h2 class="section-title">Sobre mim</h2>
-        <p class="section-subtitle">
-          Aqui você encontrará mais informações sobre mim, o que faço e minhas
-          principais habilidades no mundo da programação e tecnologia.
-        </p>
-        <div class="about-content">
-          <div class="about-text">
-            <h3>Me conheça melhor!</h3>
-
-            <p>
-              A curiosidade por tecnologia me acompanha desde criança, quando
-              sonhava em criar jogos. Aos 16 anos entrei no curso técnico em
-              Análise e Desenvolvimento de Sistemas no SENAI Tubarão e ali
-              descobri que gosto de verdade de programar e resolver problemas.
-            </p>
-
-            <p>
-              Hoje, com cerca de 3 anos na área, atuo na
-              <strong>Bruning Sistemas</strong> em duas frentes: como
-              <strong>desenvolvedor web</strong>, com Laravel no back-end e
-              Nuxt.js no front-end, e com <strong>migração, integração e
-              importação de dados</strong> entre sistemas.
-            </p>
-
-            <p>
-              Em paralelo, estou em transição para
-              <strong>Cloud Engineering</strong>, com objetivo de carreira em
-              <strong>DevOps</strong>. Comecei pelos fundamentos com o curso de
-              Redes do Google, fiz cursos da AWS e dediquei o último semestre a
-              estudar cloud e a rotina DevOps. Uso <strong>Linux</strong> (Fedora)
-              no dia a dia, inclusive como ambiente de desenvolvimento.
-            </p>
-
-            <p>
-              Também estudo <strong>IA aplicada</strong> ao desenvolvimento:
-              engenharia de prompts, Claude Code, Spec-Driven Development e
-              criação de skills e ferramentas para o Claude. Junto disso, venho
-              aprofundando <strong>arquitetura de software</strong>: Clean
-              Architecture, design patterns, testes unitários e system design.
-            </p>
-
-            <p>
-              Curso <strong>Engenharia de Software</strong> na UNISATC e
-              complemento a formação com cursos da Alura, Google (Coursera),
-              AWS e entre outras plataformas online. Sou reconhecido por ser <strong>proativo</strong>,
-              <strong>dedicado</strong> e <strong>colaborativo</strong>, e levo
-              essa vontade de aprender para todos os lugares onde atuo.
-            </p>
-
-            <p>
-              Busco uma oportunidade que una
-              <strong>desenvolvimento Full Stack</strong> e
-              <strong>Cloud/DevOps</strong>. Compartilho minha evolução no
-              <a
-                href="https://www.linkedin.com/in/wagner-kauan/"
-                target="_blank"
-                rel="noopener"
-              >
-                <strong>LinkedIn.</strong>
-              </a>
-            </p>
-            <a
-              href="https://www.linkedin.com/in/wagner-kauan/"
-              class="btn"
-              target="_blank"
-              rel="noopener"
-            >
-              Contato
-            </a>
-          </div>
-
-          <div class="about-image-col">
-            <div class="about-highlights">
-              <div class="highlight-item">
-                <i class="fas fa-briefcase" aria-hidden="true"></i>
-                <div>
-                  <strong
-                    >Atualmente Desenvolvedor Web e Migração de Dados na Bruning
-                    Sistemas</strong
-                  >
-                  <span>Laravel · Nuxt.js · SQL</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-code" aria-hidden="true"></i>
-                <div>
-                  <strong>Full Stack</strong>
-                  <span>Laravel · Nuxt.js · Vue.js · React</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-database" aria-hidden="true"></i>
-                <div>
-                  <strong>Dados & Integração</strong>
-                  <span>SQL · MySQL · PostgreSQL · APIs REST</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-cloud" aria-hidden="true"></i>
-                <div>
-                  <strong>Cloud & DevOps em estudo</strong>
-                  <span>AWS · Linux · Redes</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-robot" aria-hidden="true"></i>
-                <div>
-                  <strong>IA aplicada</strong>
-                  <span>Claude Code · Engenharia de prompts · SDD</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                <div>
-                  <strong>Engenharia de Software</strong>
-                  <span>UNISATC · 2º período em andamento</span>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                <div>
-                  <strong>Análise e Dev. de Sistemas</strong>
-                  <span>Curso técnico no SENAI Tubarão</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <h2 class="section-title">Sobre</h2>
+        <div class="about-text">
+          <p>
+            A curiosidade por tecnologia vem de criança, quando eu sonhava em
+            criar jogos. No curso técnico do SENAI Tubarão descobri que gosto
+            de programar e de resolver problemas.
+          </p>
+          <p>
+            Hoje atuo em duas frentes na Bruning Sistemas: desenvolvo sistemas
+            web com Laravel no back-end e Nuxt.js no front-end, e faço
+            migração, integração e importação de dados entre sistemas.
+          </p>
+          <p>
+            Estou em transição para Cloud Engineering, com objetivo em DevOps:
+            uso Linux (Fedora) no dia a dia e estudo AWS e redes. Também aplico IA ao
+            desenvolvimento, com Claude Code, engenharia de prompts e
+            Spec-Driven Development.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ===== HABILIDADES (cinza claro) ===== -->
-    <section class="skills-section" id="habilidades">
+    <!-- ===== EXPERIÊNCIA E FORMAÇÃO ===== -->
+    <section class="experience-section" id="experiencia">
       <div class="container">
-        <h2 class="section-title">Minhas Habilidades</h2>
-        <p class="section-subtitle">
-          Tecnologias que uso no dia a dia e nas quais tenho experiência.
-        </p>
-        <ul class="skills-grid">
-          <li class="skill">
-            <img src="img/skills/html5-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>HTML</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/css3-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>CSS</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/javascript-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>JavaScript</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/typescript-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>TypeScript</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/vuejs-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Vue.js</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/nuxt-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Nuxt</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/react-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>React</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/nextjs-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Next.js</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/tailwindcss-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Tailwind CSS</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/php-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>PHP</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/laravel-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Laravel</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/csharp-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>C#</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/dotnetcore-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>.NET</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/java-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Java</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/python-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Python</span>
-          </li>
-          <li class="skill">
-            <i class="fas fa-plug" aria-hidden="true"></i>
-            <span>APIs REST</span>
-          </li>
-          <li class="skill">
-            <i class="fas fa-database" aria-hidden="true"></i>
-            <span>SQL</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/mysql-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>MySQL</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/postgresql-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>PostgreSQL</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/linux-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Linux</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/amazonwebservices-original-wordmark.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>AWS</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/git-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Git</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/github-original.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>GitHub</span>
-          </li>
-          <li class="skill">
-            <img src="img/skills/claude.svg" alt="" width="44" height="44" loading="lazy" />
-            <span>Claude Code</span>
-          </li>
-          <li class="skill">
-            <i class="fas fa-mobile-screen" aria-hidden="true"></i>
-            <span>Responsive Design</span>
-          </li>
-        </ul>
+        <h2 class="section-title">Experiência</h2>
+        <div class="experience-list">
+          <article class="experience-item">
+            <h3>Bruning Sistemas</h3>
+            <p class="experience-cargo">Desenvolvedor Web e Migração de Dados</p>
+            <ul>
+              <li>Desenvolvimento web com Laravel no back-end e Nuxt.js no front-end.</li>
+              <li>Migração, integração e importação de dados entre sistemas, com dados reais de clientes.</li>
+            </ul>
+            <p class="experience-stack">Laravel · Nuxt.js · SQL</p>
+          </article>
+          <article class="experience-item">
+            <h3>Formação</h3>
+            <ul>
+              <li><strong>Engenharia de Software</strong> · UNISATC, em andamento</li>
+              <li><strong>Técnico em Análise e Desenvolvimento de Sistemas</strong> · SENAI Tubarão</li>
+              <li><strong>Cursos complementares</strong> · Redes (Google, pela Coursera), AWS e Alura</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- ===== PROJETOS (branco) ===== -->
-    <section class="projects" id="projects">
+    <!-- ===== HABILIDADES ===== -->
+    <section class="skills-section" id="habilidades">
+      <div class="container">
+        <h2 class="section-title">Habilidades</h2>
+        <p class="section-subtitle">
+          Tecnologias que uso no dia a dia e nos projetos, agrupadas por área.
+        </p>
+        <!-- render:habilidades -->
+      </div>
+    </section>
+
+    <!-- ===== PROJETOS ===== -->
+    <section class="projects" id="projetos">
       <div class="container">
         <h2 class="section-title">Projetos</h2>
         <p class="section-subtitle">
-          Aqui você encontrará alguns dos projetos que desenvolvi, cada um com
-          foco em design, performance e experiência do usuário.
+          Projetos que desenvolvi, com o repositório no GitHub quando ele é público.
         </p>
-
-        <div class="projects-grid">
-          <article class="project-card">
-            <img
-              src="img/task-manager.webp"
-              alt="Preview Task Manager"
-              class="project-preview"
-              width="400"
-              height="225"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="project-card-body">
-              <h3>Task Manager</h3>
-              <p>
-                Gerenciador de tarefas em formato de quadro kanban, com API REST
-                em Java 21 e Spring Boot e interface em Angular. Arquitetura em
-                camadas validada com ArchUnit, PostgreSQL com migrations Flyway,
-                testes com JUnit, Testcontainers e Playwright, e toda a
-                aplicação sobe com Docker Compose. Desenvolvido com Spec-Driven
-                Development.
-              </p>
-              <div class="project-tags">
-                <span>Java 21</span>
-                <span>Spring Boot</span>
-                <span>Angular</span>
-                <span>TypeScript</span>
-                <span>PostgreSQL</span>
-                <span>Docker</span>
-                <span>Tailwind CSS</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/WagnerK4uan/task-manager"
-                  target="_blank"
-                  rel="noopener"
-                  class="project-link"
-                >
-                  <i class="fab fa-github" aria-hidden="true"></i> Repositório
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img
-              src="img/projeto-rh.webp"
-              alt="Preview Sistema de RH"
-              class="project-preview"
-              width="720"
-              height="387"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="project-card-body">
-              <h3>Sistema de RH</h3>
-              <p>
-                Sistema completo de Recursos Humanos desenvolvido com Laravel
-                (PHP) no backend e Vue.js no frontend, com CRUD de
-                colaboradores, rotas protegidas e APIs REST.
-              </p>
-              <div class="project-tags">
-                <span>Laravel</span>
-                <span>PHP</span>
-                <span>Vue.js</span>
-                <span>MySQL</span>
-                <span>REST API</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/WagnerK4uan/projeto-rh"
-                  target="_blank"
-                  rel="noopener"
-                  class="project-link"
-                >
-                  <i class="fab fa-github" aria-hidden="true"></i> Repositório
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img
-              src="img/cookin-up.webp"
-              alt="Preview Cookin-Up"
-              class="project-preview"
-              width="720"
-              height="387"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="project-card-body">
-              <h3>Cookin-Up</h3>
-              <p>
-                Template inicial para desenvolvimento com Vue 3 e Vite,
-                configurado para TypeScript e suporte a <code>.vue</code>,
-                visando agilizar novos projetos front-end.
-              </p>
-              <div class="project-tags">
-                <span>Vue 3</span>
-                <span>TypeScript</span>
-                <span>Vite</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/WagnerK4uan/Cookin-Up"
-                  target="_blank"
-                  rel="noopener"
-                  class="project-link"
-                >
-                  <i class="fab fa-github" aria-hidden="true"></i> Repositório
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img
-              src="img/xadrez.gif"
-              alt="Preview Xadrez"
-              class="project-preview"
-              width="400"
-              height="215"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="project-card-body">
-              <h3>Xadrez</h3>
-              <p>
-                Projeto de jogo de xadrez desenvolvido em React e Next.js com
-                TypeScript, com tabuleiro interativo, movimentação de peças e
-                regras básicas do jogo implementadas.
-              </p>
-              <div class="project-tags">
-                <span>React</span>
-                <span>Next.js</span>
-                <span>TypeScript</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/WagnerK4uan/xadrez-react-next"
-                  target="_blank"
-                  rel="noopener"
-                  class="project-link"
-                >
-                  <i class="fab fa-github" aria-hidden="true"></i> Repositório
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img
-              src="img/forjasys.webp"
-              alt="Preview ForjaSys"
-              class="project-preview"
-              width="692"
-              height="388"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="project-card-body">
-              <h3>ForjaSys</h3>
-              <p>
-                Sistema desktop de gestão para metalúrgicas de pequeno e médio
-                porte. Várias máquinas Windows na rede local se conectam a um
-                servidor PostgreSQL central; desenvolvido em Linux com deploy
-                para Windows. Inclui ordens de serviço, cadastros com dados
-                fiscais (NCM, CFOP, CST) e autenticação de usuários. É o meu
-                primeiro projeto feito para uma empresa real, ainda em
-                desenvolvimento.
-              </p>
-              <div class="project-tags">
-                <span>C#</span>
-                <span>.NET 9</span>
-                <span>Avalonia</span>
-                <span>PostgreSQL</span>
-                <span>EF Core</span>
-                <span>Clean Architecture</span>
-                <span>xUnit</span>
-              </div>
-              <div class="project-links">
-                <span class="project-link project-link--private">
-                  <i class="fas fa-lock" aria-hidden="true"></i> Repositório privado
-                </span>
-              </div>
-            </div>
-          </article>
-        </div>
+        <!-- render:projetos -->
       </div>
     </section>
 
+    <!-- ===== CONTATO ===== -->
+    <section class="contact-section" id="contato">
+      <div class="container">
+        <h2 class="section-title">Contato</h2>
+        <p class="section-subtitle">
+          Busco uma oportunidade que una desenvolvimento Full Stack e
+          Cloud/DevOps. O caminho mais rápido é o e-mail ou o LinkedIn.
+        </p>
+        <!-- render:contatos -->
+      </div>
+    </section>
     </main>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
       <div class="container footer-inner">
-        <div class="footer-about">
-          <h2>Wagner Kauan</h2>
-          <p>
-            Aqui reúno minha trajetória e alguns projetos em desenvolvimento
-            web, dados e cloud. Sinta-se à vontade para explorar os projetos e
-            entrar em contato para colaborações ou oportunidades de trabalho.
-          </p>
-        </div>
-        <div class="footer-contact">
-          <h3>Contato</h3>
-          <p class="footer-contact-hint">Aberto a oportunidades</p>
-          <a href="mailto:w.kauanmachado@gmail.com" class="btn btn-footer">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            w.kauanmachado@gmail.com
-          </a>
-        </div>
+        <p class="footer-nome">Wagner Kauan · desenvolvimento web, dados e cloud</p>
+        <!-- render:contatos-rodape -->
       </div>
     </footer>
     <script type="module" src="/src/main.js"></script>

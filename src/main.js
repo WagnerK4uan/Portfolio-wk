@@ -17,9 +17,10 @@ import "./styles/main.css";
 
   /* Listas entram em sequência; o atraso total fica limitado */
   var lists = [
-    { selector: ".about-highlights > *", step: 60, max: 360 },
+    { selector: ".experience-list > *", step: 60, max: 360 },
     { selector: ".skills-grid > *", step: 25, max: 400 },
     { selector: ".projects-grid > *", step: 90, max: 360 },
+    { selector: ".contact-list > *", step: 60, max: 360 },
   ];
 
   lists.forEach(function (list) {
@@ -30,7 +31,7 @@ import "./styles/main.css";
   });
 
   document
-    .querySelectorAll(".section-title, .section-subtitle, .about-text")
+    .querySelectorAll(".section-title, .section-subtitle, .about-text, .skill-group-title")
     .forEach(function (el) {
       el.classList.add("reveal");
     });

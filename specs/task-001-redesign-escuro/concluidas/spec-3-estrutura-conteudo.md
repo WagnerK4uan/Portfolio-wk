@@ -1,6 +1,6 @@
 # Spec 3 — Estrutura das seções e texto objetivo
 
-> Situação: Pendente. Ver [Contexto Geral](../README.md).
+> Situação: ✅ Concluída. Ver [Contexto Geral](../../README.md).
 > Depende de: Spec 2
 
 Objetivo: o `index.html` atual tem um "Sobre" de seis parágrafos, sete destaques repetindo a stack,
@@ -72,16 +72,16 @@ dados, que o build transforma em HTML estático (o conteúdo continua legível s
 
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
-| S-3.1 | O id da seção de projetos muda de `projects` para `projetos`; nenhum link externo depende de `#projects`. | aberta | — |
-| S-3.2 | A barra lateral fixa de redes sociais (`.social-icons`) sai; os canais passam a viver na seção `#contato` e no rodapé. | aberta | — |
-| S-3.3 | "Reconhecido por ser proativo, dedicado e colaborativo" sai do texto por ser autodescrição sem prova (PRODUCT.md › Principles 1). | aberta | — |
+| S-3.1 | O id da seção de projetos muda de `projects` para `projetos`; nenhum link externo depende de `#projects`. | confirmada | Confirmada pelo Wagner (2026-10-24). |
+| S-3.2 | A barra lateral fixa de redes sociais (`.social-icons`) sai; os canais passam a viver na seção `#contato` e no rodapé. | confirmada | Confirmada pelo Wagner (2026-10-24). |
+| S-3.3 | "Reconhecido por ser proativo, dedicado e colaborativo" sai do texto por ser autodescrição sem prova (PRODUCT.md › Principles 1). | confirmada | Confirmada pelo Wagner (2026-10-24). |
 
 ## Perguntas em aberto
 
 | ID | Pergunta | Status | Resposta |
 |---|---|---|---|
-| P-3.1 | O Instagram continua entre os contatos de um portfólio profissional? | aberta | — |
-| P-3.2 | O Wagner aprova o texto novo do hero, do "Sobre" e do contato? | aberta | — |
+| P-3.1 | O Instagram continua entre os contatos de um portfólio profissional? | respondida | Sim, continua: quatro canais (e-mail, LinkedIn, GitHub, Instagram) (Wagner, 2026-10-24). |
+| P-3.2 | O Wagner aprova o texto novo do hero, do "Sobre" e do contato? | respondida | Aprovado como está (Wagner, 2026-10-24): hero com nome, cargo e frase de posicionamento; "Sobre" com 94 palavras; contato com chamada curta e os 4 canais. |
 
 Ao final, resuma a nova ordem das seções, o texto final de cada uma, o formato dos arquivos de
 dados, como o plugin de render funciona, como cada critério ficou provado e o que foi retirado do
