@@ -14,12 +14,20 @@
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <header>
-      <div class="container">
-        <a class="logo" href="#home" aria-label="Wagner Kauan, voltar ao topo">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#home" aria-label="WK, Wagner Kauan, voltar ao topo">
           <span>WK</span>
         </a>
-        <nav aria-label="Seções">
+        <button class="menu-botao" type="button" aria-controls="menu-secoes" aria-expanded="false">
+          <svg class="menu-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <path class="menu-icone-topo" d="M4 7h16" />
+            <path class="menu-icone-meio" d="M4 12h16" />
+            <path class="menu-icone-base" d="M4 17h16" />
+          </svg>
+          <span>Menu</span>
+        </button>
+        <nav class="menu-secoes" id="menu-secoes" aria-label="Seções">
           <ul>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#experiencia">Experiência</a></li>
@@ -33,26 +41,48 @@
 
     <main id="conteudo" tabindex="-1">
     <!-- ===== HERO ===== -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" aria-labelledby="hero-nome">
+      <span class="hero-sentinela" aria-hidden="true"></span>
       <div class="hero-content">
-        <img
-          src="img/foto-wagner.webp"
-          alt="Foto de Wagner Kauan"
-          class="hero-photo"
-          width="440"
-          height="487"
-          fetchpriority="high"
-        />
-        <div class="hero-text">
-          <h1>Wagner Kauan</h1>
-          <p class="hero-cargo">Desenvolvedor Web e Migração de Dados na Bruning Sistemas</p>
-          <p class="hero-posicionamento">
-            Desenvolvo sistemas web com Laravel e Nuxt.js, migro dados reais de
-            clientes entre sistemas e estou em transição para
-            <span class="hero-mark">Cloud e DevOps</span>.
-          </p>
-          <div class="hero-acoes">
-            <a href="#projetos" class="btn">Ver projetos</a>
+        <div class="ficha">
+          <div class="ficha-cab" aria-hidden="true">
+            <span>origem</span>
+            <span class="ficha-cab-destino">destino</span>
+          </div>
+          <div class="ficha-linha ficha-linha-nome" style="--i: 1">
+            <span class="ficha-campo" aria-hidden="true">nome</span>
+            <span class="ficha-conector" aria-hidden="true"></span>
+            <h1 class="ficha-valor" id="hero-nome">Wagner Kauan</h1>
+            <figure class="ficha-foto" style="--i: 0">
+              <img
+                src="img/foto-wagner.webp"
+                alt="Foto de Wagner Kauan"
+                class="hero-photo"
+                width="440"
+                height="487"
+                fetchpriority="high"
+              />
+            </figure>
+          </div>
+          <div class="ficha-linha" style="--i: 2">
+            <span class="ficha-campo" aria-hidden="true">cargo_atual</span>
+            <span class="ficha-conector" aria-hidden="true"></span>
+            <p class="ficha-valor hero-cargo">Desenvolvedor Web e Migração de Dados na Bruning Sistemas</p>
+          </div>
+          <div class="ficha-linha" style="--i: 3">
+            <span class="ficha-campo" aria-hidden="true">posicionamento</span>
+            <span class="ficha-conector" aria-hidden="true"></span>
+            <p class="ficha-valor hero-posicionamento">
+              Desenvolvo sistemas web com Laravel e Nuxt.js, migro dados reais de
+              clientes entre sistemas e estou em transição para
+              <strong>Cloud e DevOps</strong>.
+            </p>
+          </div>
+          <div class="hero-acoes" style="--i: 4">
+            <a href="#projetos" class="btn">
+              Ver projetos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
             <a href="#contato" class="btn btn-secundario">Entrar em contato</a>
           </div>
         </div>

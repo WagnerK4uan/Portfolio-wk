@@ -1,6 +1,6 @@
 # Spec 4 — Hero e navegação
 
-> Situação: Pendente. Ver [Contexto Geral](../README.md).
+> Situação: ✅ Concluída. Ver [Contexto Geral](../../README.md).
 > Depende de: Spec 3
 
 Objetivo: o hero é a primeira impressão e hoje é uma foto ao lado de "Olá, eu sou Wagner Kauan" e
@@ -49,7 +49,7 @@ brilho violeta sutil e uma entrada coreografada, e uma navegação que funciona 
    `aria-controls` abaixo de 768 px. Lógica do menu em `src/scripts/menu.js`; link ativo e header
    rolado movidos de `src/main.js` para `src/scripts/navegacao.js` sem mudar o comportamento.
 4. **Hero.** Layout com a foto `public/img/foto-wagner.webp`, nome em destaque, cargo, frase e
-   botões "Ver projetos" (`#projetos`) e "Falar comigo" (`#contato`). Fundo com brilho violeta em
+   botões "Ver projetos" (`#projetos`) e "Entrar em contato" (`#contato`, texto aprovado em P-3.2). Fundo com brilho violeta em
    gradiente CSS (sem imagem pesada nem canvas).
 5. **Entrada coreografada** em CSS: foto, nome, cargo, frase e botões entram em sequência curta
    (total abaixo de 900 ms), só com `opacity` e `transform`, com a versão estática sob
@@ -66,8 +66,8 @@ brilho violeta sutil e uma entrada coreografada, e uma navegação que funciona 
 
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
-| S-4.1 | A foto atual `foto-wagner.webp` (440×487) é boa o bastante para o hero novo; outra foto não será produzida. | aberta | — |
-| S-4.2 | CA-4.4 e CA-4.5 dependem de layout real; se o jsdom não bastar, a prova é o roteiro `/browse` com screenshots. | aberta | — |
+| S-4.1 | A foto atual `foto-wagner.webp` (440×487) é boa o bastante para o hero novo; outra foto não será produzida. | confirmada | Confirmada pelo Wagner (2026-10-24). |
+| S-4.2 | CA-4.4 e CA-4.5 dependem de layout real; se o jsdom não bastar, a prova é o roteiro `/browse` com screenshots. | confirmada | Confirmada pelo Wagner (2026-10-24). |
 
 ## Perguntas em aberto
 

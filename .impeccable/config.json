@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/styles/hero.css"
+        ],
+        "createdAt": "2026-10-26T01:14:21.246Z",
+        "reason": "Agent: border-left em .ficha-conector::after é o triângulo CSS da ponta da seta (pseudo-elemento sem tamanho), não uma borda de destaque em card"
+      }
+    ]
+  }
+}

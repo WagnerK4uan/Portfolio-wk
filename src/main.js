@@ -3,9 +3,16 @@ import "@fontsource-variable/atkinson-hyperlegible-next";
 import "@fontsource-variable/jetbrains-mono";
 import "./styles/tokens.css";
 import "./styles/main.css";
+import "./styles/navegacao.css";
+import "./styles/hero.css";
+import { iniciarMenu } from "./scripts/menu.js";
+import { iniciarNavegacao } from "./scripts/navegacao.js";
+
+iniciarMenu();
+iniciarNavegacao();
 
 /* ============================================
-   MOVIMENTO: revelar ao rolar, link ativo, header
+   MOVIMENTO: revelar ao rolar (link ativo e header em scripts/navegacao.js)
    ============================================ */
 (function () {
   var root = document.documentElement;
@@ -51,42 +58,4 @@ import "./styles/main.css";
   document.querySelectorAll(".reveal").forEach(function (el) {
     revealObserver.observe(el);
   });
-
-  /* Link da seção visível fica marcado na navegação */
-  var links = document.querySelectorAll('nav a[href^="#"]');
-  var sections = Array.prototype.map.call(links, function (link) {
-    return document.querySelector(link.getAttribute("href"));
-  });
-
-  var navObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        links.forEach(function (link) {
-          var active = link.getAttribute("href") === "#" + entry.target.id;
-          link.classList.toggle("is-active", active);
-          if (active) link.setAttribute("aria-current", "true");
-          else link.removeAttribute("aria-current");
-        });
-      });
-    },
-    { rootMargin: "-45% 0px -50% 0px" }
-  );
-
-  sections.forEach(function (section) {
-    if (section) navObserver.observe(section);
-  });
-
-  /* Header ganha sombra quando o hero sai de vista */
-  var header = document.querySelector("header");
-  var hero = document.querySelector(".hero");
-
-  if (header && hero) {
-    new IntersectionObserver(
-      function (entries) {
-        header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
-      },
-      { rootMargin: "-80px 0px 0px 0px" }
-    ).observe(hero.querySelector(".hero-content") || hero);
-  }
 })();

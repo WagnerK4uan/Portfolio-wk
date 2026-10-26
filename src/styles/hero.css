@@ -1,0 +1,381 @@
+/* ============================================
+   HERO · a ficha de-para (Spec 4, Direção C)
+   A primeira tela é uma planilha de mapeamento: nome de campo na origem (JetBrains Mono),
+   conector violeta, valor no destino. O retrato ocupa a coluna da direita no desktop e vira
+   miniatura na linha do nome nas telas menores. Brilho violeta só em gradiente CSS.
+   ============================================ */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: calc(var(--altura-header) + var(--espaco-3)) var(--espaco-6);
+}
+
+/* Sentinela de 1px no topo do hero: assim que ele sai da vista, qualquer conteúdo já vai passar
+   sob o header, que então ganha fundo (scripts/navegacao.js) */
+.hero-sentinela {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Brilho violeta: dois gradientes radiais atrás da ficha, sem imagem nem canvas */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 55% 60% at 82% 18%,
+      color-mix(in oklch, var(--cor-violeta-marca) 26%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 45% 50% at 8% 92%,
+      color-mix(in oklch, var(--cor-violeta-acao) 14%, transparent),
+      transparent 70%
+    );
+}
+
+.hero-content {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(var(--espaco-4), 4vw, var(--espaco-5));
+}
+
+.ficha {
+  --largura-foto: clamp(16rem, 24vw, 21rem);
+  position: relative;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  background: var(--cor-superficie-1);
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+}
+
+/* Cabeçalho da planilha: só a partir de 768 px */
+.ficha-cab {
+  display: none;
+  font-family: var(--fonte-campo);
+  font-size: var(--tipo-xs);
+  color: var(--cor-texto-suave);
+  background: var(--cor-superficie-2);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+/* Linha da ficha. Celular: campo e conector numa linha, valor embaixo */
+.ficha-linha {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--espaco-3);
+  row-gap: var(--espaco-1);
+  padding: var(--espaco-3) var(--espaco-4);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.ficha-campo {
+  font-family: var(--fonte-campo);
+  font-size: var(--tipo-xs);
+  line-height: 1.4;
+  color: var(--cor-texto-suave);
+}
+
+.ficha-conector {
+  position: relative;
+  justify-self: start;
+  width: var(--espaco-6);
+  height: 2px;
+  margin-right: var(--espaco-2);
+  background: var(--cor-violeta-marca);
+  transform-origin: left center;
+}
+
+/* Ponta da seta, desenhada com bordas */
+.ficha-conector::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left: 7px solid var(--cor-violeta-marca);
+  border-right: 0;
+}
+
+.ficha-valor {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+/* Linha do nome: a miniatura do retrato à direita do nome */
+.ficha-linha-nome {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.ficha-linha-nome .ficha-valor {
+  grid-column: 1 / 3;
+}
+
+.ficha-foto {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  align-self: center;
+  margin: 0;
+}
+
+.hero-photo {
+  display: block;
+  width: 4.5rem;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  background: var(--cor-superficie-2);
+}
+
+/* Valores: o nome em destaque, o cargo como subtítulo, a frase em texto corrido */
+.hero h1 {
+  font-family: var(--fonte-display);
+  font-weight: 800;
+  font-size: var(--tipo-display);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--cor-texto-forte);
+}
+
+.hero-cargo {
+  font-family: var(--fonte-display);
+  font-weight: 700;
+  font-size: var(--tipo-lg);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--cor-texto-forte);
+}
+
+.hero-posicionamento {
+  max-width: 62ch;
+  font-size: var(--tipo-base);
+  line-height: 1.55;
+  color: var(--cor-texto-suave);
+}
+
+.hero-posicionamento strong {
+  color: var(--cor-texto-forte);
+  font-weight: 600;
+}
+
+/* Execução: a faixa de ações no pé da ficha */
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-3);
+  padding: var(--espaco-3) var(--espaco-4);
+  background: var(--cor-superficie-2);
+}
+
+.hero-acoes .btn {
+  flex: 1 1 auto;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: var(--espaco-3) var(--espaco-5);
+  letter-spacing: 0;
+}
+
+.hero-acoes .btn svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+/* A partir de 768 px: a planilha em três colunas, origem → conector → destino */
+@media (min-width: 48rem) {
+  .hero {
+    padding-block: calc(var(--altura-header) + var(--espaco-6)) var(--espaco-7);
+  }
+
+  .ficha-cab,
+  .ficha-linha {
+    grid-template-columns: minmax(8.5rem, 11rem) 4rem minmax(0, 1fr);
+    padding-inline: var(--espaco-5);
+  }
+
+  .ficha-cab {
+    display: grid;
+    column-gap: var(--espaco-3);
+    padding-block: var(--espaco-3);
+  }
+
+  .ficha-cab-destino {
+    grid-column: 3;
+  }
+
+  .ficha-linha {
+    padding-block: var(--espaco-4);
+  }
+
+  .ficha-linha-nome {
+    grid-template-columns: minmax(8.5rem, 11rem) 4rem minmax(0, 1fr) auto;
+    padding-block: var(--espaco-5);
+  }
+
+  .ficha-conector {
+    justify-self: stretch;
+    width: auto;
+    margin-inline: var(--espaco-2);
+  }
+
+  .ficha-valor,
+  .ficha-linha-nome .ficha-valor {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .ficha-foto {
+    grid-column: 4;
+    grid-row: 1;
+    margin-left: var(--espaco-4);
+  }
+
+  .hero-photo {
+    width: 6rem;
+  }
+
+  .hero-acoes {
+    justify-content: flex-end;
+    padding-inline: var(--espaco-5);
+  }
+
+  .hero-acoes .btn {
+    flex: 0 0 auto;
+  }
+}
+
+/* A partir de 1024 px: o retrato vira a coluna da direita, na altura da ficha inteira */
+@media (min-width: 64rem) {
+  .ficha {
+    padding-right: var(--largura-foto);
+  }
+
+  .ficha-linha-nome {
+    grid-template-columns: minmax(8.5rem, 11rem) 4rem minmax(0, 1fr);
+  }
+
+  .ficha-foto {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--largura-foto);
+    margin: 0;
+    /* Em caixa absoluta, align-self: center encolheria o retrato ao conteúdo */
+    align-self: stretch;
+    border-left: 1px solid var(--cor-borda);
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-position: 50% 25%;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+/* Celular baixo (320 × 568): a ficha aperta o respiro para nome, cargo, frase e botões caberem
+   na primeira tela */
+@media (max-width: 47.99rem) and (max-height: 40rem) {
+  .hero {
+    padding-top: calc(var(--altura-header) + var(--espaco-2));
+  }
+
+  .ficha-linha,
+  .hero-acoes {
+    padding-block: var(--espaco-2);
+  }
+
+  .hero-acoes {
+    gap: var(--espaco-2);
+  }
+}
+
+/* Sem JavaScript, a lista de seções quebra em linhas e o header fica mais alto */
+@media (max-width: 47.99rem) {
+  html:not(.js) .hero {
+    padding-top: calc(var(--altura-header) * 2 + var(--espaco-4));
+  }
+}
+
+/* ============================================
+   ENTRADA COREOGRAFADA
+   Retrato, nome, cargo, frase e botões entram em sequência de 70 ms; cada conector se estende
+   antes do valor que ele liga. Só opacity e transform; tudo termina em 880 ms (último valor:
+   4 × 70 ms de atraso + 600 ms). Fill "backwards" para não prender o transform do hover.
+   Sob prefers-reduced-motion: reduce, nada disto existe e a ficha nasce estática.
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .hero {
+    --hero-passo: calc(var(--duracao-rapida) / 2);
+  }
+
+  .hero::before {
+    animation: hero-surgir var(--duracao-lenta) var(--ease-out) backwards;
+  }
+
+  .ficha-foto {
+    animation: hero-retrato var(--duracao-lenta) var(--ease-out) backwards;
+  }
+
+  .ficha-campo {
+    animation: hero-surgir var(--duracao-media) var(--ease-out) backwards;
+    animation-delay: calc((var(--i) - 1) * var(--hero-passo));
+  }
+
+  .ficha-conector {
+    animation: hero-estender var(--duracao-media) var(--ease-out) backwards;
+    animation-delay: calc((var(--i) - 1) * var(--hero-passo));
+  }
+
+  .ficha-valor,
+  .hero-acoes .btn {
+    animation: hero-chegar var(--duracao-lenta) var(--ease-out) backwards;
+    animation-delay: calc(var(--i) * var(--hero-passo));
+  }
+}
+
+@keyframes hero-surgir {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-retrato {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+@keyframes hero-estender {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes hero-chegar {
+  from {
+    opacity: 0;
+    transform: translateX(-0.75rem);
+  }
+}

@@ -29,6 +29,9 @@ describe("estrutura das seções", () => {
     expect(logo.tagName).toBe("A");
     expect(logo.getAttribute("href")).toBe("#home");
     expect(logo.getAttribute("aria-label")).toMatch(/voltar ao topo/i);
+    // WCAG 2.5.3: o nome acessível começa pelo texto visível do logo.
+    expect(logo.getAttribute("aria-label")).toMatch(/^WK\b/);
+    expect(logo.textContent.trim()).toBe("WK");
   });
 
   it("CA-3.2 · #home diz nome, cargo atual na Bruning e leva a #projetos e #contato", () => {

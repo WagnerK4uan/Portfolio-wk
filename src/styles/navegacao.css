@@ -1,0 +1,264 @@
+/* ============================================
+   HEADER E NAVEGAÇÃO (Spec 4)
+   Header fixo: transparente sobre o hero, fundo translúcido com desfoque depois que o hero sai
+   de vista (is-scrolled, posto por scripts/navegacao.js). Abaixo de 768 px, com JavaScript, a
+   lista de seções recolhe atrás do botão de menu (scripts/menu.js). Sem JavaScript o header é
+   sólido, o botão some e a lista fica sempre visível.
+   ============================================ */
+:root {
+  --altura-header: 3.75rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--altura-header) + var(--espaco-4));
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  background: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+  transition:
+    background-color var(--duracao-media) var(--ease-out),
+    border-color var(--duracao-media) var(--ease-out),
+    box-shadow var(--duracao-media) var(--ease-out);
+}
+
+.js .site-header:not(.is-scrolled, .is-menu-open) {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.site-header.is-scrolled,
+.site-header.is-menu-open {
+  background: var(--cor-fundo);
+  background: color-mix(in oklch, var(--cor-fundo) 82%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom-color: var(--cor-borda);
+  box-shadow: var(--sombra-header);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--espaco-5);
+  min-height: var(--altura-header);
+  padding-inline: clamp(var(--espaco-4), 4vw, var(--espaco-5));
+}
+
+/* Logo: as iniciais com o ponto violeta da marca */
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  min-height: 2.75rem;
+  padding-block: var(--espaco-2);
+  font-family: var(--fonte-display);
+  font-weight: 800;
+  font-size: var(--tipo-lg);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--cor-texto-forte);
+  transition: color var(--duracao-rapida) ease;
+}
+
+.logo::after {
+  content: "";
+  width: 0.32em;
+  height: 0.32em;
+  margin-left: 0.12em;
+  border-radius: 2px;
+  background: var(--cor-violeta-marca);
+}
+
+.logo:hover {
+  color: var(--cor-violeta-texto);
+}
+
+/* Lista de seções: em linha, links com alvo de 44 px */
+.menu-secoes ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  column-gap: clamp(var(--espaco-4), 2.5vw, var(--espaco-6));
+}
+
+.menu-secoes a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+  font-size: var(--tipo-sm);
+  color: var(--cor-texto-suave);
+  transition: color var(--duracao-rapida) ease;
+}
+
+.menu-secoes a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--espaco-2);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--cor-violeta-marca);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duracao-media) var(--ease-out);
+}
+
+.menu-secoes a:hover {
+  color: var(--cor-texto-forte);
+}
+
+.menu-secoes a.is-active {
+  color: var(--cor-violeta-texto);
+}
+
+.menu-secoes a:hover::after,
+.menu-secoes a:focus-visible::after,
+.menu-secoes a.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Botão de menu: só existe na tela estreita e com JavaScript */
+.menu-botao {
+  display: none;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-height: 2.75rem;
+  padding: var(--espaco-2) var(--espaco-4) var(--espaco-2) var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  background: var(--cor-superficie-2);
+  color: var(--cor-texto-forte);
+  font: inherit;
+  font-weight: 600;
+  font-size: var(--tipo-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--duracao-rapida) ease,
+    border-color var(--duracao-rapida) ease;
+}
+
+.menu-botao:hover,
+.menu-botao[aria-expanded="true"] {
+  background: var(--cor-superficie-3);
+  border-color: var(--cor-violeta-marca);
+  color: var(--cor-texto-forte);
+}
+
+.menu-icone {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.menu-icone path {
+  transform-origin: 12px 12px;
+  transition:
+    transform var(--duracao-media) var(--ease-out),
+    opacity var(--duracao-rapida) ease;
+}
+
+.menu-botao[aria-expanded="true"] .menu-icone-topo {
+  transform: rotate(45deg) translateY(5px);
+}
+
+.menu-botao[aria-expanded="true"] .menu-icone-meio {
+  opacity: 0;
+}
+
+.menu-botao[aria-expanded="true"] .menu-icone-base {
+  transform: rotate(-45deg) translateY(-5px);
+}
+
+@media (max-width: 47.99rem) {
+  .js .menu-botao {
+    display: inline-flex;
+  }
+
+  /* Painel que desce do header; fechado, sai da ordem de tabulação (visibility) */
+  .js .menu-secoes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--espaco-2) clamp(var(--espaco-4), 4vw, var(--espaco-5)) var(--espaco-4);
+    background: var(--cor-superficie-1);
+    border-bottom: 1px solid var(--cor-borda);
+    box-shadow: var(--sombra-card);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--espaco-2)));
+    transition:
+      opacity var(--duracao-media) var(--ease-out),
+      transform var(--duracao-media) var(--ease-out),
+      visibility 0s linear var(--duracao-media);
+  }
+
+  .js .menu-secoes.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .js .menu-secoes ul {
+    flex-direction: column;
+  }
+
+  .js .menu-secoes li + li {
+    border-top: 1px solid var(--cor-borda);
+  }
+
+  .js .menu-secoes a {
+    display: flex;
+    min-height: 3rem;
+    font-size: var(--tipo-base);
+    color: var(--cor-texto-forte);
+  }
+
+  .js .menu-secoes a::after {
+    content: none;
+  }
+
+  .js .menu-secoes a:hover,
+  .js .menu-secoes a.is-active {
+    color: var(--cor-violeta-texto);
+  }
+
+  .js .menu-secoes a.is-active {
+    text-decoration: underline 2px var(--cor-violeta-marca);
+    text-underline-offset: 6px;
+  }
+
+  /* Sem JavaScript: a lista quebra em linhas sob o logo, sempre visível */
+  .menu-secoes {
+    flex-basis: 100%;
+  }
+
+  .js .menu-secoes {
+    flex-basis: auto;
+  }
+
+  .menu-secoes ul {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-icone path,
+  .menu-secoes a::after {
+    transition: none;
+  }
+
+  .js .menu-secoes {
+    transform: none;
+    transition: visibility 0s;
+  }
+}
