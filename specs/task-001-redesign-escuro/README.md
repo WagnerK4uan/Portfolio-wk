@@ -12,7 +12,6 @@ com a `master` e decidir o merge.
 
 | Spec | Arquivo | Situação |
 |---|---|---|
-| Spec 1 — Base do projeto com Vite e testes estáticos | [spec-1-base-vite.md](spec-1-base-vite.md) | Pendente |
 | Spec 2 — Direção visual escura e tokens de design | [spec-2-direcao-visual.md](spec-2-direcao-visual.md) | Pendente |
 | Spec 3 — Estrutura das seções e texto objetivo | [spec-3-estrutura-conteudo.md](spec-3-estrutura-conteudo.md) | Pendente |
 | Spec 4 — Hero e navegação | [spec-4-hero-navegacao.md](spec-4-hero-navegacao.md) | Pendente |
@@ -25,6 +24,7 @@ com a `master` e decidir o merge.
 
 | Spec | Arquivo | Situação |
 |---|---|---|
+| Spec 1 — Base do projeto com Vite e testes estáticos | [concluidas/spec-1-base-vite.md](concluidas/spec-1-base-vite.md) | ✅ Concluída |
 
 ## Notas e dependências
 

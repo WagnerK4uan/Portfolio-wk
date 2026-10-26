@@ -347,7 +347,7 @@ nav ul li a.is-active::after {
    ============================================ */
 .hero {
   min-height: 100vh;
-  background: url("img/background-white.png") no-repeat center / cover;
+  background: url("/img/background-white.png") no-repeat center / cover;
   display: flex;
   flex-direction: column;
   justify-content: center;

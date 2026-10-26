@@ -1,6 +1,6 @@
 # Spec 1 — Base do projeto com Vite e testes estáticos
 
-> Situação: Pendente. Ver [Contexto Geral](../README.md).
+> Situação: ✅ Concluída. Ver [Contexto Geral](../../README.md).
 > Depende de: nenhuma.
 
 Objetivo: hoje o site é `index.html` + `style.css` + `main.js` soltos na raiz, sem build nem teste
@@ -66,8 +66,8 @@ igual ao da `master`.
 
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
-| S-1.1 | A Vercel detecta o Vite sozinha (build `npm run build`, saída `dist/`) no preview da branch, sem `vercel.json`. | aberta | — |
-| S-1.2 | Font Awesome e Google Fonts continuam por CDN nesta spec; trocar por pacote local fica para a Spec 2, se a direção visual pedir. | aberta | — |
+| S-1.1 | A Vercel detecta o Vite sozinha (build `npm run build`, saída `dist/`) no preview da branch, sem `vercel.json`. | confirmada | Confirmada pelo Wagner (2026-10-24). |
+| S-1.2 | Font Awesome e Google Fonts continuam por CDN nesta spec; trocar por pacote local fica para a Spec 2, se a direção visual pedir. | confirmada | Confirmada pelo Wagner (2026-10-24). |
 
 ## Perguntas em aberto
 

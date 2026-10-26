@@ -1,3 +1,5 @@
+import "./styles/main.css";
+
 /* ============================================
    MOVIMENTO: revelar ao rolar, link ativo, header
    ============================================ */
