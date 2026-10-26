@@ -56,13 +56,13 @@ em andamento) e a `#habilidades` agrupada por área, ambas na direção escura d
 
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
-| S-5.1 | Períodos exatos (mês/ano de entrada na Bruning, conclusão do SENAI) não estão no repositório; sem eles a experiência mostra só "atual" e "em andamento". | aberta | — |
+| S-5.1 | Períodos exatos (mês/ano de entrada na Bruning, conclusão do SENAI) não estão no repositório; sem eles a experiência mostra só "atual" e "em andamento". | invalidada | O Wagner informou os períodos (P-5.1, 2026-10-25); a experiência mostra as datas. |
 
 ## Perguntas em aberto
 
 | ID | Pergunta | Status | Resposta |
 |---|---|---|---|
-| P-5.1 | O Wagner quer informar os períodos (ano de início na Bruning, ano de conclusão do técnico) para a linha do tempo? | aberta | — |
+| P-5.1 | O Wagner quer informar os períodos (ano de início na Bruning, ano de conclusão do técnico) para a linha do tempo? | respondida | Sim (Wagner, 2026-10-25): Bruning Sistemas como estagiário desde 2024 e em tempo integral desde 2025, atual; técnico em ADS no SENAI Tubarão de 2023 a 2024; Engenharia de Software na UNISATC desde 2026, em andamento. |
 
 Ao final, resuma o desenho das duas seções, o formato de `experiencia.js`, os grupos de
 habilidades, como cada critério ficou provado e os screenshots por largura.
