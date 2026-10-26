@@ -23,3 +23,13 @@ export function arquivoNoDist(caminhoNoHtml) {
   const relativo = decodeURI(semConsulta).replace(/^\.?\//, "");
   return path.join(pastaDist, relativo);
 }
+
+/** Lê o CSS local (com hash, em dist/assets/) que o dist/index.html referencia. */
+export function lerCssDoIndexDist() {
+  const html = lerIndexDist();
+  const locais = [...html.matchAll(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)]
+    .map((m) => m[1])
+    .filter((href) => !/^https?:/.test(href));
+  if (locais.length !== 1) throw new Error(`Esperado 1 CSS local em dist/index.html, achados ${locais.length}.`);
+  return readFileSync(arquivoNoDist(locais[0]), "utf8");
+}

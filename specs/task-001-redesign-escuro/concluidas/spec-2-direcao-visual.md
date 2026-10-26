@@ -1,6 +1,6 @@
 # Spec 2 — Direção visual escura e tokens de design
 
-> Situação: Pendente. Ver [Contexto Geral](../README.md).
+> Situação: ✅ Concluída. Ver [Contexto Geral](../../README.md).
 > Depende de: Spec 1
 
 Objetivo: o visual atual é claro (`--bg-white: #ffffff`, `--bg-alt: #f8fafc` em
@@ -64,14 +64,14 @@ fonte de cor, tipo, espaço e movimento. A escolha é do Wagner, a partir de pro
 
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
-| S-2.1 | Só tema escuro: não haverá alternância para claro nem leitura de `prefers-color-scheme`. | aberta | — |
-| S-2.2 | O violeta atual (`#6c63ff`) é o ponto de partida do violeta de marca, podendo ser ajustado em luminosidade para dar contraste no escuro. | aberta | — |
+| S-2.1 | Só tema escuro: não haverá alternância para claro nem leitura de `prefers-color-scheme`. | confirmada | Confirmada pelo Wagner (2026-10-24). |
+| S-2.2 | O violeta atual (`#6c63ff`) é o ponto de partida do violeta de marca, podendo ser ajustado em luminosidade para dar contraste no escuro. | confirmada | Confirmada pelo Wagner (2026-10-24). |
 
 ## Perguntas em aberto
 
 | ID | Pergunta | Status | Resposta |
 |---|---|---|---|
-| P-2.1 | Qual das direções propostas o Wagner escolhe, e com qual fonte? | aberta | — |
+| P-2.1 | Qual das direções propostas o Wagner escolhe, e com qual fonte? | respondida | Direção C · De-para (Wagner, 2026-10-24), entre A · Cartaz e B · Mapa de linhas (provas em `.gstack/direcoes/`): hero como planilha de migração origem → destino, fundo mais escuro, denso e tabular, a leitura mais rápida e a que encena o trabalho real com dados. Fontes: Bricolage Grotesque (títulos), Atkinson Hyperlegible Next (texto) e JetBrains Mono (só nomes de campo), servidas localmente por `@fontsource` no `package.json`; Poppins sai. |
 | P-2.2 | Qual base de cor para o redesign? | respondida | Escuro com violeta como marca (Wagner, 2026-10-24). |
 
 Ao final, resuma as direções propostas, a escolhida e por quê, a lista de tokens criada, os pares de

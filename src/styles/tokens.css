@@ -1,0 +1,73 @@
+/* ============================================
+   TOKENS · Direção C, De-para (Spec 2, P-2.1)
+   Fonte única de cor, tipo, espaço, raio e movimento.
+   Só este arquivo declara cor literal; o resto de src/styles/ consome var().
+   Só tema escuro (S-2.1).
+   ============================================ */
+:root {
+  /* Cor: fundo e superfícies em 3 níveis, matiz 290 */
+  --cor-fundo: oklch(0.14 0.012 290);
+  --cor-superficie-1: oklch(0.18 0.014 290);
+  --cor-superficie-2: oklch(0.22 0.016 290);
+  --cor-superficie-3: oklch(0.27 0.018 290);
+
+  /* Cor: texto e borda */
+  --cor-texto-forte: oklch(0.95 0.008 290);
+  --cor-texto-suave: oklch(0.74 0.02 290);
+  --cor-borda: oklch(0.32 0.02 290);
+
+  /* Cor: violeta. Marca para traço e ícone; ação para fundo de botão (texto branco);
+     texto para link e destaque escrito sobre o escuro */
+  --cor-violeta-marca: oklch(0.62 0.21 284);
+  --cor-violeta-acao: oklch(0.53 0.22 284);
+  --cor-violeta-acao-hover: oklch(0.47 0.21 284);
+  --cor-violeta-texto: oklch(0.78 0.13 290);
+  --cor-texto-sobre-acao: oklch(0.99 0 0);
+
+  /* Cor: anel de foco */
+  --cor-foco: oklch(0.85 0.14 160);
+
+  /* Sombras: escuras sobre o fundo escuro, brilho violeta só em ação */
+  --sombra-header: 0 1px 0 var(--cor-borda), 0 6px 20px oklch(0.08 0.01 290 / 0.6);
+  --sombra-card: 0 4px 20px oklch(0.08 0.01 290 / 0.5);
+  --sombra-card-hover: 0 12px 32px oklch(0.08 0.01 290 / 0.7);
+  --sombra-violeta: 0 5px 15px oklch(0.53 0.22 284 / 0.3);
+  --sombra-violeta-hover: 0 8px 24px oklch(0.53 0.22 284 / 0.45);
+
+  /* Tipografia: famílias (servidas localmente por @fontsource-variable) */
+  --fonte-display: "Bricolage Grotesque Variable", system-ui, sans-serif;
+  --fonte-texto: "Atkinson Hyperlegible Next Variable", system-ui, sans-serif;
+  --fonte-campo: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  /* Tipografia: escala fluida */
+  --tipo-xs: clamp(0.78rem, 0.76rem + 0.1vw, 0.82rem);
+  --tipo-sm: clamp(0.88rem, 0.86rem + 0.1vw, 0.92rem);
+  --tipo-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --tipo-lg: clamp(1.15rem, 1.08rem + 0.35vw, 1.5rem);
+  --tipo-xl: clamp(1.35rem, 1.2rem + 0.75vw, 1.85rem);
+  --tipo-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --tipo-3xl: clamp(1.8rem, 1.4rem + 2vw, 2.6rem);
+  --tipo-display: clamp(2.6rem, 1.6rem + 5vw, 5.25rem);
+
+  /* Espaço: escala */
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 0.75rem;
+  --espaco-4: 1rem;
+  --espaco-5: 1.5rem;
+  --espaco-6: 2rem;
+  --espaco-7: 3rem;
+  --espaco-8: 5rem;
+
+  /* Raio */
+  --raio-sm: 6px;
+  --raio-md: 12px;
+  --raio-pilula: 100px;
+
+  /* Movimento: durações e curvas */
+  --duracao-rapida: 140ms;
+  --duracao-media: 300ms;
+  --duracao-lenta: 600ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}

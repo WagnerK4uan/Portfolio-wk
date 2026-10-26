@@ -1,6 +1,9 @@
 import { existsSync } from "node:fs";
 import { beforeAll, describe, expect, it } from "vitest";
-import { arquivoNoDist, carregarIndexDist } from "./dist.js";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { arquivoNoDist, carregarIndexDist, lerCssDoIndexDist, raizDoProjeto } from "./dist.js";
+import { lerTokensDoRoot, luminanciaRelativa, oklchParaSrgbLinear } from "./cores.js";
 
 const TRAVESSOES = /[—–]/;
 
@@ -81,5 +84,43 @@ describe("dist/index.html", () => {
       .filter((link) => !(link.getAttribute("rel") || "").split(/\s+/).includes("noopener"))
       .map((link) => link.getAttribute("href"));
     expect(inseguros).toEqual([]);
+  });
+});
+
+describe("Tema escuro aplicado", () => {
+  /*
+   * O jsdom resolve custom properties no getComputedStyle, mas não substitui var() dentro de
+   * propriedades comuns: `background: var(--cor-fundo)` sai como o valor inicial transparente.
+   * Por isso a prova tem duas metades: a regra do body no CSS do build declara o fundo pelo
+   * token, e o getComputedStyle do body resolve esse token para o valor de tokens.css.
+   */
+  it("CA-2.4 · o <body> usa o fundo escuro do token e o <head> declara color-scheme dark", () => {
+    const meta = documento.head.querySelector('meta[name="color-scheme"]');
+    expect(meta, '<meta name="color-scheme"> no <head>').not.toBeNull();
+    expect(meta.getAttribute("content")).toBe("dark");
+
+    const estilo = document.createElement("style");
+    estilo.textContent = lerCssDoIndexDist();
+    document.head.appendChild(estilo);
+    try {
+      const regrasDoBody = [...estilo.sheet.cssRules].filter((regra) => regra.selectorText === "body");
+      expect(regrasDoBody.length).toBeGreaterThan(0);
+      const ultimaRegra = regrasDoBody.at(-1).style;
+      const fundoDeclarado = ultimaRegra.getPropertyValue("background-color") || ultimaRegra.getPropertyValue("background");
+      expect(fundoDeclarado.replace(/\s+/g, "")).toBe("var(--cor-fundo)");
+
+      const tokens = lerTokensDoRoot(readFileSync(path.join(raizDoProjeto, "src/styles/tokens.css"), "utf8"));
+      const fundoNoBody = getComputedStyle(document.body).getPropertyValue("--cor-fundo").trim();
+      expect(fundoNoBody, "--cor-fundo resolvido no body").not.toBe("");
+
+      const noBuild = oklchParaSrgbLinear(fundoNoBody);
+      const noToken = oklchParaSrgbLinear(tokens["--cor-fundo"]);
+      noBuild.forEach((canal, i) => expect(canal).toBeCloseTo(noToken[i], 5));
+
+      // Escuro de fato: luminância relativa abaixo da de um cinza sRGB #1a1a1a (cerca de 0,01).
+      expect(luminanciaRelativa(fundoNoBody)).toBeLessThan(0.011);
+    } finally {
+      estilo.remove();
+    }
   });
 });

@@ -1,3 +1,7 @@
+import "@fontsource-variable/bricolage-grotesque/opsz.css";
+import "@fontsource-variable/atkinson-hyperlegible-next";
+import "@fontsource-variable/jetbrains-mono";
+import "./styles/tokens.css";
 import "./styles/main.css";
 
 /* ============================================
