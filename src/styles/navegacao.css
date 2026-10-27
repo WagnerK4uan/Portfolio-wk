@@ -3,7 +3,8 @@
    Header fixo: transparente sobre o hero, fundo translúcido com desfoque depois que o hero sai
    de vista (is-scrolled, posto por scripts/navegacao.js). Abaixo de 768 px, com JavaScript, a
    lista de seções recolhe atrás do botão de menu (scripts/menu.js). Sem JavaScript o header é
-   sólido, o botão some e a lista fica sempre visível.
+   sólido, o botão some e a lista fica sempre visível. Fundo, borda e cor de texto trocam pelas
+   cores registradas de movimento.css; a sombra do header rolado aparece por opacity.
    ============================================ */
 :root {
   --altura-header: 3.75rem;
@@ -14,30 +15,54 @@ html {
 }
 
 .site-header {
+  --fundo-animavel: var(--cor-fundo);
+  --borda-animavel: var(--cor-borda);
   position: fixed;
   inset: 0 0 auto;
   z-index: 1000;
-  background: var(--cor-fundo);
-  border-bottom: 1px solid var(--cor-borda);
+  background: var(--fundo-animavel);
+  border-bottom: 1px solid var(--borda-animavel);
   transition:
-    background-color var(--duracao-media) var(--ease-out),
-    border-color var(--duracao-media) var(--ease-out),
-    box-shadow var(--duracao-media) var(--ease-out);
+    --fundo-animavel var(--duracao-media) var(--ease-out),
+    --borda-animavel var(--duracao-media) var(--ease-out);
+}
+
+/* Sombra do header rolado: num pseudo-elemento atrás do conteúdo, aparece por opacity */
+.site-header::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  box-shadow: var(--sombra-header);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duracao-media) var(--ease-out);
 }
 
 .js .site-header:not(.is-scrolled, .is-menu-open) {
-  background: transparent;
-  border-bottom-color: transparent;
+  --fundo-animavel: transparent;
+  --borda-animavel: transparent;
 }
 
 .site-header.is-scrolled,
 .site-header.is-menu-open {
-  background: var(--cor-fundo);
-  background: color-mix(in oklch, var(--cor-fundo) 82%, transparent);
+  --fundo-animavel: color-mix(in oklch, var(--cor-fundo) 82%, transparent);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   backdrop-filter: blur(14px) saturate(1.2);
-  border-bottom-color: var(--cor-borda);
-  box-shadow: var(--sombra-header);
+  --borda-animavel: var(--cor-borda);
+}
+
+.site-header.is-scrolled::after,
+.site-header.is-menu-open::after {
+  opacity: 1;
+}
+
+/* Sem color-mix(), o header rolado fica no fundo sólido */
+@supports not (color: color-mix(in oklch, white, transparent)) {
+  .site-header.is-scrolled,
+  .site-header.is-menu-open {
+    --fundo-animavel: var(--cor-fundo);
+  }
 }
 
 .header-inner {
@@ -61,8 +86,9 @@ html {
   font-size: var(--tipo-lg);
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: var(--cor-texto-forte);
-  transition: color var(--duracao-rapida) ease;
+  --texto-animavel: var(--cor-texto-forte);
+  color: var(--texto-animavel);
+  transition: --texto-animavel var(--duracao-rapida) var(--ease-out);
 }
 
 .logo::after {
@@ -74,8 +100,9 @@ html {
   background: var(--cor-violeta-marca);
 }
 
-.logo:hover {
-  color: var(--cor-violeta-texto);
+.logo:hover,
+.logo:focus-visible {
+  --texto-animavel: var(--cor-violeta-texto);
 }
 
 /* Lista de seções: em linha, links com alvo de 44 px */
@@ -94,8 +121,9 @@ html {
   min-height: 2.75rem;
   font-weight: 600;
   font-size: var(--tipo-sm);
-  color: var(--cor-texto-suave);
-  transition: color var(--duracao-rapida) ease;
+  --texto-animavel: var(--cor-texto-suave);
+  color: var(--texto-animavel);
+  transition: --texto-animavel var(--duracao-rapida) var(--ease-out);
 }
 
 .menu-secoes a::after {
@@ -112,12 +140,13 @@ html {
   transition: transform var(--duracao-media) var(--ease-out);
 }
 
-.menu-secoes a:hover {
-  color: var(--cor-texto-forte);
+.menu-secoes a:hover,
+.menu-secoes a:focus-visible {
+  --texto-animavel: var(--cor-texto-forte);
 }
 
 .menu-secoes a.is-active {
-  color: var(--cor-violeta-texto);
+  --texto-animavel: var(--cor-violeta-texto);
 }
 
 .menu-secoes a:hover::after,
@@ -128,29 +157,36 @@ html {
 
 /* Botão de menu: só existe na tela estreita e com JavaScript */
 .menu-botao {
+  --fundo-animavel: var(--cor-superficie-2);
+  --borda-animavel: var(--cor-borda);
   display: none;
   align-items: center;
   gap: var(--espaco-2);
   min-height: 2.75rem;
   padding: var(--espaco-2) var(--espaco-4) var(--espaco-2) var(--espaco-3);
-  border: 1px solid var(--cor-borda);
+  border: 1px solid var(--borda-animavel);
   border-radius: var(--raio-sm);
-  background: var(--cor-superficie-2);
+  background: var(--fundo-animavel);
   color: var(--cor-texto-forte);
   font: inherit;
   font-weight: 600;
   font-size: var(--tipo-sm);
   cursor: pointer;
   transition:
-    background-color var(--duracao-rapida) ease,
-    border-color var(--duracao-rapida) ease;
+    --fundo-animavel var(--duracao-rapida) var(--ease-out),
+    --borda-animavel var(--duracao-rapida) var(--ease-out),
+    transform var(--duracao-rapida) var(--ease-out);
 }
 
 .menu-botao:hover,
 .menu-botao[aria-expanded="true"] {
-  background: var(--cor-superficie-3);
-  border-color: var(--cor-violeta-marca);
+  --fundo-animavel: var(--cor-superficie-3);
+  --borda-animavel: var(--cor-violeta-marca);
   color: var(--cor-texto-forte);
+}
+
+.menu-botao:active {
+  transform: scale(0.97);
 }
 
 .menu-icone {
@@ -220,7 +256,7 @@ html {
     display: flex;
     min-height: 3rem;
     font-size: var(--tipo-base);
-    color: var(--cor-texto-forte);
+    --texto-animavel: var(--cor-texto-forte);
   }
 
   .js .menu-secoes a::after {
@@ -228,8 +264,9 @@ html {
   }
 
   .js .menu-secoes a:hover,
+  .js .menu-secoes a:focus-visible,
   .js .menu-secoes a.is-active {
-    color: var(--cor-violeta-texto);
+    --texto-animavel: var(--cor-violeta-texto);
   }
 
   .js .menu-secoes a.is-active {
@@ -260,5 +297,9 @@ html {
   .js .menu-secoes {
     transform: none;
     transition: visibility 0s;
+  }
+
+  .menu-botao:active {
+    transform: none;
   }
 }

@@ -1,6 +1,6 @@
 # Spec 7 — Sistema de movimento
 
-> Situação: Pendente. Ver [Contexto Geral](../README.md).
+> Situação: ✅ Concluída. Ver [Contexto Geral](../../README.md).
 > Depende de: Spec 4, Spec 5, Spec 6
 
 Objetivo: o Wagner pediu um portfólio mais animado, num nível "marcante, mas leve". Hoje o
@@ -85,3 +85,12 @@ em JS puro), escolhida pelo Wagner em 2026-10-26, e o desfoque de entrada (`filt
 
 Ao final, resuma o sistema de movimento (tokens, coreografias, microinterações), o que foi
 reaproveitado de `src/main.js`, como cada critério ficou provado e as medições de desempenho.
+
+## Decisões da execução
+
+- O Motion entra pelo `animateMini` (animação nativa do navegador), não pelo `animate` híbrido: o JS do
+  build fica em 6,23 kB gzip contra 25,59 kB. Confirmado pelo Wagner (2026-10-26).
+- Passo 2 conferido contra `reference/animate.md` e `reference/craft-floor.md` do impeccable. Tese de
+  movimento: o momento autoral é a ficha do hero e o brilho do ponteiro, e as seções entram de forma
+  discreta e uniforme, coerente com "marcante, mas leve". O Wagner manteve a coreografia e pediu um
+  teste de interrupção do brilho e da entrada (2026-10-26).

@@ -1,0 +1,124 @@
+/* ============================================
+   SISTEMA DE MOVIMENTO (Spec 7)
+   Tese: o momento autoral é a ficha do hero e o brilho do ponteiro. As seções entram de forma
+   discreta e uniforme (sobem pouco, saem do desfoque e param), coerente com "marcante, mas leve".
+   Duração e curva vêm dos tokens de tokens.css (--duracao-* e --ease-out).
+   Só se animam opacity, transform, filter e as cores registradas abaixo com @property: nada de
+   width, height, top, left ou margin. A entrada ao rolar é do Motion (src/scripts/revelar.js) e o
+   brilho do ponteiro escreve --mx e --my (src/scripts/brilho.js). Sob prefers-reduced-motion: reduce
+   nada se desloca e o que sobra é fade de opacity de até 200 ms.
+   ============================================ */
+
+/* Cores de estado registradas: a troca de fundo, borda e texto no hover e no foco interpola pela
+   custom property, sem transição de background, border-color ou color. Cada componente põe o seu
+   valor; inherits: false impede que um valor vaze para os filhos. */
+@property --fundo-animavel {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --borda-animavel {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --texto-animavel {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+/* ---------- Revelar ao rolar: só com JS, o conteúdo nasce visível sem ele ---------- */
+/* O estado escondido é o primeiro quadro da entrada do Motion; sem transição aqui, para o CSS não
+   disputar com o animate. Os cards de projeto mantêm a transição de hover de projetos.css. */
+.js .reveal:not(.is-in) {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(4px);
+}
+
+.js .section-title.reveal:not(.is-in) {
+  transform: none;
+}
+
+/* O traço do título se estende quando ele termina de entrar */
+.js .section-title::after {
+  transform: scaleX(0);
+  transition: transform var(--duracao-lenta) var(--ease-out);
+}
+
+.js .section-title.is-in::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Brilho que segue o ponteiro ----------
+   Só em quem tem tem-brilho (hover fino, sem movimento reduzido). No hero o brilho fica atrás da
+   ficha, sobre o fundo; no card fica abaixo do conteúdo (z-index -1 dentro do card isolado), então
+   o texto nunca recebe a cor por cima. A mistura máxima de 12% de --cor-violeta-marca sobre a
+   superfície do card mantém o texto em 4,5:1 (tests/movimento.test.js). */
+.hero::after,
+.project-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duracao-lenta) var(--ease-out);
+}
+
+.hero::after {
+  background: radial-gradient(
+    circle 24rem at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklch, var(--cor-violeta-marca) 10%, transparent),
+    transparent 70%
+  );
+}
+
+.project-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.project-card::before {
+  background: radial-gradient(
+    circle 16rem at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklch, var(--cor-violeta-marca) 12%, transparent),
+    transparent 70%
+  );
+  transition-duration: var(--duracao-media);
+}
+
+.hero.tem-brilho:hover::after,
+.project-card.tem-brilho:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Movimento reduzido ----------
+   Rede de segurança para a página inteira: nenhuma animação de CSS e nenhuma transição além de
+   opacity, curta e sem atraso. As regras de cada componente tiram os deslocamentos do hover. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-property: opacity !important;
+    transition-duration: var(--duracao-rapida) !important;
+    transition-delay: 0s !important;
+  }
+
+  .js .reveal {
+    transition: opacity var(--duracao-rapida) var(--ease-out);
+  }
+
+  .js .reveal:not(.is-in) {
+    transform: none;
+    filter: none;
+  }
+
+  .js .section-title::after {
+    transform: none;
+  }
+}

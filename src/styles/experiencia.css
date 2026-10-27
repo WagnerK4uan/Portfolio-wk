@@ -2,7 +2,7 @@
    EXPERIÊNCIA · linha do tempo vertical (Spec 5, Direção C)
    Período em JetBrains Mono na coluna da origem, trilho com marcador, conteúdo no destino.
    No celular o período desce para baixo do cargo e o trilho fica à esquerda.
-   Sem animação própria: a revelação ao rolar é de main.js (Spec 7).
+   Sem animação própria: a revelação ao rolar é de scripts/revelar.js (Spec 7).
    ============================================ */
 .experience-section {
   background: var(--cor-fundo);

@@ -5,7 +5,6 @@
   /* Cores, tipo, espaço e movimento vêm de tokens.css; aqui só o que é de layout */
   --radius: var(--raio-md);
   --radius-sm: var(--raio-sm);
-  --transition: var(--duracao-media) ease;
   --max-width: 1100px;
 }
 
@@ -69,7 +68,7 @@ p {
   font-weight: 600;
   border-radius: var(--radius-sm);
   transform: translateY(-200%);
-  transition: transform 0.2s var(--ease-out);
+  transition: transform var(--duracao-rapida) var(--ease-out);
 }
 
 .skip-link:focus {
@@ -115,43 +114,6 @@ main:focus {
   background: var(--cor-violeta-marca);
 }
 
-/* Revelar ao rolar: só ativo com JS, o conteúdo nasce visível sem ele */
-.js .reveal {
-  transition:
-    opacity 0.6s var(--ease-out) var(--delay, 0ms),
-    transform 0.6s var(--ease-out) var(--delay, 0ms),
-    filter 0.6s var(--ease-out) var(--delay, 0ms);
-}
-
-.js .reveal:not(.is-in) {
-  opacity: 0;
-  transform: translateY(18px);
-  filter: blur(4px);
-}
-
-.js .section-title.reveal:not(.is-in) {
-  transform: none;
-  filter: none;
-}
-
-.js .section-title::after {
-  transform: scaleX(0);
-  transition: transform 0.7s var(--ease-out) 0.2s;
-}
-
-.js .section-title.is-in::after {
-  transform: scaleX(1);
-}
-
-/* Depois de entrar, os cards de projeto voltam às transições de hover */
-.js .project-card.reveal.is-in {
-  transition:
-    opacity 0.6s var(--ease-out) var(--delay, 0ms),
-    transform var(--transition),
-    border-color var(--transition),
-    box-shadow var(--transition);
-}
-
 .section-subtitle {
   text-align: center;
   max-width: 640px;
@@ -163,13 +125,17 @@ main:focus {
 
 /* ============================================
    BUTTON
+   Fundo pela cor registrada --fundo-animavel (declarada em src/styles/movimento.css) e sombra maior
+   no pseudo-elemento .btn::after, que aparece por opacity: hover e foco sobem 2 px, o clique afunda.
    ============================================ */
 .btn {
+  --fundo-animavel: var(--cor-violeta-acao);
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 2rem;
-  background: var(--cor-violeta-acao);
+  background: var(--fundo-animavel);
   color: var(--cor-texto-sobre-acao);
   border: none;
   border-radius: var(--radius-sm);
@@ -179,35 +145,59 @@ main:focus {
   letter-spacing: 0.5px;
   cursor: pointer;
   transition:
-    background var(--transition),
-    box-shadow var(--transition),
-    transform var(--transition);
+    --fundo-animavel var(--duracao-media) var(--ease-out),
+    transform var(--duracao-media) var(--ease-out);
   box-shadow: var(--sombra-violeta);
 }
 
-.btn:hover {
-  background: var(--cor-violeta-acao-hover);
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   box-shadow: var(--sombra-violeta-hover);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duracao-media) var(--ease-out);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  --fundo-animavel: var(--cor-violeta-acao-hover);
   transform: translateY(-2px);
 }
 
-.btn-secundario {
-  background: transparent;
-  color: var(--cor-texto-forte);
-  border: 1px solid var(--cor-borda);
-  box-shadow: none;
+.btn:hover::after,
+.btn:focus-visible::after {
+  opacity: 1;
 }
 
-.btn-secundario:hover {
-  background: var(--cor-superficie-2);
+.btn-secundario {
+  --fundo-animavel: transparent;
+  --borda-animavel: var(--cor-borda);
   color: var(--cor-texto-forte);
-  border-color: var(--cor-violeta-marca);
+  border: 1px solid var(--borda-animavel);
   box-shadow: none;
+  transition:
+    --fundo-animavel var(--duracao-media) var(--ease-out),
+    --borda-animavel var(--duracao-media) var(--ease-out),
+    transform var(--duracao-media) var(--ease-out);
+}
+
+.btn-secundario::after {
+  content: none;
+}
+
+.btn-secundario:hover,
+.btn-secundario:focus-visible {
+  --fundo-animavel: var(--cor-superficie-2);
+  --borda-animavel: var(--cor-violeta-marca);
+  color: var(--cor-texto-forte);
 }
 
 .btn:active {
   transform: translateY(0) scale(0.98);
-  transition-duration: 0.1s;
+  transition-duration: var(--duracao-rapida);
 }
 
 /* ============================================
@@ -261,18 +251,21 @@ main:focus {
 }
 
 .contact-link {
+  --fundo-animavel: var(--cor-superficie-1);
+  --borda-animavel: var(--cor-borda);
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: var(--espaco-3);
   align-items: center;
   padding: var(--espaco-4) var(--espaco-5);
-  background: var(--cor-superficie-1);
-  border: 1px solid var(--cor-borda);
+  background: var(--fundo-animavel);
+  border: 1px solid var(--borda-animavel);
   border-radius: var(--radius);
   color: var(--cor-texto-forte);
   transition:
-    background var(--transition),
-    border-color var(--transition);
+    --fundo-animavel var(--duracao-media) var(--ease-out),
+    --borda-animavel var(--duracao-media) var(--ease-out),
+    transform var(--duracao-media) var(--ease-out);
 }
 
 .contact-link i {
@@ -291,10 +284,17 @@ main:focus {
   overflow-wrap: anywhere;
 }
 
-.contact-link:hover {
-  background: var(--cor-superficie-2);
-  border-color: var(--cor-violeta-marca);
+.contact-link:hover,
+.contact-link:focus-visible {
+  --fundo-animavel: var(--cor-superficie-2);
+  --borda-animavel: var(--cor-violeta-marca);
   color: var(--cor-texto-forte);
+  transform: translateY(-2px);
+}
+
+.contact-link:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: var(--duracao-rapida);
 }
 
 /* ============================================
@@ -329,6 +329,8 @@ main:focus {
 }
 
 .footer-social a {
+  --fundo-animavel: transparent;
+  --texto-animavel: var(--cor-texto-suave);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,16 +338,18 @@ main:focus {
   height: 44px;
   border: 1px solid var(--cor-borda);
   border-radius: var(--radius-sm);
-  color: var(--cor-texto-suave);
+  background: var(--fundo-animavel);
+  color: var(--texto-animavel);
   font-size: var(--tipo-lg);
   transition:
-    background var(--transition),
-    color var(--transition);
+    --fundo-animavel var(--duracao-media) var(--ease-out),
+    --texto-animavel var(--duracao-media) var(--ease-out);
 }
 
-.footer-social a:hover {
-  background: var(--cor-violeta-acao);
-  color: var(--cor-texto-sobre-acao);
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  --fundo-animavel: var(--cor-violeta-acao);
+  --texto-animavel: var(--cor-texto-sobre-acao);
 }
 
 /* ============================================
@@ -381,21 +385,13 @@ main:focus {
     scroll-behavior: auto;
   }
 
-  .js .reveal,
-  .js .project-card.reveal.is-in {
-    transition: opacity 0.3s ease;
-  }
-
-  .js .reveal:not(.is-in) {
-    transform: none;
-    filter: none;
-  }
-
-  .js .section-title::after {
-    transition: none;
-  }
-
-  .btn:hover {
+  /* O estado muda (cor, sombra), nada se desloca; transições e revelação em movimento.css */
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active,
+  .contact-link:hover,
+  .contact-link:focus-visible,
+  .contact-link:active {
     transform: none;
   }
 }
