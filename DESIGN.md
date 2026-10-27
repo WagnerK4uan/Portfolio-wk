@@ -1,277 +1,304 @@
 ---
 name: Portfólio Wagner Kauan
-description: Portfólio de página única, claro e organizado, com o violeta como marca de ação e destaque.
+description: Portfólio de página única em tema escuro, com a primeira tela montada como uma planilha de migração (origem, conector, destino) e o violeta como marca de ação.
 colors:
-  violeta-eletrico: "#6c63ff"
-  violeta-acao: "#625af0"
-  violeta-profundo: "#574fd6"
-  violeta-noturno: "#4a42c4"
-  lavanda-nevoa: "#ede9fe"
-  papel-branco: "#ffffff"
-  gelo-ardosia: "#f8fafc"
-  tinta-noturna: "#1e1e2e"
-  ardosia-media: "#64748b"
-  linha-neblina: "#e2e8f0"
-  noite-funda: "#0f0f1a"
-  ardosia-clara: "#94a3b8"
+  fundo-noturno: "#09080e"
+  superficie-1: "#111117"
+  superficie-2: "#1a1922"
+  superficie-3: "#26252f"
+  texto-forte: "#eeeef4"
+  texto-suave: "#aaa9b7"
+  borda-fina: "#32313d"
+  violeta-marca: "#7c6afd"
+  violeta-acao: "#644ae3"
+  violeta-acao-hover: "#5538c9"
+  violeta-texto: "#b6a8ff"
+  texto-sobre-acao: "#fcfcfc"
+  foco-menta: "#6feaae"
 typography:
   display:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "3rem"
-    fontWeight: 700
-    lineHeight: 1.7
-    letterSpacing: "1px"
+    fontFamily: "Bricolage Grotesque Variable, system-ui, sans-serif"
+    fontSize: "clamp(2.6rem, 1.6rem + 5vw, 5.25rem)"
+    fontWeight: 800
+    lineHeight: 0.95
+    letterSpacing: "-0.035em"
   headline:
-    fontFamily: "Poppins, sans-serif"
+    fontFamily: "Atkinson Hyperlegible Next Variable, system-ui, sans-serif"
     fontSize: "2rem"
     fontWeight: 700
     lineHeight: 1.7
     letterSpacing: "1px"
-  title-lg:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "1.6rem"
-    fontWeight: 700
-    lineHeight: 1.7
-  title-md:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "1.4rem"
-    fontWeight: 700
-    lineHeight: 1.7
   title:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "1.1rem"
+    fontFamily: "Atkinson Hyperlegible Next Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.15rem, 1.08rem + 0.35vw, 1.5rem)"
     fontWeight: 700
-    lineHeight: 1.7
+    lineHeight: 1.25
+  title-display:
+    fontFamily: "Bricolage Grotesque Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.15rem, 1.08rem + 0.35vw, 1.5rem)"
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: "-0.01em"
   body:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "1rem"
+    fontFamily: "Atkinson Hyperlegible Next Variable, system-ui, sans-serif"
+    fontSize: "clamp(1rem, 0.97rem + 0.15vw, 1.0625rem)"
     fontWeight: 400
     lineHeight: 1.7
   body-sm:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "0.9rem"
+    fontFamily: "Atkinson Hyperlegible Next Variable, system-ui, sans-serif"
+    fontSize: "clamp(0.88rem, 0.86rem + 0.1vw, 0.92rem)"
     fontWeight: 400
     lineHeight: 1.7
-  label-lg:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "0.95rem"
-    fontWeight: 600
-    lineHeight: 1.3
   label:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "0.85rem"
-    fontWeight: 600
+    fontFamily: "Atkinson Hyperlegible Next Variable, system-ui, sans-serif"
+    fontSize: "0.95rem"
+    fontWeight: 700
     lineHeight: 1.3
-  label-sm:
-    fontFamily: "Poppins, sans-serif"
-    fontSize: "0.78rem"
-    fontWeight: 600
-    lineHeight: 1.3
+    letterSpacing: "0.5px"
+  field:
+    fontFamily: "JetBrains Mono Variable, ui-monospace, monospace"
+    fontSize: "clamp(0.78rem, 0.76rem + 0.1vw, 0.82rem)"
+    fontWeight: 500
+    lineHeight: 1.5
 rounded:
-  xs: "4px"
   sm: "6px"
   md: "12px"
   pill: "100px"
-  full: "50%"
 spacing:
-  gutter: "1.5rem"
-  card: "1.5rem"
-  grid-gap: "2rem"
+  espaco-1: "0.25rem"
+  espaco-2: "0.5rem"
+  espaco-3: "0.75rem"
+  espaco-4: "1rem"
+  espaco-5: "1.5rem"
+  espaco-6: "2rem"
+  espaco-7: "3rem"
+  espaco-8: "5rem"
   section: "80px"
   container: "1100px"
 components:
   button-primary:
     backgroundColor: "{colors.violeta-acao}"
-    textColor: "{colors.papel-branco}"
-    typography: "{typography.label-lg}"
+    textColor: "{colors.texto-sobre-acao}"
+    typography: "{typography.label}"
     rounded: "{rounded.sm}"
     padding: "0.85rem 2rem"
   button-primary-hover:
-    backgroundColor: "{colors.violeta-profundo}"
+    backgroundColor: "{colors.violeta-acao-hover}"
+  button-secondary:
+    backgroundColor: "transparent"
+    textColor: "{colors.texto-forte}"
+    typography: "{typography.label}"
+    rounded: "{rounded.sm}"
+    padding: "0.85rem 2rem"
   button-repo:
     backgroundColor: "{colors.violeta-acao}"
-    textColor: "{colors.papel-branco}"
+    textColor: "{colors.texto-sobre-acao}"
     rounded: "{rounded.sm}"
     padding: "0.6rem 1.2rem"
+    height: "2.75rem"
   button-repo-private:
-    backgroundColor: "{colors.ardosia-media}"
-    textColor: "{colors.papel-branco}"
+    backgroundColor: "{colors.superficie-3}"
+    textColor: "{colors.texto-suave}"
     rounded: "{rounded.sm}"
     padding: "0.6rem 1.2rem"
-  chip-tech:
-    backgroundColor: "{colors.lavanda-nevoa}"
-    textColor: "{colors.violeta-profundo}"
-    rounded: "{rounded.pill}"
-    padding: "0.3rem 0.75rem"
+  ficha-hero:
+    backgroundColor: "{colors.superficie-1}"
+    textColor: "{colors.texto-forte}"
+    rounded: "{rounded.md}"
+  ficha-hero-rodape:
+    backgroundColor: "{colors.superficie-2}"
+    padding: "0.75rem 1rem"
   card-project:
-    backgroundColor: "{colors.papel-branco}"
+    backgroundColor: "{colors.superficie-2}"
+    textColor: "{colors.texto-forte}"
     rounded: "{rounded.md}"
-    padding: "{spacing.card}"
-  card-skill:
-    backgroundColor: "{colors.papel-branco}"
-    textColor: "{colors.tinta-noturna}"
+    padding: "{spacing.espaco-5}"
+  card-contact:
+    backgroundColor: "{colors.superficie-1}"
+    textColor: "{colors.texto-forte}"
     rounded: "{rounded.md}"
-    padding: "1.25rem 0.5rem"
-  card-highlight:
-    backgroundColor: "{colors.gelo-ardosia}"
-    textColor: "{colors.tinta-noturna}"
-    rounded: "{rounded.md}"
-    padding: "1.1rem 1.2rem"
-  nav-header:
-    backgroundColor: "{colors.papel-branco}"
-    textColor: "{colors.tinta-noturna}"
     padding: "1rem 1.5rem"
-  footer:
-    backgroundColor: "{colors.noite-funda}"
-    textColor: "{colors.ardosia-clara}"
-    padding: "60px 1.5rem"
+  card-contact-hover:
+    backgroundColor: "{colors.superficie-2}"
+  skill-chip:
+    backgroundColor: "{colors.superficie-2}"
+    textColor: "{colors.texto-forte}"
+    rounded: "{rounded.sm}"
+    padding: "0.25rem 0.75rem 0.25rem 0.25rem"
+  tag:
+    backgroundColor: "{colors.superficie-3}"
+    textColor: "{colors.violeta-texto}"
+    rounded: "{rounded.pill}"
+    padding: "0.25rem 0.75rem"
+  experience-stack-tag:
+    backgroundColor: "{colors.superficie-2}"
+    textColor: "{colors.violeta-texto}"
+    rounded: "{rounded.pill}"
+    padding: "0.25rem 0.75rem"
 ---
 
 # Design System: Portfólio Wagner Kauan
 
 ## Overview
 
-**Creative North Star: "A Bancada Organizada"**
+**Creative North Star: "A Planilha de Migração"**
 
-O portfólio é uma bancada de trabalho limpa: superfície clara, cada peça no seu lugar, ferramentas à vista. O fundo alterna entre branco e um gelo levemente azulado, e sobre ele os blocos de conteúdo (destaques, habilidades, projetos) ficam em cards alinhados em grade, com borda fina e sombra quase imperceptível. Nada compete com o trabalho exposto.
+O portfólio é escuro e se organiza como o trabalho de quem migra sistemas: um campo na origem, um conector, um valor no destino. A primeira tela é uma ficha em três colunas (nome do campo em JetBrains Mono, seta violeta, valor) e a mesma lógica volta na linha do tempo da experiência e na tabela de habilidades. O retrato fica dentro da ficha, como mais um campo preenchido, e não como moldura de página.
 
-O Violeta Elétrico é a única cor com voz. Ele marca o que é ação (botões, links), o que é identidade (o anel em volta da foto, o sublinhado da navegação) e o que reage ao visitante (borda de hover nos cards de habilidade). Todo o resto é neutro: tinta escura para títulos, ardósia para texto corrido.
+O fundo é quase preto com matiz violeta discreto (290) e três degraus de superfície que separam as camadas por tom, sem depender de sombra. O violeta tem voz única: marca traço, conector e ícone; vira fundo só em botão de ação; vira cor de texto apenas na versão clara (`violeta-texto`). O brilho que segue o ponteiro e o gradiente do hero são feitos só em CSS e a partir do mesmo violeta.
 
-A densidade é média e arejada: seções de 80px de respiro vertical, container de 1100px, Poppins em uma única família com peso fazendo a hierarquia. Os componentes são acessíveis e responsivos: cantos arredondados, sombra suave que cresce no hover, elementos que sobem alguns pixels quando o cursor passa.
+A densidade é média: seções de 80px de respiro vertical, container de 1100px, cantos de 6px e 12px. O tom é técnico e direto, sem decoração gratuita. Divergência com a intenção original: o build não tem tema claro; tokens.css declara só o escuro.
 
 **Key Characteristics:**
-- Fundo claro com alternância branco / gelo entre seções; rodapé noturno como fechamento.
-- Um único acento cromático, o Violeta Elétrico, com variante profunda para hover.
-- Poppins em todos os níveis; títulos de seção em caixa alta com 1px de tracking.
-- Cards com borda de 1px e sombra difusa, levantando no hover.
-- Hover em 0.3s ease; entradas e revelações em 0.6s a 0.8s com desaceleração `cubic-bezier(0.16, 1, 0.3, 1)`.
+- Tema único escuro, três superfícies em matiz 290 e borda de 1px em todo contêiner.
+- Violeta como único acento cromático, em quatro papéis (marca, ação, ação em hover, texto).
+- Três famílias com função fixa: Bricolage Grotesque (display), Atkinson Hyperlegible Next (texto), JetBrains Mono (campos), todas locais via `@fontsource-variable`.
+- Motivo recorrente do conector: linha de 2px em violeta com ponta de seta, na ficha do hero e nas frentes da experiência.
+- Movimento só com `opacity`, `transform` e `filter`, com versão estática sob `prefers-reduced-motion: reduce`.
 
 ## Colors
 
-Paleta neutra fria com um único acento violeta saturado.
+Escuro frio com matiz 290 e um único acento violeta; todas as cores moram em `src/styles/tokens.css` como `--cor-*` em oklch, e o resto do CSS só consome `var()`.
 
 ### Primary
-- **Violeta Elétrico** (#6c63ff): a cor de identidade, usada em tudo que não é texto: anel da foto do hero, sublinhado animado da navegação, traço dos títulos de seção, ícones dos destaques e das habilidades, borda de hover dos cards de habilidade. Também aparece como sombra colorida translúcida (30% e 45% de opacidade) sob botões e foto.
-- **Violeta Ação** (#625af0): fundo de tudo que leva texto branco: botões, link de repositório, link de pular conteúdo, hover dos ícones sociais. Contraste de 4.95:1 com o branco.
-- **Violeta Profundo** (#574fd6): hover dos botões, cor de texto violeta sobre fundo claro (links no texto, link ativo da navegação, tags de tecnologia) e contorno de foco.
-- **Violeta Noturno** (#4a42c4): hover dos links no texto.
-- **Lavanda Névoa** (#ede9fe): fundo das tags de tecnologia nos cards de projeto. Também início do degradê de placeholder dos previews (#ede9fe → #e0e7ff).
+- **Violeta Marca** (#7c6afd, `oklch(0.62 0.21 284)`): traço sob títulos de seção, conectores, marcador do item atual da experiência, ícones dos cartões de contato, borda de hover e de foco dentro de cartões, ponto do logo. Base do brilho do ponteiro (10% a 12% de mistura). Não leva texto.
+- **Violeta Ação** (#644ae3, `oklch(0.53 0.22 284)`): fundo de botão e de link de repositório, sempre com texto `texto-sobre-acao`. Também colore ícones de fonte nas habilidades e dá a sombra violeta.
+- **Violeta Ação Hover** (#5538c9, `oklch(0.47 0.21 284)`): fundo do botão em hover e foco.
+- **Violeta Texto** (#b6a8ff, `oklch(0.78 0.13 290)`): cargo na experiência, etiqueta de situação atual, tags de tecnologia.
+- **Texto Sobre Ação** (#fcfcfc): texto de botões.
 
 ### Neutral
-- **Papel Branco** (#ffffff): fundo do header, do hero, da seção de habilidades e dos cards.
-- **Gelo Ardósia** (#f8fafc): fundo alternado das seções Sobre e Projetos, e dos cards de destaque.
-- **Tinta Noturna** (#1e1e2e): títulos, nome no hero, links da navegação, texto de rótulos.
-- **Ardósia Média** (#64748b): texto corrido, subtítulos de seção, ícones sociais em repouso, fundo do botão de repositório privado.
-- **Linha Neblina** (#e2e8f0): bordas de 1px de cards e divisórias entre seções.
-- **Noite Funda** (#0f0f1a): fundo do rodapé.
-- **Ardósia Clara** (#94a3b8): texto corrido sobre o rodapé escuro; títulos do rodapé ficam em branco puro.
+- **Fundo Noturno** (#09080e): fundo da página, das seções de experiência, habilidades e contato, e miolo do marcador da linha do tempo.
+- **Superfície 1** (#111117): seções Intro, Sobre e Projetos, ficha do hero, painel de habilidades, cartões de contato.
+- **Superfície 2** (#1a1922): cartão de projeto, cabeçalho e rodapé da ficha, chips de habilidade, cartão de contato em hover.
+- **Superfície 3** (#26252f): tags de projeto, código inline, selo de repositório privado, ponta escura do gradiente de preview.
+- **Texto Forte** (#eeeef4): títulos, nome, rótulos e a placa clara atrás dos ícones de habilidade.
+- **Texto Suave** (#aaa9b7): texto corrido, nomes de campo, períodos, legendas.
+- **Borda Fina** (#32313d): toda borda de 1px, trilho da linha do tempo, divisórias.
+
+### Accessibility
+- **Foco Menta** (#6feaae): anel de foco, exclusivo para esse uso. É a única cor fora da família violeta e neutra, escolhida para destacar no escuro sem competir com a marca.
 
 ### Named Rules
-**A Regra da Voz Única.** O violeta é o único acento. Ele aparece apenas em ação, identidade ou resposta a interação, nunca como fundo de seção ou decoração solta.
+**A Regra da Voz Única.** O violeta é o único acento. Entra como traço, conector, ícone, borda de resposta ou fundo de botão de ação; nunca como fundo de seção.
 
-**A Regra do Hover Profundo.** Todo elemento violeta escurece um degrau no hover (Ação para Profundo, Profundo para Noturno); não existe outra cor de estado.
+**A Regra dos Quatro Violetas.** Marca para o que é traço e ícone, ação para fundo com texto claro, ação em hover para o degrau abaixo, texto para letra sobre o escuro. Não trocar os papéis: o violeta marca não leva texto.
 
-**A Regra do Texto Legível.** O Violeta Elétrico nunca é cor de texto nem fundo de texto. Texto violeta usa o Violeta Profundo; texto branco sobre violeta usa o Violeta Ação ou mais escuro.
+**A Regra do Token Único.** Cor literal só em `tokens.css`. Estados e misturas usam `color-mix(in oklch, ...)` sobre os tokens.
 
 ## Typography
 
-**Display Font:** Poppins (com sans-serif)
-**Body Font:** Poppins (com sans-serif)
+**Display Font:** Bricolage Grotesque Variable (com system-ui, sans-serif)
+**Body Font:** Atkinson Hyperlegible Next Variable (com system-ui, sans-serif)
+**Field Font:** JetBrains Mono Variable (com ui-monospace, monospace)
 
-**Character:** Uma única família geométrica em pesos 400, 600 e 700. O contraste vem de peso e caixa alta, não de troca de fonte.
+**Character:** Display expressivo e apertado no nome e nos títulos de cartão do hero e da experiência, texto de leitura muito legível no corpo, monoespaçada para tudo que soa como campo ou dado (nomes de campo da ficha, períodos, tags, código).
 
 ### Hierarchy
-- **Display** (700, 3rem, caixa alta, 1px de tracking): nome no hero. Cai para 2rem abaixo de 768px e 1.6rem abaixo de 480px.
-- **Headline** (700, 2rem, caixa alta, 1px de tracking): títulos de seção, centralizados. 1.6rem no mobile.
-- **Title** (700, 1.6rem / 1.4rem / 1.1rem): subtítulo da seção Sobre (`title-lg`), título do rodapé (`title-md`), título do card de projeto e do contato (`title`).
-- **Body** (400, 1rem e 0.9rem, line-height 1.7 a 1.8): texto corrido em Ardósia Média; `body-sm` nas descrições de projeto e no rodapé. Subtítulos de seção limitados a 640px; texto do hero a 560px.
-- **Label** (600, 0.95rem / 0.85rem / 0.78rem): navegação e botões (`label-lg`), rótulos de habilidade e destaques (`label`), tags e navegação em telas pequenas (`label-sm`).
+- **Display** (800, `clamp(2.6rem, 1.6rem + 5vw, 5.25rem)`, line-height 0.95, tracking -0.035em): nome no hero.
+- **Headline** (700, 2rem, caixa alta, 1px de tracking, centralizado): títulos de seção, com traço violeta de 48px por 3px abaixo. Reduz no mobile (main.css, abaixo de 768px).
+- **Title** (700, `--tipo-lg`, line-height 1.25): título de cartão de projeto (Atkinson), cargo do hero e título da experiência (Bricolage, tracking -0.01em). Destaques de projeto sobem para `--tipo-xl`.
+- **Body** (400, `--tipo-base`, 1.7): texto corrido em Texto Suave; `--tipo-sm` nas descrições de card e legendas. Medida de 62 a 68 caracteres por linha (no Sobre, `max-width: 31.5em`, porque o `ch` mede o zero, mais largo que a letra média).
+- **Label** (700, 0.95rem, tracking 0.5px): botões. Links de repositório e rótulos de habilidade usam 600 em `--tipo-sm`.
+- **Field** (JetBrains Mono, 500 nas tags, `--tipo-xs`): nomes de campo, períodos, tags, código inline.
+
+Escala fluida declarada em tokens: xs, sm, base, lg, xl, 2xl, 3xl e display, todas com `clamp()`.
 
 ### Named Rules
-**A Regra do Peso, Não da Fonte.** Hierarquia se faz com peso, tamanho e caixa alta dentro da Poppins. Não introduzir uma segunda família.
+**A Regra das Três Funções.** Cada família tem uma função: Bricolage para nome e títulos autorais, Atkinson para leitura e interface, JetBrains Mono para campo e dado. Não usar uma quarta família nem mono em texto corrido.
 
 ## Layout
 
-Página única com rolagem suave e header fixo. Container centralizado de 1100px com 1.5rem de margem lateral. Cada seção tem 80px de respiro vertical e alterna fundo branco e gelo, separadas por bordas de 1px em Linha Neblina.
+Página única com rolagem suave, header fixo de 3.75rem e `scroll-padding-top` correspondente. Container de 1100px com 1.5rem de margem lateral; seções de 80px de respiro vertical, separadas por borda de 1px. Fundos alternam Superfície 1 (Intro, Sobre, Projetos) e Fundo Noturno (Experiência, Habilidades, Contato).
 
-- **Hero:** altura total da viewport, foto circular de 220px ao lado do texto alinhado à esquerda, sobre a textura de facetas brancas (`img/background-white.png`). Abaixo de 768px empilha e centraliza, com foto de 170px.
-- **Sobre:** duas colunas flexíveis (texto a partir de 320px, destaques a partir de 280px) com 3rem de gap; empilha no mobile.
-- **Habilidades:** grade `auto-fill` de cards com mínimo de 112px, máximo de 920px de largura, gap de 1rem. Abaixo de 480px o mínimo cai para 84px.
-- **Projetos:** grade `auto-fit` com mínimo de 300px e gap de 2rem; uma coluna abaixo de 768px.
-- **Rodapé:** texto à esquerda (até 560px) e contato à direita; empilha no mobile com botão de largura total.
-- **Barra social:** fixa na lateral esquerda, centralizada verticalmente. Abaixo de 768px vira uma barra horizontal flutuante no centro inferior da tela, e o rodapé ganha 100px de padding inferior para não ser coberto.
+- **Hero:** altura mínima da viewport (`100svh`). Ficha em grade: abaixo de 768px campo e conector na mesma linha com o valor embaixo e miniatura do retrato de 4.5rem ao lado do nome; de 768px, três colunas (campo de 8.5 a 11rem, conector de 4rem, valor) e cabeçalho de planilha; de 1024px, o retrato vira a coluna direita de 16 a 21rem na altura da ficha.
+- **Experiência:** linha do tempo de até 52rem. Mobile com trilho à esquerda; de 768px, período à direita na coluna de 10rem e trilho entre as colunas.
+- **Habilidades:** painel de até 920px, uma linha por área (título e chips de tecnologia que quebram linha), legenda em texto para a stack atual.
+- **Projetos:** uma coluna no celular; de 768px duas colunas com destaque ocupando a linha inteira; de 1024px grade de 6 colunas, destaques com 3 e demais com 2.
+- **Contato:** quatro canais em uma coluna, 2 por 2 a partir de 36rem e 4 lado a lado a partir de 72rem (lista de até 1040px).
 
-Breakpoints: 768px e 480px.
+Breakpoints: 30rem, 36rem, 48rem (768px), 64rem, 72rem. Escala de espaço de 0.25rem a 5rem (`--espaco-1` a `--espaco-8`).
 
 ### Movimento
-- **Momento principal:** na entrada do hero, a foto abre em círculo (`clip-path`, 0.8s), nome, frase e botão entram com leve desfoque em sequência (0.25s, 0.4s, 0.55s) e, aos 1s, um traço violeta de 3px se desenha sob "Cloud e DevOps".
-- **Ao rolar:** títulos de seção ganham um traço violeta de 48px × 3px que se desenha; destaques, habilidades e projetos entram como lista (subida de 18px com desfoque de 4px, atraso por item limitado a 400ms).
-- **Continuidade:** o link da seção visível fica violeta com sublinhado; o header ganha sombra mais forte ao sair do hero.
-- **Toque:** botões afundam (`scale(0.98)`) ao clicar.
-- O conteúdo nasce visível; as revelações só existem com JS (`html.js`). Em `prefers-reduced-motion`, tudo vira fade curto, sem deslocamento nem desfoque.
+- **Entrada do hero:** em sequência de 70ms, retrato (escala de 0.97 e fade), nomes de campo (fade), conectores (`scaleX` de 0 a 1) e valores e botões (deslocamento de 0.75rem com fade). Última animação termina em cerca de 880ms. Fill `backwards` para não prender o `transform` do hover.
+- **Revelação ao rolar:** com JS (`html.js`), blocos com `.reveal` entram subindo 18px, saindo de um desfoque de 4px e do `opacity: 0`; o traço do título se estende por `scaleX`. Sem JS o conteúdo nasce visível.
+- **Brilho do ponteiro:** gradiente radial violeta (hero 10%, cartão de projeto 12%) em pseudoelemento atrás do conteúdo, posicionado por `--mx` e `--my`, que entra por `opacity`. Só em dispositivos com hover fino (`.tem-brilho`), nunca por cima do texto.
+- **Cores de estado:** `--fundo-animavel`, `--borda-animavel` e `--texto-animavel` registradas com `@property`; hover e foco trocam a variável, não `background` nem `border-color`.
+- **Preview de projeto:** poster estático por padrão; no hover ou foco do cartão, `src/scripts/projetos.js` troca para o GIF animado.
+- **Reduzido:** sob `prefers-reduced-motion: reduce`, nenhuma animação CSS, nenhum deslocamento nem desfoque; só fade de `opacity` de até 140ms. Hover de cartões e botões não se move.
+
+Durações: rápida 140ms, média 300ms, lenta 600ms. Curvas: `--ease-out` `cubic-bezier(0.16, 1, 0.3, 1)` e `--ease-in-out` `cubic-bezier(0.65, 0, 0.35, 1)`.
 
 ## Elevation & Depth
 
-Sistema híbrido: superfícies claras separadas por borda fina, com sombras difusas e de baixa opacidade dando leve flutuação. A sombra é ambiente em repouso e cresce como resposta ao hover. O violeta também vira sombra colorida sob botões e foto, reforçando o acento.
+Camadas por tom, não por sombra: a profundidade vem dos três degraus de superfície e da borda de 1px. A sombra é escura, de baixa leitura sobre o fundo escuro, e o brilho violeta aparece somente em ação e resposta.
 
 ### Shadow Vocabulary
-- **Card em repouso** (`box-shadow: 0 4px 20px rgba(0,0,0,0.06)`): cards de projeto e habilidade.
-- **Card em hover** (`box-shadow: 0 12px 32px rgba(0,0,0,0.12)`): projeto levantado 6px.
-- **Brilho violeta** (`box-shadow: 0 5px 15px rgba(108,99,255,0.3)`): botão principal em repouso; `0 8px 24px rgba(87,79,214,0.45)` no hover. Card de habilidade em hover usa `0 10px 24px rgba(108,99,255,0.3)`.
-- **Halo da foto** (`box-shadow: 0 8px 32px rgba(108,99,255,0.3)`): foto do hero.
-- **Header** (`box-shadow: 0 2px 8px rgba(0,0,0,0.06)`): separação do header fixo no topo; ao sair do hero passa para `0 6px 20px rgba(0,0,0,0.08)`.
-- **Barra social** (`box-shadow: 0 2px 12px rgba(0,0,0,0.1)`).
+- **Card** (`0 4px 20px oklch(0.08 0.01 290 / 0.5)`): ficha do hero, painel de habilidades, cartão de projeto em repouso.
+- **Card em hover** (`0 12px 32px oklch(0.08 0.01 290 / 0.7)`): cartão de projeto levantado, somado a um anel de 1px em Violeta Marca e à sombra violeta.
+- **Header** (`0 1px 0 var(--cor-borda), 0 6px 20px oklch(0.08 0.01 290 / 0.6)`): header rolado.
+- **Violeta** (`0 5px 15px oklch(0.53 0.22 284 / 0.3)`) e **violeta em hover** (`0 8px 24px ... / 0.45`): botão principal; o hover aparece por `opacity` de um pseudoelemento, não por transição de sombra.
 
 ### Named Rules
-**A Regra do Levantar.** Elementos interativos sobem no hover: botão 2px, link de repositório 1px, habilidade 4px, projeto 6px. Quanto maior a superfície, maior o deslocamento.
+**A Regra do Levantar.** Elementos interativos sobem no hover e no foco: botão e cartão de contato 2px, link de repositório 1px, cartão de projeto 6px. O clique afunda (`scale(0.98)`).
 
 ## Shapes
 
-Cantos arredondados moderados e consistentes. Botões e barra social usam 6px; cards (projeto, habilidade, destaque) usam 12px; tags de tecnologia são pílulas (100px). Fotos (hero e logo) são círculos perfeitos com anel violeta, de 4px no hero e 2px no logo. Os previews dos projetos são cortados pelo card (`overflow: hidden`) e ficam com cantos superiores arredondados. Bordas são sempre de 1px em Linha Neblina.
+Três valores de raio: 6px (botões, chips de habilidade, miniatura do retrato), 12px (ficha, cartões, painel) e pílula de 100px (tags, situação atual, marcador da linha do tempo, traço do título de seção). Exceções, todas em peças pequenas: 4px no anel de foco (`:focus-visible`, `main.css`), no código inline dos cartões de projeto (`projetos.css`) e na placa clara do ícone de habilidade (`habilidades.css`); 2px no ponto violeta do logo e no sublinhado dos links da navegação (`navegacao.css`). A partir de 1024px o retrato vira coluna da ficha com raio 0 e recebe o canto de 12px pelo corte da ficha (`overflow: hidden`). Todo contêiner tem borda de 1px em Borda Fina; o cartão de projeto corta o preview com `overflow: hidden`. O conector da ficha é uma linha de 2px com ponta de seta desenhada por bordas.
 
 ## Components
 
 ### Buttons
-Cheios, arredondados e com brilho violeta.
-- **Shape:** cantos suaves (6px).
-- **Primary:** fundo Violeta Ação, texto branco em peso 700 a 0.95rem com 0.5px de tracking, padding 0.85rem × 2rem, ícone opcional à esquerda com 0.5rem de gap, sombra violeta.
-- **Hover:** escurece para Violeta Profundo, sombra mais intensa, sobe 2px. Transição de 0.3s ease.
-- **Repositório:** versão compacta (0.6rem × 1.2rem, 0.9rem, peso 600) no rodapé do card de projeto, sem sombra, sobe 1px no hover.
-- **Repositório privado:** mesmo formato em Ardósia Média, sem hover nem cursor de link.
-- **Rodapé:** botão principal com texto 0.9rem, sem sombra colorida (brilho violeta sobre fundo escuro vira decoração); largura total no mobile.
+- **Primário:** fundo Violeta Ação, texto Texto Sobre Ação, 700 a 0.95rem, 0.5px de tracking, 0.85rem por 2rem, sombra violeta. Hover e foco: Violeta Ação Hover, sombra maior, sobe 2px.
+- **Secundário:** transparente, borda Borda Fina e texto forte; hover vai a Superfície 2 e borda Violeta Marca.
+- **Repositório:** compacto (0.6rem por 1.2rem, mínimo 2.75rem de altura), sem sombra, sobe 1px no hover. **Privado:** selo em Superfície 3 e Texto Suave, sem hover e sem cursor de link.
 
-### Chips
-- **Style:** tags de tecnologia em pílula, fundo Lavanda Névoa, texto Violeta Profundo, peso 600 a 0.78rem, padding 0.3rem × 0.75rem, gap de 0.4rem, quebrando linha.
-- **State:** estáticas, sem interação.
+### Ficha do hero
+Painel Superfície 1 com borda e raio de 12px. Cada linha tem nome do campo em JetBrains Mono (Texto Suave), conector violeta e valor (nome em display, cargo, frase de posicionamento). Cabeçalho de planilha em Superfície 2 a partir de 768px e rodapé de ações em Superfície 2 com botões de 2.75rem de altura. Retrato com `object-fit: cover`.
 
-### Cards / Containers
-- **Projeto:** fundo branco, borda Linha Neblina, cantos de 12px, sombra de repouso. Preview em GIF com 200px de altura (160px abaixo de 480px) e `object-fit: cover`, corpo com padding de 1.5rem e gap de 0.75rem, descrição que estica para alinhar os botões na base. Hover sobe 6px com sombra maior.
-- **Habilidade:** coluna centralizada com ícone de 44px (SVG colorido do Devicon ou ícone Font Awesome em violeta) e rótulo em peso 600. Hover sobe 4px, borda vira violeta e a sombra fica violeta.
-- **Destaque (Sobre):** linha com ícone violeta à esquerda, título em peso 600 e linha de apoio menor em Ardósia Média, fundo gelo. Hover só adiciona a sombra de repouso.
+### Cartões de experiência
+Itens de uma lista com trilho vertical de 2px e marcador circular de 12px. O item atual tem marcador preenchido em Violeta Marca com halo e etiqueta de situação em pílula. Cargo em Violeta Texto, frentes de trabalho com o conector violeta como marcador, stack em tags de pílula em Superfície 2.
+
+### Grade de habilidades
+Painel de áreas (linhas separadas por borda de 1px). Cada tecnologia é um chip de 6px com ícone de 1.75rem sobre placa clara (para logotipos escuros continuarem visíveis) e nome em 600. Stack do trabalho atual: borda Violeta Marca e fundo misturado a 14%. Sem barra de nível.
+
+### Cards de projeto
+Superfície 2, borda, 12px, preview 16:9 com poster estático, corpo com título, descrição que estica para alinhar o link na base, tags em pílula (JetBrains Mono, Violeta Texto sobre Superfície 3) e link de repositório. Hover e foco interno: sobe 6px, anel de Violeta Marca, preview com `scale(1.03)`, troca para o preview animado e borda das tags puxada ao violeta. Destaques maiores (título em `--tipo-xl`).
+
+### Cartões de contato
+Quatro links em Superfície 1 com borda: ícone Violeta Marca de `--tipo-xl` em coluna fixa de 1.75rem, rede em 700 e endereço em Texto Suave. Hover e foco: Superfície 2, borda Violeta Marca, sobe 2px. Em 72rem ou mais, ícone acima do texto.
 
 ### Navigation
-- **Header fixo** branco com sombra leve. À esquerda, "WK" em caixa alta, visível em todos os tamanhos. Antes dele, um link "Pular para o conteúdo" que só aparece no foco do teclado.
-- **Links** em Tinta Noturna, peso 600 a 0.95rem, gap de 2rem, com 0.6rem de padding vertical (área de toque de 41px). No hover e na seção ativa ficam em Violeta Profundo e um sublinhado de 2px cresce da esquerda. No mobile o gap cai para 1rem e o texto para 0.85rem e 0.78rem; com texto ampliado, o menu quebra linha em vez de estourar a largura.
-- **Barra social:** ícones Font Awesome em Ardósia Média, separados por linhas de 1px; no hover o fundo vira violeta e o ícone branco.
+Header fixo com logo "WK" em display e ponto violeta; fundo transparente no hero e sólido (com sombra) depois que a sentinela sai da vista. Menu de seções com alvos de 2.75rem, sublinhado violeta que cresce no hover, foco e seção ativa; menu mobile acessível com abertura por botão. Link "Pular para o conteúdo" visível só no foco.
 
-### Hero
-A assinatura do portfólio: foto circular grande com anel e halo violeta ao lado do nome em caixa alta, sobre uma textura de facetas brancas quase imperceptível. Uma linha de apoio em Ardósia Média e o botão principal "Ver Projetos".
+### Icons
+Locais, sem CDN: `src/styles/icones.css` mantém a marcação `<i class="fas|fab fa-...">` e pinta cada SVG (Font Awesome Free 6.4.0, CC BY 4.0) como máscara em `currentColor`. Ícones de tecnologia das habilidades são imagens locais.
+
+### Accessibility
+- Foco visível global: `:focus-visible` com 2px em Foco Menta e 3px de afastamento; botão de repositório repete a regra.
+- Alvos de toque de 2.75rem (44px) em menu, logo, botões da ficha e link de repositório.
+- Pares de texto com meta de 4.5:1; a mistura máxima do brilho sobre os cartões foi limitada para manter essa meta (`tests/movimento.test.js`).
+- Conteúdo legível sem JS; movimento com fallback estático.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** usar a família violeta só em ação, identidade e resposta a interação, sempre escurecendo um degrau no hover.
-- **Do** manter Poppins como única família, com hierarquia por peso (400, 600, 700) e caixa alta com 1px de tracking nos títulos de seção.
-- **Do** alternar fundo branco e Gelo Ardósia entre seções, separadas por bordas de 1px em Linha Neblina.
-- **Do** dar a todo card novo borda de 1px, cantos de 12px e a sombra de repouso `0 4px 20px rgba(0,0,0,0.06)`.
-- **Do** usar 0.3s ease no hover, `cubic-bezier(0.16, 1, 0.3, 1)` em entradas, e fazer elementos interativos subirem no hover (1px a 6px, proporcional ao tamanho).
-- **Do** usar tags em pílula Lavanda Névoa para listar tecnologias.
-- **Do** seguir a Regra do Texto Legível: Violeta Ação (#625af0) como fundo de texto branco, Violeta Profundo (#574fd6) como cor de texto. Todo par de texto fica em 4.5:1 ou mais.
+- **Do** consumir cor, tipo, espaço, raio e movimento só por `var()` de `tokens.css`; cor nova entra primeiro lá.
+- **Do** separar camadas por degrau de superfície e borda de 1px antes de pensar em sombra.
+- **Do** usar Violeta Ação como fundo de texto claro, Violeta Texto como cor de texto sobre o escuro e Violeta Marca para traço, conector e ícone.
+- **Do** usar o conector violeta e JetBrains Mono para nome de campo e dado quando a informação tem forma origem e destino.
+- **Do** manter 44px de alvo, foco em Foco Menta e hover e foco com o mesmo estado.
+- **Do** animar só `opacity`, `transform` e `filter` e escrever a versão estática sob `prefers-reduced-motion: reduce`.
+- **Do** escrever texto do site em pt-BR, primeira pessoa, sem travessão, sem métrica nem depoimento.
 
 ### Don't:
-- **Don't** introduzir uma segunda cor de acento ou trocar o roxo; o visual roxo com Poppins é compromisso da marca.
-- **Don't** usar o violeta como fundo de seção inteira ou em degradês decorativos.
-- **Don't** criar sombras escuras e duras; toda sombra neutra fica entre 6% e 12% de opacidade.
-- **Don't** usar cantos retos ou raios fora da escala (6px, 12px, pílula, círculo).
-- **Don't** depender só do hover para indicar interação: todo componente novo precisa manter o foco visível global (contorno de 2px em Violeta Profundo, 3px de afastamento) para cumprir o WCAG AA.
-- **Don't** repetir a coreografia do hero em outras seções; ela é o único momento autoral, o resto é revelação discreta.
+- **Don't** usar Violeta Marca como cor de texto nem como fundo de seção ou degradê decorativo. Exceção autorizada pela Spec 4: o brilho do hero (`.hero::before` em `hero.css`), dois gradientes radiais atrás da ficha, um de Violeta Marca a 26% no canto superior direito e um de Violeta Ação a 14% no canto inferior esquerdo, ambos sumindo para transparente aos 70%. Segunda exceção, autorizada pela Spec 7: o brilho do ponteiro (`.hero::after` e `.project-card::before` em `movimento.css`), um gradiente radial de Violeta Marca (10% no hero, 12% no cartão de projeto) que segue o ponteiro, fica atrás do conteúdo e só aparece com hover fino e fora de `prefers-reduced-motion: reduce`.
+- **Don't** introduzir um segundo acento cromático; Foco Menta é só do anel de foco.
+- **Don't** usar raios fora de 6px, 12px e pílula, salvo as exceções de Shapes: 4px (anel de foco, código inline, placa do ícone de habilidade) e 2px (ponto do logo, sublinhado da navegação).
+- **Don't** mostrar nível de habilidade em barra ou porcentagem: seria afirmação não verificável.
+- **Don't** trocar `background` ou `border-color` por transição direta; usar as cores registradas com `@property`.
+- **Don't** deixar o brilho do ponteiro passar por cima do texto ou valer sem hover fino.
+
+## Not canonized
+
+Pendência registrada sem virar regra: `main.css` mantém valores literais (`80px`, `1.5rem`, `2rem` do título de seção, `0.95rem` do botão, `4px` do foco) fora da escala de tokens; seguem como estão no build, e novos componentes devem preferir os tokens.

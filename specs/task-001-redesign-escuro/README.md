@@ -12,7 +12,6 @@ com a `master` e decidir o merge.
 
 | Spec | Arquivo | Situação |
 |---|---|---|
-| Spec 8 — Acabamento, auditoria e documentação | [spec-8-acabamento.md](spec-8-acabamento.md) | Pendente |
 
 ## Concluídas
 
@@ -25,6 +24,7 @@ com a `master` e decidir o merge.
 | Spec 5 — Experiência, formação e habilidades | [concluidas/spec-5-experiencia-habilidades.md](concluidas/spec-5-experiencia-habilidades.md) | ✅ Concluída |
 | Spec 6 — Seção de projetos | [concluidas/spec-6-projetos.md](concluidas/spec-6-projetos.md) | ✅ Concluída |
 | Spec 7 — Sistema de movimento | [concluidas/spec-7-movimento.md](concluidas/spec-7-movimento.md) | ✅ Concluída |
+| Spec 8 — Acabamento, auditoria e documentação | [concluidas/spec-8-acabamento.md](concluidas/spec-8-acabamento.md) | ✅ Concluída |
 
 ## Notas e dependências
 

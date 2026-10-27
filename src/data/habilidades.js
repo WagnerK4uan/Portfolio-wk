@@ -5,7 +5,7 @@
  *   titulo  texto do <h3> do grupo
  *   itens   lista de { nome, icone } ou { nome, iconeFa }
  *             icone    caminho do SVG em public/img/skills/
- *             iconeFa  classes Font Awesome, quando não há SVG
+ *             iconeFa  classes de ícone locais (src/styles/icones.css), quando não há SVG
  *             atual    true na stack do trabalho atual na Bruning Sistemas (destaque discreto)
  */
 export const habilidades = [

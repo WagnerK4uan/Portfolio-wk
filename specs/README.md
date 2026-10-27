@@ -34,8 +34,8 @@ As contagens abaixo são mantidas por `sdd.sh` (`recontar` as corrige a partir d
 
 | Task | Pasta | Pendentes | Concluídas |
 |---|---|---|---|
-| Task 001 — Redesign escuro do portfólio | [task-001-redesign-escuro/](task-001-redesign-escuro/README.md) | 1 | 7 |
-| **Total** | | **1** | **7** |
+| Task 001 — Redesign escuro do portfólio | [task-001-redesign-escuro/](task-001-redesign-escuro/README.md) | 0 | 8 |
+| **Total** | | **0** | **8** |
 
 ---
 

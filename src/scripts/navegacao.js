@@ -3,10 +3,16 @@
    Movido de src/main.js sem mudar o comportamento (Spec 4).
    ============================================ */
 
-/** Marca na navegação o link da seção visível (classe is-active e aria-current). */
+/**
+ * Marca na navegação o link da seção visível (classe is-active e aria-current). O hero (#home) não
+ * tem link no menu, mas também é observado: quando ele cruza a linha de leitura, nenhum link fica
+ * marcado, então voltar ao topo desmarca a última seção visitada.
+ */
 export function marcarLinkAtivo(raiz = document) {
   const links = raiz.querySelectorAll('nav a[href^="#"]');
   const secoes = Array.prototype.map.call(links, (link) => raiz.querySelector(link.getAttribute("href")));
+  const hero = raiz.querySelector("#home");
+  if (hero && !secoes.includes(hero)) secoes.push(hero);
 
   const observador = new IntersectionObserver(
     (entradas) => {
@@ -49,6 +55,6 @@ export function marcarHeaderRolado(raiz = document) {
 
 export function iniciarNavegacao(raiz = document) {
   if (!("IntersectionObserver" in window)) return;
-  marcarLinkAtivo(raiz);
   marcarHeaderRolado(raiz);
+  marcarLinkAtivo(raiz);
 }

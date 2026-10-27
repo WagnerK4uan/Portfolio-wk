@@ -79,6 +79,7 @@ html {
 .logo {
   display: inline-flex;
   align-items: baseline;
+  min-width: 2.75rem;
   min-height: 2.75rem;
   padding-block: var(--espaco-2);
   font-family: var(--fonte-display);
@@ -118,6 +119,8 @@ html {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
   min-height: 2.75rem;
   font-weight: 600;
   font-size: var(--tipo-sm);
@@ -218,6 +221,11 @@ html {
     display: inline-flex;
   }
 
+  /* Menu aberto: a página atrás do painel não rola (classe posta por scripts/menu.js) */
+  html.is-menu-aberto {
+    overflow: hidden;
+  }
+
   /* Painel que desce do header; fechado, sai da ordem de tabulação (visibility) */
   .js .menu-secoes {
     position: absolute;
@@ -254,6 +262,7 @@ html {
 
   .js .menu-secoes a {
     display: flex;
+    justify-content: flex-start;
     min-height: 3rem;
     font-size: var(--tipo-base);
     --texto-animavel: var(--cor-texto-forte);

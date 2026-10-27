@@ -1,3 +1,4 @@
+import "./styles/icones.css";
 import "@fontsource-variable/bricolage-grotesque/opsz.css";
 import "@fontsource-variable/atkinson-hyperlegible-next";
 import "@fontsource-variable/jetbrains-mono";

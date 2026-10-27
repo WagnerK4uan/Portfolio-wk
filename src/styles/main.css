@@ -221,8 +221,11 @@ main:focus {
   padding: 80px 1.5rem;
 }
 
+/* 31.5em dá 62 a 68 caracteres por linha no texto corrido da Atkinson Hyperlegible Next (o ch
+   mede o zero, mais largo que a letra média: 68ch passava de 85 caracteres). Em em, a medida
+   acompanha o tamanho de fonte dos parágrafos, que herdam o do bloco. */
 .about-text {
-  max-width: 68ch;
+  max-width: 31.5em;
   margin: var(--espaco-6) auto 0;
 }
 
@@ -241,22 +244,31 @@ main:focus {
   border-top: 1px solid var(--cor-borda);
 }
 
+/* Quatro canais: uma coluna no celular, 2×2 no tablet e os quatro lado a lado no desktop */
 .contact-list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--espaco-4);
-  max-width: 920px;
+  max-width: 1040px;
   margin: 0 auto;
+}
+
+@media (min-width: 36rem) {
+  .contact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .contact-link {
   --fundo-animavel: var(--cor-superficie-1);
   --borda-animavel: var(--cor-borda);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: var(--espaco-3);
   align-items: center;
+  align-content: center;
+  height: 100%;
   padding: var(--espaco-4) var(--espaco-5);
   background: var(--fundo-animavel);
   border: 1px solid var(--borda-animavel);
@@ -268,8 +280,13 @@ main:focus {
     transform var(--duracao-media) var(--ease-out);
 }
 
+/* Coluna do ícone com largura fixa: o texto começa na mesma posição em todos os cartões,
+   qualquer que seja a proporção do desenho (--icone-largura em icones.css) */
 .contact-link i {
   grid-row: span 2;
+  display: flex;
+  justify-content: center;
+  width: 1.75rem;
   font-size: var(--tipo-xl);
   color: var(--cor-violeta-marca);
 }
@@ -282,6 +299,34 @@ main:focus {
   font-size: var(--tipo-sm);
   color: var(--cor-texto-suave);
   overflow-wrap: anywhere;
+}
+
+/* Celular: menos respiro lateral para o endereço mais longo caber numa linha em 320 px */
+@media (max-width: 30rem) {
+  .contact-link {
+    column-gap: var(--espaco-2);
+    padding-inline: var(--espaco-4);
+  }
+}
+
+/* Desktop: os quatro lado a lado, com o ícone acima do texto. Ao lado dele, o endereço mais longo
+   (linkedin.com/in/wagner-kauan) quebraria no meio; empilhado, cabe inteiro em 248 px de cartão.
+   A partir de 72rem a lista já tem a largura máxima de 1040px. */
+@media (min-width: 72rem) {
+  .contact-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .contact-link {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    row-gap: var(--espaco-1);
+  }
+
+  .contact-link i {
+    grid-row: auto;
+    margin-bottom: var(--espaco-2);
+  }
 }
 
 .contact-link:hover,

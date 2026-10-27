@@ -151,7 +151,5 @@ i.skill-icone {
     font-size: var(--tipo-xs);
   }
 
-  .skill-nome {
-    font-size: var(--tipo-xs);
-  }
+  /* O nome não encolhe com o resto: fica em --tipo-sm (mínimo 0.88rem, 14 px), legível no celular */
 }

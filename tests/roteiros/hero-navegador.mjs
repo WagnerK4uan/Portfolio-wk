@@ -167,6 +167,69 @@ try {
     await contexto.close();
   }
 
+  // CA-8.3 · menu aberto trava a rolagem da página; fechar destrava; link âncora ainda leva à seção
+  for (const largura of [375, 320]) {
+    const contexto = await navegador.newContext({ viewport: { width: largura, height: largura === 375 ? 667 : 568 } });
+    const pagina = await contexto.newPage();
+    await pagina.goto(url, { waitUntil: "load" });
+    await esperarAnimacoes(pagina);
+    await pagina.evaluate(() => window.scrollTo({ top: 400, behavior: "instant" }));
+    const trava = () =>
+      pagina.evaluate(() => ({
+        classe: document.documentElement.classList.contains("is-menu-aberto"),
+        overflow: getComputedStyle(document.documentElement).overflowY,
+        y: Math.round(scrollY),
+      }));
+    /** Espera dois quadros de pintura, por evento, para a rolagem pedida já ter sido aplicada. */
+    const doisQuadros = () =>
+      pagina.evaluate(() => new Promise((ok) => requestAnimationFrame(() => requestAnimationFrame(ok))));
+
+    await pagina.click(".menu-botao");
+    await esperarAnimacoes(pagina);
+    const aberto = await trava();
+    conferir(`CA-8.3 · ${largura}px menu aberto: <html> com is-menu-aberto e overflow hidden`,
+      aberto.classe && aberto.overflow === "hidden", `overflow ${aberto.overflow}`);
+
+    await pagina.mouse.move(largura / 2, (largura === 375 ? 667 : 568) - 40);
+    await pagina.mouse.wheel(0, 600);
+    await pagina.keyboard.press("PageDown");
+    await pagina.keyboard.press("ArrowDown");
+    await pagina.keyboard.press("End");
+    await doisQuadros();
+    await esperarAnimacoes(pagina);
+    const depois = await trava();
+    conferir(`CA-8.3 · ${largura}px menu aberto: roda do mouse e teclado não rolam a página`, depois.y === aberto.y,
+      `scrollY ${aberto.y} → ${depois.y}`);
+
+    await pagina.click(".menu-botao");
+    const fechado = await trava();
+    conferir(`CA-8.3 · ${largura}px menu fechado: rolagem destravada`, !fechado.classe && fechado.overflow !== "hidden",
+      `overflow ${fechado.overflow}`);
+    await pagina.mouse.wheel(0, 400);
+    await pagina
+      .waitForFunction((y) => Math.round(scrollY) !== y, fechado.y, { timeout: 2000 })
+      .catch(() => {});
+    const rolou = await trava();
+    conferir(`CA-8.3 · ${largura}px menu fechado: a roda do mouse volta a rolar`, rolou.y !== fechado.y,
+      `scrollY ${fechado.y} → ${rolou.y}`);
+
+    await pagina.click(".menu-botao");
+    await esperarAnimacoes(pagina);
+    await pagina.click('nav a[href="#projetos"]');
+    const chegou = await pagina
+      .waitForFunction(() => {
+        const topo = document.getElementById("projetos").getBoundingClientRect().top;
+        const header = document.querySelector("header").getBoundingClientRect().bottom;
+        return Math.abs(topo - header) <= 24;
+      }, null, { timeout: 3000 })
+      .then(() => true, () => false);
+    const final = await trava();
+    conferir(`CA-8.3 · ${largura}px clicar num link do menu aberto destrava e leva até #projetos`,
+      chegou && !final.classe && final.overflow !== "hidden",
+      `topo de #projetos ${await pagina.evaluate(() => Math.round(document.getElementById("projetos").getBoundingClientRect().top))}px, overflow ${final.overflow}`);
+    await contexto.close();
+  }
+
   // CA-4.1 · hero parcialmente rolado: o header já tem fundo e nada passa sob ele transparente
   for (const { largura, altura, rolagem } of [
     { largura: 1440, altura: 900, rolagem: 330 },
@@ -230,6 +293,31 @@ try {
     await esperarAnimacoes(pagina);
     await pagina.screenshot({ path: path.join(pasta, "header-rolado-1440.png") });
 
+    // Spec 8 · alvos de 44 px em largura e altura em todos os links da navegação
+    const alvos = await pagina.evaluate(() =>
+      [...document.querySelectorAll(".menu-secoes a")].map((a) => {
+        const r = a.getBoundingClientRect();
+        return { texto: a.textContent.trim(), largura: r.width, altura: r.height };
+      }),
+    );
+    const pequenos = alvos.filter((alvo) => alvo.largura < 44 || alvo.altura < 44);
+    conferir("CA-8.3 · 1440px todos os links da navegação têm alvo de pelo menos 44×44 px",
+      alvos.length === 5 && pequenos.length === 0,
+      alvos.map((alvo) => `${alvo.texto} ${Math.round(alvo.largura)}×${Math.round(alvo.altura)}`).join(", "));
+
+    // Spec 8 correção 1 · rolar até Sobre e voltar ao topo não deixa link ativo
+    await pagina.evaluate(() => document.getElementById("sobre").scrollIntoView({ behavior: "instant" }));
+    await pagina.waitForFunction(() => document.querySelector('nav a[href="#sobre"]').classList.contains("is-active"));
+    await pagina.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    const semAtivo = await pagina
+      .waitForFunction(() => !document.querySelector("nav a.is-active, nav a[aria-current]"), null, { timeout: 2000 })
+      .then(() => true, () => false);
+    const restantes = await pagina.evaluate(() =>
+      [...document.querySelectorAll("nav a.is-active, nav a[aria-current]")].map((a) => a.getAttribute("href")),
+    );
+    conferir("Spec 8 correção 1 · de volta ao hero, nenhum link fica com is-active ou aria-current", semAtivo,
+      restantes.join(",") || "nenhum");
+
     // Página nova: o scrollIntoView acima move o ponto de partida da tabulação.
     await pagina.goto(url, { waitUntil: "load" });
     await esperarAnimacoes(pagina);
@@ -244,6 +332,55 @@ try {
     conferir("Teclado · 1440px Tab vai do logo para o primeiro link, com anel de foco",
       foco.href === "#sobre" && foco.outline.startsWith("solid"), `${foco.href} ${foco.outline}`);
     await pagina.screenshot({ path: path.join(pasta, "foco-teclado-1440.png") });
+    await contexto.close();
+  }
+
+  // Spec 8 · medida do Sobre: 62 a 68 caracteres por linha no desktop, sem estourar no celular
+  for (const { largura, altura } of [
+    { largura: 1440, altura: 900 },
+    { largura: 375, altura: 667 },
+    { largura: 320, altura: 568 },
+  ]) {
+    const contexto = await navegador.newContext({ viewport: { width: largura, height: altura } });
+    const pagina = await contexto.newPage();
+    await pagina.goto(url, { waitUntil: "load" });
+    await pagina.evaluate(() => document.fonts.ready);
+    const medida = await pagina.evaluate(() => {
+      // Caracteres por linha: cada caractere do texto vai para a linha da sua caixa (Range por caractere).
+      const linhasPorParagrafo = [...document.querySelectorAll(".about-text p")].map((paragrafo) => {
+        const linhas = new Map();
+        const andarilho = document.createTreeWalker(paragrafo, NodeFilter.SHOW_TEXT);
+        for (let no = andarilho.nextNode(); no; no = andarilho.nextNode()) {
+          for (let i = 0; i < no.data.length; i++) {
+            const faixa = document.createRange();
+            faixa.setStart(no, i);
+            faixa.setEnd(no, i + 1);
+            const caixa = faixa.getClientRects()[0];
+            if (!caixa) continue;
+            const topo = Math.round(caixa.top);
+            linhas.set(topo, (linhas.get(topo) ?? "") + no.data[i]);
+          }
+        }
+        return [...linhas.values()].map((linha) => linha.replace(/\s+/g, " ").trim().length);
+      });
+      const bloco = document.querySelector(".about-text").getBoundingClientRect();
+      return {
+        linhasPorParagrafo,
+        centro: bloco.left + bloco.width / 2,
+        dentro: bloco.left >= 0 && bloco.right <= innerWidth,
+        largo: document.documentElement.scrollWidth <= innerWidth,
+      };
+    });
+    // A última linha de cada parágrafo é o resto e pode ser curta.
+    const cheias = medida.linhasPorParagrafo.flatMap((linhas) => linhas.slice(0, -1));
+    const resumo = medida.linhasPorParagrafo.map((linhas) => linhas.join("/")).join(" | ");
+    if (largura === 1440) {
+      conferir("Spec 8 · 1440px Sobre com 62 a 68 caracteres por linha", cheias.length > 0 &&
+        cheias.every((total) => total >= 62 && total <= 68), resumo);
+      conferir("Spec 8 · 1440px bloco do Sobre centralizado", Math.abs(medida.centro - largura / 2) <= 1,
+        `centro em ${Math.round(medida.centro)}px`);
+    }
+    conferir(`Spec 8 · ${largura}px Sobre dentro da tela, sem rolagem horizontal`, medida.dentro && medida.largo, resumo);
     await contexto.close();
   }
 

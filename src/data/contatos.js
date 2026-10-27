@@ -5,7 +5,7 @@
  *   rede     nome do canal (rótulo visível e nome acessível do ícone no rodapé)
  *   texto    endereço legível mostrado em #contato
  *   href     destino do link
- *   iconeFa  classes Font Awesome
+ *   iconeFa  classes de ícone locais (src/styles/icones.css)
  *   externo  true abre em nova aba (com rel="noopener")
  */
 export const contatos = [

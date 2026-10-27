@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { lerCssDoIndexDist } from "./dist.js";
 import { montarPaginaDoDist, simularIntersectionObserver } from "./pagina.js";
-import { iniciarMenu } from "../src/scripts/menu.js";
+import { CLASSE_ROLAGEM_TRAVADA, iniciarMenu } from "../src/scripts/menu.js";
 import { iniciarNavegacao } from "../src/scripts/navegacao.js";
 
 function pressionar(elemento, key) {
@@ -78,6 +78,83 @@ describe("menu mobile", () => {
     pressionar(logo, "Escape");
     expect(document.activeElement).toBe(logo);
     expect(botao.getAttribute("aria-expanded")).toBe("false");
+  });
+
+  const rolagemTravada = () => document.documentElement.classList.contains(CLASSE_ROLAGEM_TRAVADA);
+
+  it("CA-8.3 · abrir o menu trava a rolagem da página (is-menu-aberto em <html>) e fechar pelo botão destrava", () => {
+    expect(CLASSE_ROLAGEM_TRAVADA).toBe("is-menu-aberto");
+    expect(rolagemTravada(), "nasce destravada").toBe(false);
+    botao.click();
+    expect(rolagemTravada(), "aberto: rolagem travada").toBe(true);
+    botao.click();
+    expect(rolagemTravada(), "fechado pelo botão: destravada").toBe(false);
+  });
+
+  it("CA-8.3 · Esc destrava a rolagem e o foco volta ao botão", () => {
+    botao.click();
+    expect(rolagemTravada(), "aberto: rolagem travada").toBe(true);
+    pressionar(menu.querySelector("a"), "Escape");
+    expect(rolagemTravada()).toBe(false);
+    expect(document.activeElement).toBe(botao);
+  });
+
+  it("CA-8.3 · clicar num link âncora destrava a rolagem antes da navegação do navegador", () => {
+    botao.click();
+    expect(rolagemTravada(), "aberto: rolagem travada").toBe(true);
+    const linkProjetos = menu.querySelector('a[href="#projetos"]');
+    let travadaNaNavegacao = null;
+    // O ouvinte no document roda depois do ouvinte do menu e antes da ação padrão do link (navegar).
+    const registrar = () => (travadaNaNavegacao = rolagemTravada());
+    document.addEventListener("click", registrar);
+    linkProjetos.click();
+    document.removeEventListener("click", registrar);
+    expect(travadaNaNavegacao, "estado da trava quando o navegador segue o link").toBe(false);
+    expect(rolagemTravada()).toBe(false);
+  });
+
+  it("CA-8.3 · Tab para fora do header (focusout) destrava a rolagem", () => {
+    botao.click();
+    expect(rolagemTravada(), "aberto: rolagem travada").toBe(true);
+    const destino = document.querySelector("main a[href], main button") || document.body;
+    menu.querySelector("a").dispatchEvent(new FocusEvent("focusout", { bubbles: true, relatedTarget: destino }));
+    expect(botao.getAttribute("aria-expanded")).toBe("false");
+    expect(rolagemTravada()).toBe(false);
+  });
+
+  it("CA-8.3 · passar para a largura de desktop com o menu aberto destrava a rolagem", () => {
+    encerrar();
+    const ouvintes = [];
+    vi.stubGlobal("matchMedia", (consulta) => ({
+      media: consulta,
+      matches: false,
+      addEventListener: (tipo, ouvinte) => ouvintes.push(ouvinte),
+      removeEventListener() {},
+    }));
+    encerrar = iniciarMenu(document);
+    botao.click();
+    expect(rolagemTravada()).toBe(true);
+    expect(ouvintes.length, "o menu escuta a troca de largura").toBe(1);
+    ouvintes[0]({ matches: true });
+    expect(botao.getAttribute("aria-expanded")).toBe("false");
+    expect(rolagemTravada()).toBe(false);
+  });
+
+  it("CA-8.3 · o CSS do build esconde o overflow de html.is-menu-aberto só na largura do menu mobile", () => {
+    const css = lerCssDoIndexDist();
+    const blocos = [...css.matchAll(/@media\s*\(([^)]*47\.99rem[^)]*)\)\s*\{/g)].map((m) => {
+      let profundidade = 1;
+      let fim = m.index + m[0].length;
+      for (; fim < css.length && profundidade > 0; fim++) {
+        if (css[fim] === "{") profundidade++;
+        if (css[fim] === "}") profundidade--;
+      }
+      return css.slice(m.index + m[0].length, fim - 1).replace(/\s+/g, "");
+    });
+    expect(blocos.length, "@media do menu mobile no build").toBeGreaterThan(0);
+    expect(blocos.join("")).toMatch(/html\.is-menu-aberto\{overflow:hidden;?\}/);
+    const foraDoMobile = css.replace(/\s+/g, "").split("html.is-menu-aberto{").length - 1;
+    expect(foraDoMobile, "a regra existe uma vez, dentro do @media").toBe(1);
   });
 });
 
@@ -173,6 +250,23 @@ describe("header e link ativo", () => {
     const ativos = links.filter((link) => link.classList.contains("is-active"));
     expect(marcados.map((link) => link.getAttribute("href"))).toEqual(["#projetos"]);
     expect(ativos.map((link) => link.getAttribute("href"))).toEqual(["#projetos"]);
+  });
+
+  it("Spec 8 correção 1 · rolar até Sobre e voltar ao hero deixa nenhum link com is-active ou aria-current", () => {
+    const home = document.getElementById("home");
+    const sobre = document.getElementById("sobre");
+    const observador = io.queObserva(sobre);
+    expect(observador.alvos, "o observador do link ativo também observa #home").toContain(home);
+
+    observador.disparar(sobre, true);
+    expect(document.querySelector('nav a[href="#sobre"]').classList.contains("is-active")).toBe(true);
+
+    observador.disparar(sobre, false);
+    observador.disparar(home, true);
+
+    const links = [...document.querySelectorAll('nav a[href^="#"]')];
+    expect(links.filter((link) => link.classList.contains("is-active"))).toEqual([]);
+    expect(links.filter((link) => link.hasAttribute("aria-current"))).toEqual([]);
   });
 
   it("CA-4.3 · seção saindo da vista não desmarca o link atual", () => {

@@ -23,7 +23,7 @@ export const experiencia = [
       { rotulo: "em tempo integral desde", ano: 2025 },
     ],
     frentes: [
-      "Desenvolvimento web com Laravel no back-end e Nuxt.js no front-end.",
+      "Desenvolvimento web com Laravel no back‑end e Nuxt.js no front‑end.",
       "Migração, integração e importação de dados entre sistemas, com dados reais de clientes.",
     ],
     tecnologias: ["Laravel", "Nuxt.js", "SQL"],

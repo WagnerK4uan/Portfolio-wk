@@ -2,10 +2,13 @@
    MENU MOBILE
    Abaixo de 768 px o CSS recolhe a lista de seções atrás do botão de menu. Este módulo só cuida
    do estado: aria-expanded, foco no primeiro link ao abrir, Esc fecha e devolve o foco ao botão,
-   clicar num link fecha. Sem JavaScript o botão some e a lista fica sempre visível.
+   clicar num link fecha. Com o menu aberto, a classe is-menu-aberto em <html> trava a rolagem da
+   página (navegacao.css); todo fechamento a retira antes de o navegador seguir o link âncora.
+   Sem JavaScript o botão some e a lista fica sempre visível.
    ============================================ */
 
 const LARGURA_DESKTOP = "(min-width: 48rem)";
+export const CLASSE_ROLAGEM_TRAVADA = "is-menu-aberto";
 
 /**
  * Liga o botão `header button[aria-controls]` ao elemento que ele controla.
@@ -16,6 +19,7 @@ export function iniciarMenu(raiz = document) {
   const botao = header?.querySelector("button[aria-controls]");
   const menu = botao && raiz.getElementById(botao.getAttribute("aria-controls"));
   if (!botao || !menu) return () => {};
+  const html = raiz.documentElement ?? document.documentElement;
 
   const ouvintes = new AbortController();
   const { signal } = ouvintes;
@@ -26,6 +30,7 @@ export function iniciarMenu(raiz = document) {
     botao.setAttribute("aria-expanded", String(aberto));
     menu.classList.toggle("is-open", aberto);
     header.classList.toggle("is-menu-open", aberto);
+    html.classList.toggle(CLASSE_ROLAGEM_TRAVADA, aberto);
   }
 
   function abrir() {
@@ -75,5 +80,8 @@ export function iniciarMenu(raiz = document) {
   const desktop = typeof window.matchMedia === "function" ? window.matchMedia(LARGURA_DESKTOP) : null;
   desktop?.addEventListener("change", (evento) => evento.matches && fechar(), { signal });
 
-  return () => ouvintes.abort();
+  return () => {
+    ouvintes.abort();
+    html.classList.remove(CLASSE_ROLAGEM_TRAVADA);
+  };
 }
