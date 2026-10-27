@@ -1,0 +1,157 @@
+/* ============================================
+   HABILIDADES · tabela de áreas (Spec 5, Direção C)
+   Um painel como a ficha do hero: cada linha é uma área, com o título na coluna da origem e as
+   tecnologias na do destino. A stack do trabalho atual ganha borda violeta e marcador, e a
+   legenda diz em texto quais são. Sem barra de nível: seria afirmação não verificável.
+   ============================================ */
+.skills-section {
+  background: var(--cor-fundo);
+  padding: 80px 1.5rem;
+  border-top: 1px solid var(--cor-borda);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.skill-legenda {
+  max-width: 920px;
+  margin: calc(var(--espaco-5) * -1) auto var(--espaco-5);
+  font-size: var(--tipo-sm);
+  text-align: center;
+  color: var(--cor-texto-suave);
+}
+
+.skill-legenda .skill-marca {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 var(--espaco-2) 0.15em 0;
+}
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 920px;
+  margin: 0 auto;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  background: var(--cor-superficie-1);
+  box-shadow: var(--sombra-card);
+}
+
+.skill-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espaco-3);
+  min-width: 0;
+  padding: var(--espaco-4);
+}
+
+.skill-group + .skill-group {
+  border-top: 1px solid var(--cor-borda);
+}
+
+.skill-group-title {
+  font-size: var(--tipo-base);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--cor-texto-forte);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  min-width: 0;
+  max-width: 100%;
+  padding: var(--espaco-1) var(--espaco-3) var(--espaco-1) var(--espaco-1);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-sm);
+  background: var(--cor-superficie-2);
+}
+
+/* Ícone sobre uma placa clara: os logotipos escuros (GitHub, Next.js, AWS) continuam visíveis */
+.skill-icone {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 3px;
+  border-radius: 4px;
+  background: var(--cor-texto-forte);
+  object-fit: contain;
+}
+
+i.skill-icone {
+  display: grid;
+  place-items: center;
+  font-size: var(--tipo-sm);
+  color: var(--cor-violeta-acao);
+}
+
+.skill-nome {
+  min-width: 0;
+  font-size: var(--tipo-sm);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--cor-texto-forte);
+  overflow-wrap: anywhere;
+}
+
+.skill--atual {
+  border-color: var(--cor-violeta-marca);
+  background: color-mix(in oklch, var(--cor-violeta-marca) 14%, var(--cor-superficie-2));
+}
+
+.skill-marca {
+  flex: none;
+  width: var(--espaco-2);
+  height: var(--espaco-2);
+  border-radius: var(--raio-pilula);
+  background: var(--cor-violeta-marca);
+}
+
+/* A partir de 768 px: título da área à esquerda, tecnologias à direita */
+@media (min-width: 48rem) {
+  .skill-group {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: var(--espaco-5);
+    padding: var(--espaco-4) var(--espaco-5);
+  }
+
+  .skill-group-title {
+    padding-block: calc((1.75rem + var(--espaco-2) + 2px - 1.4em) / 2);
+  }
+}
+
+/* Até 480 px: painel e itens mais compactos, para caberem dois ou três por linha em 320 px */
+@media (max-width: 30rem) {
+  .skill-group {
+    padding: var(--espaco-4) var(--espaco-3);
+  }
+
+  .skill {
+    gap: var(--espaco-1);
+    padding-right: var(--espaco-2);
+  }
+
+  .skill-icone {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 2px;
+  }
+
+  i.skill-icone {
+    font-size: var(--tipo-xs);
+  }
+
+  .skill-nome {
+    font-size: var(--tipo-xs);
+  }
+}

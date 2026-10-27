@@ -61,13 +61,13 @@ que eles apontarem dentro do escopo e documenta o resultado para o Wagner decidi
 
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
-| S-8.1 | A URL pública usada no `og:url` continua `https://portfolio-wk.vercel.app`. | aberta | — |
+| S-8.1 | A URL pública usada no `og:url` continua `https://portfolio-wk.vercel.app`. | confirmada | Confirmada pelo Wagner (2026-10-25). |
 
 ## Perguntas em aberto
 
 | ID | Pergunta | Status | Resposta |
 |---|---|---|---|
-| P-8.1 | Depois de ver o comparativo, o Wagner quer mesclar o redesign na `master`? (a resposta não bloqueia o arquivamento desta spec, só registra a decisão) | aberta | — |
+| P-8.1 | Depois de ver o comparativo, o Wagner quer mesclar o redesign na `master`? (a resposta não bloqueia o arquivamento desta spec, só registra a decisão) | respondida | Decisão adiada: o Wagner decide depois de ver o comparativo (2026-10-25). |
 
 Ao final, resuma os achados do audit e do revisor e o que foi corrigido, a tabela de métricas
 `master` × redesign, os arquivos removidos, como cada critério ficou provado e a recomendação de

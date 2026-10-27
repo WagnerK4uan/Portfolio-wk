@@ -62,8 +62,8 @@ hover rico, a partir de `src/data/projetos.js` (Spec 3).
 
 | ID | Suposição | Status | Resolução |
 |---|---|---|---|
-| S-6.1 | Task Manager e ForjaSys são os projetos de destaque, por serem os de mais rigor de engenharia (ArchUnit, Testcontainers, Clean Architecture, cliente real). | aberta | — |
-| S-6.2 | Os textos dos projetos ficam como estão no site atual, só revisados quanto às regras de texto. | aberta | — |
+| S-6.1 | Task Manager e ForjaSys são os projetos de destaque, por serem os de mais rigor de engenharia (ArchUnit, Testcontainers, Clean Architecture, cliente real). | confirmada | Confirmada pelo Wagner (2026-10-25). |
+| S-6.2 | Os textos dos projetos ficam como estão no site atual, só revisados quanto às regras de texto. | confirmada | Confirmada pelo Wagner (2026-10-25). |
 
 ## Perguntas em aberto
 

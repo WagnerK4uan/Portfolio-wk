@@ -6,6 +6,7 @@
  *   itens   lista de { nome, icone } ou { nome, iconeFa }
  *             icone    caminho do SVG em public/img/skills/
  *             iconeFa  classes Font Awesome, quando não há SVG
+ *             atual    true na stack do trabalho atual na Bruning Sistemas (destaque discreto)
  */
 export const habilidades = [
   {
@@ -16,7 +17,7 @@ export const habilidades = [
       { nome: "JavaScript", icone: "img/skills/javascript-original.svg" },
       { nome: "TypeScript", icone: "img/skills/typescript-original.svg" },
       { nome: "Vue.js", icone: "img/skills/vuejs-original.svg" },
-      { nome: "Nuxt", icone: "img/skills/nuxt-original.svg" },
+      { nome: "Nuxt.js", icone: "img/skills/nuxt-original.svg", atual: true },
       { nome: "React", icone: "img/skills/react-original.svg" },
       { nome: "Next.js", icone: "img/skills/nextjs-original.svg" },
       { nome: "Tailwind CSS", icone: "img/skills/tailwindcss-original.svg" },
@@ -27,7 +28,7 @@ export const habilidades = [
     titulo: "Back-end",
     itens: [
       { nome: "PHP", icone: "img/skills/php-original.svg" },
-      { nome: "Laravel", icone: "img/skills/laravel-original.svg" },
+      { nome: "Laravel", icone: "img/skills/laravel-original.svg", atual: true },
       { nome: "C#", icone: "img/skills/csharp-original.svg" },
       { nome: ".NET", icone: "img/skills/dotnetcore-original.svg" },
       { nome: "Java", icone: "img/skills/java-original.svg" },
@@ -38,7 +39,7 @@ export const habilidades = [
   {
     titulo: "Dados",
     itens: [
-      { nome: "SQL", iconeFa: "fas fa-database" },
+      { nome: "SQL", iconeFa: "fas fa-database", atual: true },
       { nome: "MySQL", icone: "img/skills/mysql-original.svg" },
       { nome: "PostgreSQL", icone: "img/skills/postgresql-original.svg" },
     ],

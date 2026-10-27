@@ -12,7 +12,6 @@ com a `master` e decidir o merge.
 
 | Spec | Arquivo | Situação |
 |---|---|---|
-| Spec 5 — Experiência, formação e habilidades | [spec-5-experiencia-habilidades.md](spec-5-experiencia-habilidades.md) | Pendente |
 | Spec 6 — Seção de projetos | [spec-6-projetos.md](spec-6-projetos.md) | Pendente |
 | Spec 7 — Sistema de movimento | [spec-7-movimento.md](spec-7-movimento.md) | Pendente |
 | Spec 8 — Acabamento, auditoria e documentação | [spec-8-acabamento.md](spec-8-acabamento.md) | Pendente |
@@ -25,6 +24,7 @@ com a `master` e decidir o merge.
 | Spec 2 — Direção visual escura e tokens de design | [concluidas/spec-2-direcao-visual.md](concluidas/spec-2-direcao-visual.md) | ✅ Concluída |
 | Spec 3 — Estrutura das seções e texto objetivo | [concluidas/spec-3-estrutura-conteudo.md](concluidas/spec-3-estrutura-conteudo.md) | ✅ Concluída |
 | Spec 4 — Hero e navegação | [concluidas/spec-4-hero-navegacao.md](concluidas/spec-4-hero-navegacao.md) | ✅ Concluída |
+| Spec 5 — Experiência, formação e habilidades | [concluidas/spec-5-experiencia-habilidades.md](concluidas/spec-5-experiencia-habilidades.md) | ✅ Concluída |
 
 ## Notas e dependências
 

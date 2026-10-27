@@ -119,7 +119,7 @@ describe("fatos e tamanho do texto", () => {
   ];
   const tituloDosProjetos = ["Task Manager", "Sistema de RH", "Cookin-Up", "Xadrez", "ForjaSys"];
   const vinteECincoHabilidades = [
-    "HTML", "CSS", "JavaScript", "TypeScript", "Vue.js", "Nuxt", "React", "Next.js", "Tailwind CSS",
+    "HTML", "CSS", "JavaScript", "TypeScript", "Vue.js", "Nuxt.js", "React", "Next.js", "Tailwind CSS",
     "PHP", "Laravel", "C#", ".NET", "Java", "Python", "APIs REST", "SQL", "MySQL", "PostgreSQL",
     "Linux", "AWS", "Git", "GitHub", "Claude Code", "Responsive Design",
   ];

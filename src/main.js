@@ -5,6 +5,8 @@ import "./styles/tokens.css";
 import "./styles/main.css";
 import "./styles/navegacao.css";
 import "./styles/hero.css";
+import "./styles/experiencia.css";
+import "./styles/habilidades.css";
 import { iniciarMenu } from "./scripts/menu.js";
 import { iniciarNavegacao } from "./scripts/navegacao.js";
 

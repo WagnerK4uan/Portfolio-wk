@@ -1,0 +1,176 @@
+/* ============================================
+   EXPERIÊNCIA · linha do tempo vertical (Spec 5, Direção C)
+   Período em JetBrains Mono na coluna da origem, trilho com marcador, conteúdo no destino.
+   No celular o período desce para baixo do cargo e o trilho fica à esquerda.
+   Sem animação própria: a revelação ao rolar é de main.js (Spec 7).
+   ============================================ */
+.experience-section {
+  background: var(--cor-fundo);
+  padding: 80px 1.5rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.experience-list {
+  --marcador: var(--espaco-3);
+  --vao-itens: var(--espaco-6);
+  list-style: none;
+  display: grid;
+  gap: var(--vao-itens);
+  max-width: 52rem;
+  margin: var(--espaco-6) auto 0;
+  padding: 0;
+}
+
+.experience-item {
+  --trilho: calc(var(--marcador) / 2);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--espaco-2);
+  min-width: 0;
+  padding-left: var(--espaco-6);
+}
+
+/* Trilho: liga o marcador deste item ao do próximo */
+.experience-item::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--trilho) - 1px);
+  top: var(--espaco-4);
+  bottom: calc(var(--vao-itens) * -1);
+  width: 2px;
+  background: var(--cor-borda);
+}
+
+.experience-item:last-child::before {
+  display: none;
+}
+
+/* Marcador, alinhado à primeira linha do título */
+.experience-item::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--trilho) - var(--marcador) / 2);
+  top: calc(var(--tipo-lg) * 0.625 - var(--marcador) / 2);
+  width: var(--marcador);
+  height: var(--marcador);
+  border: 2px solid var(--cor-texto-suave);
+  border-radius: var(--raio-pilula);
+  background: var(--cor-fundo);
+}
+
+.experience-item--atual::after {
+  border-color: var(--cor-violeta-marca);
+  background: var(--cor-violeta-marca);
+  box-shadow: 0 0 0 var(--espaco-1) color-mix(in oklch, var(--cor-violeta-marca) 28%, transparent);
+}
+
+.experience-titulo {
+  font-size: var(--tipo-lg);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--cor-texto-forte);
+}
+
+.experience-cargo {
+  margin-top: calc(var(--espaco-1) * -1);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--cor-violeta-texto);
+}
+
+.experience-periodo {
+  font-family: var(--fonte-campo);
+  font-size: var(--tipo-xs);
+  line-height: 1.6;
+  color: var(--cor-texto-suave);
+}
+
+.experience-item--atual .experience-situacao {
+  display: inline-block;
+  padding: 0 var(--espaco-2);
+  border: 1px solid var(--cor-violeta-marca);
+  border-radius: var(--raio-pilula);
+  color: var(--cor-violeta-texto);
+  font-weight: 600;
+}
+
+.experience-marcos {
+  font-size: var(--tipo-sm);
+  color: var(--cor-texto-suave);
+}
+
+.experience-descricao {
+  max-width: 65ch;
+  color: var(--cor-texto-suave);
+}
+
+/* Frentes: cada uma abre com o conector violeta da ficha do hero */
+.experience-frentes {
+  list-style: none;
+  display: grid;
+  gap: var(--espaco-2);
+  max-width: 65ch;
+  margin-top: var(--espaco-1);
+  padding: 0;
+}
+
+.experience-frentes li {
+  position: relative;
+  padding-left: var(--espaco-5);
+  color: var(--cor-texto-forte);
+}
+
+.experience-frentes li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: var(--espaco-4);
+  height: 2px;
+  background: var(--cor-violeta-marca);
+}
+
+.experience-stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+  margin-top: var(--espaco-1);
+  padding: 0;
+}
+
+.experience-stack li {
+  padding: var(--espaco-1) var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pilula);
+  background: var(--cor-superficie-2);
+  color: var(--cor-violeta-texto);
+  font-size: var(--tipo-xs);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* A partir de 768 px: período na coluna da origem, conteúdo na do destino */
+@media (min-width: 48rem) {
+  .experience-item {
+    --coluna-periodo: 10rem;
+    --trilho: calc(var(--coluna-periodo) + var(--espaco-7) / 2);
+    grid-template-columns: var(--coluna-periodo) minmax(0, 1fr);
+    column-gap: var(--espaco-7);
+    padding-left: 0;
+  }
+
+  .experience-item > * {
+    grid-column: 2;
+  }
+
+  .experience-item > .experience-periodo {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    padding-top: calc(var(--tipo-lg) * 0.625 - 0.8em);
+    text-align: right;
+  }
+}

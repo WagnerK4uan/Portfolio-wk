@@ -33,3 +33,22 @@ export function lerCssDoIndexDist() {
   if (locais.length !== 1) throw new Error(`Esperado 1 CSS local em dist/index.html, achados ${locais.length}.`);
   return readFileSync(arquivoNoDist(locais[0]), "utf8");
 }
+
+/** Anexa ao document.head um <style> com o CSS do build e retorna a CSSStyleSheet dele. */
+export function injetarCssDoIndexDist() {
+  const estilo = document.createElement("style");
+  estilo.textContent = lerCssDoIndexDist();
+  document.head.appendChild(estilo);
+  return estilo.sheet;
+}
+
+/** Regras de estilo do CSS do build cujo seletor tem exatamente esta parte, em qualquer media. */
+export function regrasDe(folha, seletor) {
+  const percorrer = (regras) =>
+    [...regras].flatMap((regra) => {
+      if (regra.cssRules && !regra.selectorText) return percorrer(regra.cssRules);
+      if (regra.selectorText?.split(",").map((parte) => parte.trim()).includes(seletor)) return [regra.style];
+      return [];
+    });
+  return percorrer(folha.cssRules);
+}

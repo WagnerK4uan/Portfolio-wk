@@ -1,6 +1,6 @@
 # Spec 5 — Experiência, formação e habilidades
 
-> Situação: Pendente. Ver [Contexto Geral](../README.md).
+> Situação: ✅ Concluída. Ver [Contexto Geral](../../README.md).
 > Depende de: Spec 3
 
 Objetivo: no site atual a experiência aparece misturada aos destaques (`.about-highlights`, sete
