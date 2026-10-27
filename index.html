@@ -31,6 +31,7 @@
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#habilidades">Habilidades</a></li>
             <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
       </div>
@@ -342,16 +343,19 @@
         </p>
 
         <div class="projects-grid">
-          <article class="project-card">
-            <img
-              src="img/task-manager.webp"
-              alt="Preview Task Manager"
-              class="project-preview"
-              width="400"
-              height="225"
-              loading="lazy"
-              decoding="async"
-            />
+          <article class="project-card project--destaque">
+            <div class="project-media">
+              <img
+                src="img/posters/task-manager.webp"
+                data-animado="img/task-manager.webp"
+                alt="Preview Task Manager"
+                class="project-preview"
+                width="1000"
+                height="563"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <div class="project-card-body">
               <h3>Task Manager</h3>
               <p>
@@ -362,15 +366,15 @@
                 aplicação sobe com Docker Compose. Desenvolvido com Spec-Driven
                 Development.
               </p>
-              <div class="project-tags">
-                <span>Java 21</span>
-                <span>Spring Boot</span>
-                <span>Angular</span>
-                <span>TypeScript</span>
-                <span>PostgreSQL</span>
-                <span>Docker</span>
-                <span>Tailwind CSS</span>
-              </div>
+              <ul class="project-tags" aria-label="Tecnologias">
+                <li>Java 21</li>
+                <li>Spring Boot</li>
+                <li>Angular</li>
+                <li>TypeScript</li>
+                <li>PostgreSQL</li>
+                <li>Docker</li>
+                <li>Tailwind CSS</li>
+              </ul>
               <div class="project-links">
                 <a
                   href="https://github.com/WagnerK4uan/task-manager"
@@ -384,16 +388,60 @@
             </div>
           </article>
 
+          <article class="project-card project--destaque">
+            <div class="project-media">
+              <img
+                src="img/posters/forjasys.webp"
+                data-animado="img/forjasys.webp"
+                alt="Preview ForjaSys"
+                class="project-preview"
+                width="1000"
+                height="561"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="project-card-body">
+              <h3>ForjaSys</h3>
+              <p>
+                Sistema desktop de gestão para metalúrgicas de pequeno e médio
+                porte. Várias máquinas Windows na rede local se conectam a um
+                servidor PostgreSQL central; desenvolvido em Linux com deploy
+                para Windows. Inclui ordens de serviço, cadastros com dados
+                fiscais (NCM, CFOP, CST) e autenticação de usuários. É o meu
+                primeiro projeto feito para uma empresa real, ainda em
+                desenvolvimento.
+              </p>
+              <ul class="project-tags" aria-label="Tecnologias">
+                <li>C#</li>
+                <li>.NET 9</li>
+                <li>Avalonia</li>
+                <li>PostgreSQL</li>
+                <li>EF Core</li>
+                <li>Clean Architecture</li>
+                <li>xUnit</li>
+              </ul>
+              <div class="project-links">
+                <span class="project-link project-link--private">
+                  <i class="fas fa-lock" aria-hidden="true"></i> Repositório privado
+                </span>
+              </div>
+            </div>
+          </article>
+
           <article class="project-card">
-            <img
-              src="img/projeto rh.webp"
-              alt="Preview Sistema de RH"
-              class="project-preview"
-              width="720"
-              height="387"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="project-media">
+              <img
+                src="img/posters/projeto-rh.webp"
+                data-animado="img/projeto%20rh.webp"
+                alt="Preview Sistema de RH"
+                class="project-preview"
+                width="700"
+                height="376"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <div class="project-card-body">
               <h3>Sistema de RH</h3>
               <p>
@@ -401,13 +449,13 @@
                 (PHP) no backend e Vue.js no frontend, com CRUD de
                 colaboradores, rotas protegidas e APIs REST.
               </p>
-              <div class="project-tags">
-                <span>Laravel</span>
-                <span>PHP</span>
-                <span>Vue.js</span>
-                <span>MySQL</span>
-                <span>REST API</span>
-              </div>
+              <ul class="project-tags" aria-label="Tecnologias">
+                <li>Laravel</li>
+                <li>PHP</li>
+                <li>Vue.js</li>
+                <li>MySQL</li>
+                <li>REST API</li>
+              </ul>
               <div class="project-links">
                 <a
                   href="https://github.com/WagnerK4uan/projeto-rh"
@@ -422,15 +470,18 @@
           </article>
 
           <article class="project-card">
-            <img
-              src="img/cookin-up.webp"
-              alt="Preview Cookin-Up"
-              class="project-preview"
-              width="720"
-              height="387"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="project-media">
+              <img
+                src="img/posters/cookin-up.webp"
+                data-animado="img/cookin-up.webp"
+                alt="Preview Cookin-Up"
+                class="project-preview"
+                width="700"
+                height="376"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <div class="project-card-body">
               <h3>Cookin-Up</h3>
               <p>
@@ -438,11 +489,11 @@
                 configurado para TypeScript e suporte a <code>.vue</code>,
                 visando agilizar novos projetos front-end.
               </p>
-              <div class="project-tags">
-                <span>Vue 3</span>
-                <span>TypeScript</span>
-                <span>Vite</span>
-              </div>
+              <ul class="project-tags" aria-label="Tecnologias">
+                <li>Vue 3</li>
+                <li>TypeScript</li>
+                <li>Vite</li>
+              </ul>
               <div class="project-links">
                 <a
                   href="https://github.com/WagnerK4uan/Cookin-Up"
@@ -457,15 +508,18 @@
           </article>
 
           <article class="project-card">
-            <img
-              src="img/xadrez.gif"
-              alt="Preview Xadrez"
-              class="project-preview"
-              width="400"
-              height="215"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="project-media">
+              <img
+                src="img/posters/xadrez.webp"
+                data-animado="img/xadrez.gif"
+                alt="Preview Xadrez"
+                class="project-preview"
+                width="700"
+                height="376"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <div class="project-card-body">
               <h3>Xadrez</h3>
               <p>
@@ -473,11 +527,11 @@
                 TypeScript, com tabuleiro interativo, movimentação de peças e
                 regras básicas do jogo implementadas.
               </p>
-              <div class="project-tags">
-                <span>React</span>
-                <span>Next.js</span>
-                <span>TypeScript</span>
-              </div>
+              <ul class="project-tags" aria-label="Tecnologias">
+                <li>React</li>
+                <li>Next.js</li>
+                <li>TypeScript</li>
+              </ul>
               <div class="project-links">
                 <a
                   href="https://github.com/WagnerK4uan/xadrez-react-next"
@@ -490,45 +544,66 @@
               </div>
             </div>
           </article>
-
-          <article class="project-card">
-            <img
-              src="img/forjasys.webp"
-              alt="Preview ForjaSys"
-              class="project-preview"
-              width="692"
-              height="388"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="project-card-body">
-              <h3>ForjaSys</h3>
-              <p>
-                Sistema desktop de gestão para metalúrgicas de pequeno e médio
-                porte. Várias máquinas Windows na rede local se conectam a um
-                servidor PostgreSQL central; desenvolvido em Linux com deploy
-                para Windows. Inclui ordens de serviço, cadastros com dados
-                fiscais (NCM, CFOP, CST) e autenticação de usuários. É o meu
-                primeiro projeto feito para uma empresa real, ainda em
-                desenvolvimento.
-              </p>
-              <div class="project-tags">
-                <span>C#</span>
-                <span>.NET 9</span>
-                <span>Avalonia</span>
-                <span>PostgreSQL</span>
-                <span>EF Core</span>
-                <span>Clean Architecture</span>
-                <span>xUnit</span>
-              </div>
-              <div class="project-links">
-                <span class="project-link project-link--private">
-                  <i class="fas fa-lock" aria-hidden="true"></i> Repositório privado
-                </span>
-              </div>
-            </div>
-          </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTATO (branco) ===== -->
+    <section class="contact-section" id="contato">
+      <div class="container">
+        <h2 class="section-title">Contato</h2>
+        <p class="section-subtitle">
+          Busco uma oportunidade que una desenvolvimento Full Stack e
+          Cloud/DevOps. O caminho mais rápido é o e-mail ou o LinkedIn.
+        </p>
+        <ul class="contact-list">
+          <li>
+            <a
+              class="contact-link"
+              href="mailto:w.kauanmachado@gmail.com"
+            >
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <span class="contact-rede">E-mail</span>
+              <span class="contact-texto">w.kauanmachado@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="contact-link"
+              href="https://www.linkedin.com/in/wagner-kauan/"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+              <span class="contact-rede">LinkedIn</span>
+              <span class="contact-texto">linkedin.com/in/wagner-kauan</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="contact-link"
+              href="https://github.com/WagnerK4uan"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fab fa-github" aria-hidden="true"></i>
+              <span class="contact-rede">GitHub</span>
+              <span class="contact-texto">github.com/WagnerK4uan</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="contact-link"
+              href="https://www.instagram.com/_wagnerkauan/"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+              <span class="contact-rede">Instagram</span>
+              <span class="contact-texto">@_wagnerkauan</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -537,22 +612,47 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
       <div class="container footer-inner">
-        <div class="footer-about">
-          <h2>Wagner Kauan</h2>
-          <p>
-            Aqui reúno minha trajetória e alguns projetos em desenvolvimento
-            web, dados e cloud. Sinta-se à vontade para explorar os projetos e
-            entrar em contato para colaborações ou oportunidades de trabalho.
-          </p>
-        </div>
-        <div class="footer-contact">
-          <h3>Contato</h3>
-          <p class="footer-contact-hint">Aberto a oportunidades</p>
-          <a href="mailto:w.kauanmachado@gmail.com" class="btn btn-footer">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            w.kauanmachado@gmail.com
-          </a>
-        </div>
+        <p class="footer-nome">Wagner Kauan · desenvolvimento web, dados e cloud</p>
+        <ul class="footer-social">
+          <li>
+            <a
+              href="mailto:w.kauanmachado@gmail.com"
+              aria-label="E-mail"
+            >
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/wagner-kauan/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/WagnerK4uan"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/_wagnerkauan/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
     <script src="main.js" defer></script>
