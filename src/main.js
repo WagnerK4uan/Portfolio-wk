@@ -7,11 +7,14 @@ import "./styles/navegacao.css";
 import "./styles/hero.css";
 import "./styles/experiencia.css";
 import "./styles/habilidades.css";
+import "./styles/projetos.css";
 import { iniciarMenu } from "./scripts/menu.js";
 import { iniciarNavegacao } from "./scripts/navegacao.js";
+import { iniciarProjetos } from "./scripts/projetos.js";
 
 iniciarMenu();
 iniciarNavegacao();
+iniciarProjetos();
 
 /* ============================================
    MOVIMENTO: revelar ao rolar (link ativo e header em scripts/navegacao.js)

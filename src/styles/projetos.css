@@ -1,0 +1,233 @@
+/* ============================================
+   PROJETOS superfície 1 (Spec 6)
+   Grade com os projetos de destaque primeiro e maiores. O card reage ao hover e, igual, ao foco
+   de qualquer elemento dele (:focus-within): sobe, ganha sombra maior e brilho de borda violeta,
+   só com transform e box-shadow por token. O preview nasce como poster estático; a troca para o
+   animado é de src/scripts/projetos.js. Sob prefers-reduced-motion: reduce nada se move.
+   ============================================ */
+.projects {
+  background: var(--cor-superficie-1);
+  padding: 80px 1.5rem;
+}
+
+/* O .container já tem padding lateral; evita margem dupla no mobile (fonte única, fora da lista de main.css) */
+@media (max-width: 768px) {
+  .projects {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espaco-5);
+}
+
+/* ---------- Card ---------- */
+.project-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-superficie-2);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+  transition:
+    transform var(--duracao-media) var(--ease-out),
+    box-shadow var(--duracao-media) var(--ease-out);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow:
+    var(--sombra-card-hover),
+    0 0 0 1px var(--cor-violeta-marca),
+    var(--sombra-violeta);
+}
+
+/* ---------- Preview: poster estático, animado só no hover ou foco ---------- */
+.project-media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--cor-superficie-3) 0%, var(--cor-superficie-1) 100%);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.project-preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform var(--duracao-lenta) var(--ease-out);
+}
+
+.project-card:hover .project-preview,
+.project-card:focus-within .project-preview {
+  transform: scale(1.03);
+}
+
+/* ---------- Corpo ---------- */
+.project-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+  padding: var(--espaco-5);
+}
+
+.project-card-body h3 {
+  font-size: var(--tipo-lg);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--cor-texto-forte);
+}
+
+.project-card-body p {
+  flex: 1;
+  font-size: var(--tipo-sm);
+  line-height: 1.7;
+  color: var(--cor-texto-suave);
+}
+
+.project-card-body code {
+  padding: 0 var(--espaco-1);
+  border-radius: 4px;
+  background: var(--cor-superficie-3);
+  color: var(--cor-texto-forte);
+  font-family: var(--fonte-campo);
+  font-size: 0.9em;
+}
+
+/* ---------- Tags ---------- */
+.project-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+  min-width: 0;
+}
+
+.project-tags li {
+  max-width: 100%;
+  padding: var(--espaco-1) var(--espaco-3);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pilula);
+  background: var(--cor-superficie-3);
+  color: var(--cor-violeta-texto);
+  font-family: var(--fonte-campo);
+  font-size: var(--tipo-xs);
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Repositório ---------- */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  align-self: flex-start;
+  margin-top: var(--espaco-1);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--raio-sm);
+  background: var(--cor-violeta-acao);
+  color: var(--cor-texto-sobre-acao);
+  font-size: var(--tipo-sm);
+  font-weight: 600;
+  transition:
+    background var(--duracao-media) ease,
+    transform var(--duracao-media) ease;
+}
+
+.project-link:hover {
+  background: var(--cor-violeta-acao-hover);
+  color: var(--cor-texto-sobre-acao);
+  transform: translateY(-1px);
+}
+
+.project-link:focus-visible {
+  outline: 2px solid var(--cor-foco);
+  outline-offset: 3px;
+}
+
+.project-link:not(.project-link--private):active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* Selo do repositório privado: texto, não ação; não reage ao ponteiro */
+.project-link--private,
+.project-link--private:hover {
+  background: var(--cor-superficie-3);
+  color: var(--cor-texto-suave);
+  cursor: default;
+  transform: none;
+}
+
+/* ---------- Destaque ---------- */
+.project--destaque .project-card-body h3 {
+  font-size: var(--tipo-xl);
+}
+
+/* Tablet: destaque ocupa a linha inteira, preview ao lado do texto */
+@media (min-width: 48rem) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espaco-6);
+  }
+
+  .project--destaque {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  /* O preview mantém 16:9 no alto da coluna em vez de esticar até a altura do texto */
+  .project--destaque .project-media {
+    align-self: start;
+    border-bottom: 0;
+  }
+}
+
+/* Desktop: dois destaques lado a lado (3 de 6 colunas), os demais em três (2 de 6) */
+@media (min-width: 64rem) {
+  .projects-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .project-card {
+    grid-column: span 2;
+  }
+
+  .project--destaque {
+    grid-column: span 3;
+    display: flex;
+  }
+
+  .project--destaque .project-media {
+    align-self: stretch;
+    border-bottom: 1px solid var(--cor-borda);
+  }
+}
+
+/* ---------- Movimento reduzido: o estado muda, nada se move ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-preview,
+  .project-link {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within,
+  .project-card:hover .project-preview,
+  .project-card:focus-within .project-preview,
+  .project-preview,
+  .project-link:hover {
+    transform: none;
+  }
+}

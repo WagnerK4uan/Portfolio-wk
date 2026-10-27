@@ -64,10 +64,11 @@ describe("conteúdo vindo dos arquivos de dados", () => {
       expect(tags).toEqual(projeto.tags);
 
       const imagem = artigo.querySelector("img");
-      expect(imagem.getAttribute("src")).toBe(projeto.preview.src);
-      expect(imagem.getAttribute("alt")).toBe(projeto.preview.alt);
-      expect(imagem.getAttribute("width")).toBe(String(projeto.preview.largura));
-      expect(imagem.getAttribute("height")).toBe(String(projeto.preview.altura));
+      expect(imagem.getAttribute("src")).toBe(projeto.poster.src);
+      expect(imagem.getAttribute("alt")).toBe(projeto.poster.alt);
+      expect(imagem.getAttribute("width")).toBe(String(projeto.poster.largura));
+      expect(imagem.getAttribute("height")).toBe(String(projeto.poster.altura));
+      expect(imagem.dataset.animado).toBe(projeto.animado);
 
       const link = artigo.querySelector("a.project-link");
       if (projeto.privado) {
@@ -117,7 +118,8 @@ describe("fatos e tamanho do texto", () => {
     "Cloud Engineering",
     "DevOps",
   ];
-  const tituloDosProjetos = ["Task Manager", "Sistema de RH", "Cookin-Up", "Xadrez", "ForjaSys"];
+  // Ordem da página desde a Spec 6: os de destaque (Task Manager, ForjaSys) primeiro.
+  const tituloDosProjetos = ["Task Manager", "ForjaSys", "Sistema de RH", "Cookin-Up", "Xadrez"];
   const vinteECincoHabilidades = [
     "HTML", "CSS", "JavaScript", "TypeScript", "Vue.js", "Nuxt.js", "React", "Next.js", "Tailwind CSS",
     "PHP", "Laravel", "C#", ".NET", "Java", "Python", "APIs REST", "SQL", "MySQL", "PostgreSQL",

@@ -7,21 +7,35 @@ function renderizarLinkDoProjeto(projeto) {
   return `<a href="${escapar(projeto.repositorio)}"${atributosDeLink(true)} class="project-link"><i class="fab fa-github" aria-hidden="true"></i> Repositório</a>`;
 }
 
+/**
+ * O HTML mostra só o poster (quadro estático leve). O preview animado fica em data-animado e só
+ * entra no src pelo hover ou foco do card (src/scripts/projetos.js).
+ */
+function renderizarPreview(projeto) {
+  const { poster } = projeto;
+  return `<img src="${escapar(poster.src)}" data-animado="${escapar(projeto.animado)}" alt="${escapar(poster.alt)}" class="project-preview" width="${escapar(poster.largura)}" height="${escapar(poster.altura)}" loading="lazy" decoding="async" />`;
+}
+
 function renderizarProjeto(projeto) {
-  const { preview } = projeto;
-  const tags = projeto.tags.map((tag) => `<span>${escapar(tag)}</span>`).join("");
-  return `<article class="project-card">
-  <img src="${escapar(preview.src)}" alt="${escapar(preview.alt)}" class="project-preview" width="${escapar(preview.largura)}" height="${escapar(preview.altura)}" loading="lazy" decoding="async" />
+  const classe = projeto.destaque ? "project-card project--destaque" : "project-card";
+  const tags = projeto.tags.map((tag) => `<li>${escapar(tag)}</li>`).join("");
+  return `<article class="${classe}">
+  <div class="project-media">${renderizarPreview(projeto)}</div>
   <div class="project-card-body">
     <h3>${escapar(projeto.titulo)}</h3>
     <p>${textoComCodigo(projeto.descricao)}</p>
-    <div class="project-tags">${tags}</div>
+    <ul class="project-tags" aria-label="Tecnologias">${tags}</ul>
     <div class="project-links">${renderizarLinkDoProjeto(projeto)}</div>
   </div>
 </article>`;
 }
 
-/** HTML da grade de projetos: um <article> por projeto, na ordem do arquivo de dados. */
+/** Os projetos de destaque primeiro, depois os demais; cada grupo mantém a ordem recebida. */
+export function ordenarProjetos(projetos) {
+  return [...projetos.filter((projeto) => projeto.destaque), ...projetos.filter((projeto) => !projeto.destaque)];
+}
+
+/** HTML da grade de projetos: um <article> por projeto, na ordem de ordenarProjetos. */
 export function renderizarProjetos(projetos) {
-  return `<div class="projects-grid">\n${projetos.map(renderizarProjeto).join("\n")}\n</div>`;
+  return `<div class="projects-grid">\n${ordenarProjetos(projetos).map(renderizarProjeto).join("\n")}\n</div>`;
 }

@@ -205,8 +205,7 @@ main:focus {
   box-shadow: none;
 }
 
-.btn:active,
-.project-link:not(.project-link--private):active {
+.btn:active {
   transform: translateY(0) scale(0.98);
   transition-duration: 0.1s;
 }
@@ -241,129 +240,6 @@ main:focus {
   margin-bottom: 1rem;
   color: var(--cor-texto-suave);
   line-height: 1.8;
-}
-
-/* ============================================
-   PROJECTS SECTION superfície 1
-   ============================================ */
-.projects {
-  background: var(--cor-superficie-1);
-  padding: 80px 1.5rem;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-/* ============================================
-   PROJECT CARD
-   ============================================ */
-.project-card {
-  background: var(--cor-superficie-2);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--radius);
-  box-shadow: var(--sombra-card);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--sombra-card-hover);
-}
-
-
-
-/* GIF / preview placeholder */
-.project-preview {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  background: linear-gradient(135deg, var(--cor-superficie-3) 0%, var(--cor-superficie-1) 100%);
-}
-
-.project-card-body {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  flex: 1;
-}
-
-.project-card-body h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--cor-texto-forte);
-}
-
-.project-card-body p {
-  font-size: 0.9rem;
-  color: var(--cor-texto-suave);
-  line-height: 1.7;
-  flex: 1;
-}
-
-.project-card-body code {
-  background: var(--cor-superficie-3);
-  color: var(--cor-texto-forte);
-  border-radius: 4px;
-  padding: 0 4px;
-  font-size: 0.9rem;
-}
-
-/* Tech tags */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.project-tags span {
-  background: var(--cor-superficie-3);
-  color: var(--cor-violeta-texto);
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.3rem 0.75rem;
-  border-radius: 100px;
-}
-
-/* Repo button */
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-top: 0.25rem;
-  padding: 0.6rem 1.2rem;
-  background: var(--cor-violeta-acao);
-  color: var(--cor-texto-sobre-acao);
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 600;
-  align-self: flex-start;
-  transition:
-    background var(--transition),
-    transform var(--transition);
-}
-
-.project-link:hover {
-  background: var(--cor-violeta-acao-hover);
-  transform: translateY(-1px);
-}
-
-/* Private repo badge */
-.project-link--private,
-.project-link--private:hover {
-  background: var(--cor-superficie-3);
-  color: var(--cor-texto-suave);
-  cursor: default;
-  transform: none;
 }
 
 /* ============================================
@@ -480,10 +356,6 @@ main:focus {
     font-size: 1.6rem;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
@@ -493,19 +365,12 @@ main:focus {
   .about-section,
   .experience-section,
   .skills-section,
-  .projects,
   .contact-section,
   .footer {
     padding-left: 0;
     padding-right: 0;
   }
 
-}
-
-@media (max-width: 480px) {
-  .project-preview {
-    height: 160px;
-  }
 }
 
 /* ============================================
@@ -530,9 +395,7 @@ main:focus {
     transition: none;
   }
 
-  .btn:hover,
-  .project-link:hover,
-  .project-card:hover {
+  .btn:hover {
     transform: none;
   }
 }

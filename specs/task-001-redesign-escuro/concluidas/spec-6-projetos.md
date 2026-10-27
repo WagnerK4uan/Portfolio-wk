@@ -1,6 +1,6 @@
 # Spec 6 — Seção de projetos
 
-> Situação: Pendente. Ver [Contexto Geral](../README.md).
+> Situação: ✅ Concluída. Ver [Contexto Geral](../../README.md).
 > Depende de: Spec 3
 
 Objetivo: os projetos são a prova mais forte do Wagner (PRODUCT.md › Principles 1), mas hoje são
@@ -71,3 +71,12 @@ Nenhuma.
 
 Ao final, resuma o desenho da seção, a ordem dos projetos, o peso das imagens antes e depois no
 carregamento inicial, como cada critério ficou provado e os screenshots.
+
+## Decisões da execução
+
+- O ForjaSys não tem link (CA-6.1), então o foco de teclado não chega ao card dele. O painel julgou
+  que a CA-6.4 se cumpre pela redação e que o WCAG 2.1 AA não é violado: o conteúdo fica acessível
+  sem foco e o card não é interativo. Ficou sem `tabindex`, para não criar parada de Tab inerte
+  (2026-10-26).
+- Com JS ativo, a regra `.js .project-card.reveal.is-in` de `src/styles/main.css` vence a transição
+  de `src/styles/projetos.css`. Fica para a Spec 7, dona da revelação.

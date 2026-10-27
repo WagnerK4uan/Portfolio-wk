@@ -28,13 +28,13 @@ describe("render · funções puras sem build", () => {
   it("CA-3.3 · renderizarProjetos gera um <article> por projeto e escapa texto vindo dos dados", () => {
     const html = renderizarProjetos([
       ...projetos,
-      { titulo: "<script>x</script>", descricao: "a & b", tags: ['"t"'], preview: { src: "img/a.webp", largura: 1, altura: 1, alt: "a" }, privado: true },
+      { titulo: "<script>x</script>", descricao: "a & b", tags: ['"t"'], poster: { src: "img/posters/a.webp", largura: 1, altura: 1, alt: "a" }, animado: "img/a.webp", privado: true },
     ]);
     const artigos = fragmento(html).querySelectorAll("article");
     expect(artigos).toHaveLength(projetos.length + 1);
     expect(html).not.toContain("<script>");
     expect(artigos[projetos.length].querySelector("h3").textContent).toBe("<script>x</script>");
-    expect(artigos[projetos.length].querySelector(".project-tags span").textContent).toBe('"t"');
+    expect(artigos[projetos.length].querySelector(".project-tags li").textContent).toBe('"t"');
   });
 
   it("CA-3.3 · renderizarProjetos dá link com noopener ao repositório público e selo ao privado", () => {

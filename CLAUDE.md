@@ -41,7 +41,7 @@ a configuração do projeto (comandos, camadas, pontos de serialização) mora e
    "revolucionário"). Nunca usar travessão (— ou –): usar vírgula, dois pontos ou ponto médio (·).
 8. **Nada de afirmação não verificável.** Só fatos que constam em `PRODUCT.md` ou no site atual. O
    ForjaSys não está em produção; não há métricas, depoimentos ou certificações para citar.
-9. **Movimento com fallback.** Toda animação usa `transform`/`opacity` e tem versão estática sob
+9. **Movimento com fallback.** Toda animação usa `transform`, `opacity` ou `filter` e tem versão estática sob
    `prefers-reduced-motion: reduce`. O conteúdo fica legível sem JavaScript.
 10. **Acessibilidade WCAG 2.1 AA.** Contraste, navegação por teclado, foco visível e `alt` em toda
     imagem são critério de aceite implícito de toda spec de interface.
