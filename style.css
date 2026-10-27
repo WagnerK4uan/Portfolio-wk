@@ -28,6 +28,10 @@
   --transition: 0.3s ease;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --max-width: 1100px;
+
+  /* Teto da altura do header fixo: uma linha de menu mede até 58 px. Abaixo de 480 px o menu
+     pode quebrar em duas linhas (até 94 px), e o valor sobe no media query dessa faixa. */
+  --altura-header: 3.75rem;
 }
 
 /* ============================================
@@ -43,6 +47,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* O pulo por âncora para abaixo do header fixo */
+  scroll-padding-top: var(--altura-header);
 }
 
 body {
@@ -135,14 +141,9 @@ main:focus {
   background: var(--primary);
 }
 
-/* Revelar ao rolar: só ativo com JS, o conteúdo nasce visível sem ele */
-.js .reveal {
-  transition:
-    opacity 0.6s var(--ease-out) var(--delay, 0ms),
-    transform 0.6s var(--ease-out) var(--delay, 0ms),
-    filter 0.6s var(--ease-out) var(--delay, 0ms);
-}
-
+/* Revelar ao rolar: só ativo com JS, o conteúdo nasce visível sem ele.
+   O estado escondido é o primeiro quadro da entrada feita por element.animate (main.js); sem
+   transição aqui, para o CSS não disputar com o animate nem com o hover dos cards. */
 .js .reveal:not(.is-in) {
   opacity: 0;
   transform: translateY(18px);
@@ -151,27 +152,55 @@ main:focus {
 
 .js .section-title.reveal:not(.is-in) {
   transform: none;
-  filter: none;
 }
 
+/* O traço do título se estende quando ele termina de entrar */
 .js .section-title::after {
   transform: scaleX(0);
-  transition: transform 0.7s var(--ease-out) 0.2s;
+  transition: transform 0.6s var(--ease-out);
 }
 
 .js .section-title.is-in::after {
   transform: scaleX(1);
 }
 
-/* Depois de entrar, os cards voltam às transições de hover */
-.js .skill.reveal.is-in,
-.js .highlight-item.reveal.is-in,
-.js .project-card.reveal.is-in {
-  transition:
-    opacity 0.6s var(--ease-out) var(--delay, 0ms),
-    transform var(--transition),
-    border-color var(--transition),
-    box-shadow var(--transition);
+/* Brilho que segue o ponteiro: main.js grava --mx e --my e põe tem-brilho só com hover fino e
+   sem movimento reduzido. No hero o brilho fica sobre o fundo e abaixo do conteúdo; no card fica
+   abaixo do conteúdo (z-index -1 dentro do card isolado). A mistura é baixa de propósito: com 4%
+   de violeta sobre o branco do card o texto --text-muted fica em 4,53:1, e o hero usa 3% porque
+   o fundo dele já é um pouco mais escuro que o branco. */
+.hero::after,
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.hero::after {
+  z-index: 0;
+  background: radial-gradient(
+    circle 24rem at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--primary) 3%, transparent),
+    transparent 70%
+  );
+}
+
+.project-card::before {
+  z-index: -1;
+  background: radial-gradient(
+    circle 16rem at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--primary) 4%, transparent),
+    transparent 70%
+  );
+  transition-duration: 0.3s;
+}
+
+.hero.tem-brilho:hover::after,
+.project-card.tem-brilho:hover::before {
+  opacity: 1;
 }
 
 .section-subtitle {
@@ -353,6 +382,7 @@ nav ul li a.is-active::after {
   justify-content: center;
   align-items: center;
   padding: 6rem 1.5rem 3rem;
+  position: relative;
 }
 
 .hero-content {
@@ -361,6 +391,9 @@ nav ul li a.is-active::after {
   gap: 3rem;
   max-width: 860px;
   width: 100%;
+  /* Acima do brilho do ponteiro (.hero::after) */
+  position: relative;
+  z-index: 1;
 }
 
 .hero-photo {
@@ -664,23 +697,29 @@ nav ul li a.is-active::after {
 }
 
 /* ============================================
-   PROJECTS SECTION branco
+   PROJECTS SECTION cinza claro
+   Os projetos de destaque vêm primeiro e maiores. O card reage ao hover e, igual, ao foco de
+   qualquer elemento dele (:focus-within). Só o transform transiciona; a sombra troca no ato.
+   O preview nasce como poster estático e main.js troca para o animado no hover ou no foco.
    ============================================ */
 .projects {
-   background: var(--bg-alt);
+  background: var(--bg-alt);
   padding: 80px 1.5rem;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
 }
 
 /* ============================================
    PROJECT CARD
    ============================================ */
 .project-card {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
   background: var(--bg-white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -688,25 +727,38 @@ nav ul li a.is-active::after {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
+  transition: transform var(--transition);
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
   transform: translateY(-6px);
-  box-shadow: var(--card-shadow-hover);
+  box-shadow:
+    var(--card-shadow-hover),
+    0 0 0 1px var(--primary),
+    0 5px 15px var(--primary-shadow);
 }
 
+/* Preview: poster estático, animado só no hover ou no foco */
+.project-media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-tint) 0%, var(--bg-alt) 100%);
+  border-bottom: 1px solid var(--border);
+}
 
-
-/* GIF / preview placeholder */
 .project-preview {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
   display: block;
-  background: linear-gradient(135deg, var(--primary-tint) 0%, #e0e7ff 100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.project-card:hover .project-preview,
+.project-card:focus-within .project-preview {
+  transform: scale(1.03);
 }
 
 .project-card-body {
@@ -720,7 +772,12 @@ nav ul li a.is-active::after {
 .project-card-body h3 {
   font-size: 1.1rem;
   font-weight: 700;
+  line-height: 1.25;
   color: var(--text);
+}
+
+.project--destaque .project-card-body h3 {
+  font-size: 1.4rem;
 }
 
 .project-card-body p {
@@ -737,20 +794,30 @@ nav ul li a.is-active::after {
   font-size: 0.9rem;
 }
 
-/* Tech tags */
+/* Tech tags: não são ação, só acompanham o estado do card com a borda violeta */
 .project-tags {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  min-width: 0;
 }
 
-.project-tags span {
+.project-tags li {
+  max-width: 100%;
   background: var(--primary-tint);
   color: var(--primary-dark);
+  border: 1px solid var(--primary-tint);
   font-size: 0.78rem;
   font-weight: 600;
   padding: 0.3rem 0.75rem;
   border-radius: 100px;
+  overflow-wrap: anywhere;
+}
+
+.project-card:hover .project-tags li,
+.project-card:focus-within .project-tags li {
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
 }
 
 /* Repo button */
@@ -758,6 +825,7 @@ nav ul li a.is-active::after {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  min-height: 2.75rem;
   margin-top: 0.25rem;
   padding: 0.6rem 1.2rem;
   background: var(--primary-action);
@@ -776,12 +844,166 @@ nav ul li a.is-active::after {
   transform: translateY(-1px);
 }
 
-/* Private repo badge */
+/* Selo do repositório privado: texto, não ação; não reage ao ponteiro */
 .project-link--private,
 .project-link--private:hover {
   background: var(--text-muted);
   cursor: default;
   transform: none;
+}
+
+/* Tablet: o destaque ocupa a linha inteira, com o preview ao lado do texto */
+@media (min-width: 48rem) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .project--destaque {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  /* O preview mantém 16:9 no alto da coluna em vez de esticar até a altura do texto */
+  .project--destaque .project-media {
+    align-self: start;
+    border-bottom: 0;
+  }
+}
+
+/* Desktop: os dois destaques lado a lado (3 de 6 colunas), os demais em três (2 de 6) */
+@media (min-width: 64rem) {
+  .projects-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .project-card {
+    grid-column: span 2;
+  }
+
+  .project--destaque {
+    grid-column: span 3;
+    display: flex;
+  }
+
+  .project--destaque .project-media {
+    align-self: stretch;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* ============================================
+   CONTACT SECTION branco
+   ============================================ */
+.contact-section {
+  background: var(--bg-white);
+  padding: 80px 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Quatro canais: uma coluna no celular, 2×2 no tablet e os quatro lado a lado no desktop */
+.contact-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+@media (min-width: 40rem) {
+  .contact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.contact-link {
+  /* O endereço mede a largura do cartão (cqi) para nunca quebrar no meio */
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  min-height: 2.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: transform var(--transition);
+}
+
+/* Coluna do ícone com largura fixa: o nome do canal começa na mesma posição em todos os cartões */
+.contact-link i {
+  display: flex;
+  justify-content: center;
+  width: 1.75rem;
+  font-size: 1.4rem;
+  color: var(--primary-dark);
+}
+
+.contact-rede {
+  font-weight: 700;
+}
+
+/* O endereço ocupa a linha inteira abaixo do canal. O mais longo (linkedin.com/in/wagner-kauan)
+   mede cerca de 17,4 em em Poppins; 5,6cqi reduz a letra só quando o cartão é estreito demais
+   para ele caber numa linha, como em 320 px. Com os quatro cartões lado a lado (80rem ou mais) o
+   tamanho é fixo, definido no media query dessa faixa. */
+.contact-texto {
+  grid-column: 1 / -1;
+  font-size: min(0.88rem, 5.6cqi);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+/* Celular: menos respiro lateral para o endereço ter mais espaço em 320 px */
+@media (max-width: 30rem) {
+  .contact-link {
+    padding-inline: 1rem;
+  }
+}
+
+/* Desktop largo: os quatro lado a lado, com o ícone acima do texto. A lista usa toda a largura
+   do container e o cartão tem menos respiro lateral, para o endereço mais longo caber numa linha
+   com 0,8rem; antes de 80rem fica o 2×2, em que ele cabe no tamanho cheio. */
+@media (min-width: 80rem) {
+  .contact-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    max-width: none;
+  }
+
+  .contact-link {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    padding-inline: 0.75rem;
+  }
+
+  .contact-link i {
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-texto {
+    font-size: 0.8rem;
+  }
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  background: var(--bg-white);
+  border-color: var(--primary);
+  box-shadow: var(--card-shadow);
+  transform: translateY(-2px);
+}
+
+.contact-link:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.1s;
 }
 
 /* ============================================
@@ -796,56 +1018,46 @@ nav ul li a.is-active::after {
 .footer-inner {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   gap: 2.5rem;
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
-.footer-about {
-  max-width: 560px;
-}
-
-.footer-about h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--bg-white);
-}
-
-.footer-about p {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: var(--text-on-dark);
-}
-
-.footer-contact {
-  text-align: right;
-}
-
-.footer-contact h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--bg-white);
-}
-
-.footer-contact-hint {
+.footer-nome {
   font-size: 0.9rem;
   color: var(--text-on-dark);
-  margin-bottom: 1rem;
 }
 
-.btn-footer {
+.footer-social {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--text-on-dark) 40%, transparent);
+  border-radius: var(--radius-sm);
+  color: var(--text-on-dark);
+  font-size: 1.15rem;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
   background: var(--primary-action);
-  box-shadow: none;
-  font-size: 0.9rem;
+  border-color: var(--primary-action);
+  color: var(--bg-white);
 }
 
-.btn-footer:hover {
-  background: var(--primary-dark);
-  box-shadow: none;
+/* No fundo escuro o anel de foco usa a cor clara do rodapé */
+.footer-social a:focus-visible {
+  outline-color: var(--text-on-dark);
 }
 
 /* ============================================
@@ -891,16 +1103,9 @@ nav ul li a.is-active::after {
     flex-wrap: nowrap;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
   .footer-inner {
     flex-direction: column;
-  }
-
-  .footer-contact {
-    text-align: left;
+    align-items: flex-start;
   }
 
   .social-icons {
@@ -926,6 +1131,7 @@ nav ul li a.is-active::after {
   .about-section,
   .skills-section,
   .projects,
+  .contact-section,
   .footer {
     padding-left: 0;
     padding-right: 0;
@@ -936,25 +1142,15 @@ nav ul li a.is-active::after {
     padding-bottom: 100px;
   }
 
-  .footer-contact {
-    width: 100%;
-  }
-
-  .btn-footer {
-    width: 100%;
-    justify-content: center;
-    padding: 0.85rem 1rem;
-    overflow-wrap: anywhere;
-  }
 }
 
 @media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.6rem;
+  :root {
+    --altura-header: 6rem;
   }
 
-  .project-preview {
-    height: 160px;
+  .hero h1 {
+    font-size: 1.6rem;
   }
 
   nav ul {
@@ -962,10 +1158,6 @@ nav ul li a.is-active::after {
   }
 
   nav ul li a {
-    font-size: 0.78rem;
-  }
-
-  .btn-footer {
     font-size: 0.78rem;
   }
 }
@@ -989,10 +1181,19 @@ nav ul li a.is-active::after {
     animation: none;
   }
 
-  .js .reveal,
-  .js .skill.reveal.is-in,
-  .js .project-card.reveal.is-in {
-    transition: opacity 0.3s ease;
+  /* Rede de segurança: nenhuma transição além de opacity, curta e sem atraso. As animações de
+     CSS da página são só as do hero, trocadas acima por um fade de opacity. */
+  *,
+  *::before,
+  *::after {
+    transition-property: opacity !important;
+    transition-duration: 140ms !important;
+    transition-delay: 0s !important;
+  }
+
+  /* Sem animate em main.js: o elemento só recebe is-in e entra por fade */
+  .js .reveal {
+    transition: opacity 140ms var(--ease-out);
   }
 
   .js .reveal:not(.is-in) {
@@ -1001,13 +1202,22 @@ nav ul li a.is-active::after {
   }
 
   .js .section-title::after {
-    transition: none;
+    transform: none;
   }
 
+  /* O estado muda (cor, sombra, borda), nada se desloca */
   .btn:hover,
+  .btn:active,
   .project-link:hover,
+  .project-link:not(.project-link--private):active,
   .skill:hover,
-  .project-card:hover {
+  .project-card:hover,
+  .project-card:focus-within,
+  .project-card:hover .project-preview,
+  .project-card:focus-within .project-preview,
+  .contact-link:hover,
+  .contact-link:focus-visible,
+  .contact-link:active {
     transform: none;
   }
 
