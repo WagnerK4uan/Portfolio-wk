@@ -1,0 +1,62 @@
+/* transitions.dev · _root.css: a escala de movimento compartilhada e as variáveis dos snippets
+   usados aqui (texts reveal, learn more hover, text morph, panel reveal) */
+:root {
+  --duration-stagger: 40ms;
+  --duration-micro: 80ms;
+  --duration-quick: 150ms;
+  --duration-fast: 250ms;
+  --duration-medium: 350ms;
+  --duration-slow: 400ms;
+  --duration-very-slow: 500ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: ease-in-out;
+  --ease-out: ease-out;
+  --ease-linear: linear;
+  --distance-micro: 4px;
+  --distance-small: 6px;
+  --distance-base: 8px;
+  --distance-medium: 12px;
+  --distance-large: 30px;
+  --scale-large: 0.96;
+  --scale-medium: 0.97;
+  --scale-small: 0.98;
+  --scale-tiny: 0.99;
+  --blur-small: 2px;
+  --blur-medium: 3px;
+  --blur-large: 8px;
+
+  /* 18 · Texts reveal (hero): 12 px de subida, 3 px de desfoque, 60 ms entre as linhas */
+  --stagger-dur: 520ms;
+  --stagger-distance: var(--distance-medium);
+  --stagger-stagger: 60ms;
+  --stagger-blur: var(--blur-medium);
+  --stagger-ease: var(--ease-smooth-out);
+
+  /* 24 · Learn more hover: a taste-skill pede seta de 3 px, 150 ms para entrar e 120 ms para sair */
+  --learn-shift: 3px;
+  --learn-spread: 8deg;
+  --learn-in: var(--duration-quick);
+  --learn-out: 120ms;
+  --learn-ease: var(--ease-smooth-out);
+
+  /* 33 · Text morph (Copiar e-mail) */
+  --text-morph-dur: 180ms;
+  --text-morph-resize-dur: 240ms;
+  --text-morph-blur: var(--blur-small);
+  --text-morph-ease: var(--ease-smooth-out);
+
+  /* 07 · Panel reveal (menu do celular): percurso curto, abre em 400 ms e fecha em 350 ms */
+  --panel-open-dur: var(--duration-slow);
+  --panel-close-dur: var(--duration-medium);
+  --panel-translate-y: 24px;
+  --panel-blur: var(--blur-small);
+  --panel-ease: var(--ease-smooth-out);
+
+  /* camada de hover da taste-skill (motion.md): 150 ms entra, 120 ms sai, 90 ms no clique */
+  --m-in: 150ms;
+  --m-out: 120ms;
+  --m-press: 90ms;
+  --m-image: 600ms;
+  --m-image-out: 400ms;
+  --m-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}

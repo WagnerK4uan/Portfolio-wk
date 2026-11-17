@@ -1,0 +1,63 @@
+/* Cores do DESIGN.md (violeta + neutros frios) e os nomes que o momento da taste-skill lê */
+:root {
+  --violeta-eletrico: #6c63ff;
+  --violeta-acao: #625af0;
+  --violeta-profundo: #574fd6;
+  --violeta-noturno: #4a42c4;
+  --lavanda-nevoa: #ede9fe;
+  --papel-branco: #ffffff;
+  --gelo-ardosia: #f8fafc;
+  --tinta-noturna: #1e1e2e;
+  --ardosia-media: #64748b;
+  --ardosia-texto: #475569; /* texto corrido: 7,6:1 no branco e 7,2:1 no gelo */
+  --violeta-texto: #433bb8; /* violeta para texto pequeno: 8,2:1 no branco, 7,9:1 no gelo */
+  --linha-neblina: #e2e8f0;
+  --noite-funda: #0f0f1a;
+  --noite-superficie: #191927;
+  --ardosia-clara: #94a3b8;
+
+  /* nomes do kit da taste-skill (moment.css do pinned-chapters) */
+  --bg: var(--papel-branco);
+  --ink: var(--tinta-noturna);
+  --muted: var(--ardosia-texto);
+  --line: var(--linha-neblina);
+  --accent: var(--violeta-eletrico);
+  --font-text: "Poppins", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
+  --t-lead: 1.25rem;
+  --r-md: 12px;
+  --r-sm: 6px;
+  --s-2: 0.5rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --gutter: 24px;
+  --nav: 72px;
+
+  /* ritmo das seções (layout-v4.md): .wrap de até 1280 px, 12 colunas com 24 px entre elas */
+  --wrap: 1280px;
+  --gut: 24px;
+  --col-gap: 24px;
+  --padt: 120px;
+  --padb: 96px;
+
+  --sombra-repouso: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --sombra-hover: 0 12px 24px rgba(30, 30, 46, 0.1);
+  --sombra-violeta: 0 5px 15px rgba(108, 99, 255, 0.3);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gut: 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --padt: 96px;
+    --padb: 48px;
+    --col-gap: 12px;
+    --gutter: 12px;
+  }
+}
