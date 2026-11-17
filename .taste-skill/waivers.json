@@ -1,0 +1,92 @@
+[
+ {
+  "check": "copy-headings",
+  "target": "h2#sobre-h",
+  "reason": "Títulos em pt-BR e en que nomeiam as seções de um portfólio (Sobre mim, Trajetória, Habilidades e ferramentas, Projetos, Contato); a lista de substantivos do checker é em inglês"
+ },
+ {
+  "check": "no-visual",
+  "target": "section#habilidades",
+  "reason": "O visual da seção são os 26 ícones reais e coloridos das tecnologias (house rule 7), um por item"
+ },
+ {
+  "check": "no-visual",
+  "target": "section#trajetoria",
+  "reason": "A trajetória em escada é o próprio visual da seção (pedido do cliente, inspirado em umbelino.dev)"
+ },
+ {
+  "check": "no-visual",
+  "target": "section#projetos",
+  "reason": "Cada projeto tem a sua tela animada no quadro preso; a lista editorial com nomes grandes é a composição pedida pelo cliente"
+ },
+ {
+  "check": "cut-text",
+  "target": "span.dg-cap__l",
+  "reason": "Rótulos do diagrama do próprio kit (assets/diagrams), desenhados ao lado do nó de ponto por design; todos aparecem inteiros dentro do painel"
+ },
+ {
+  "check": "off-grid",
+  "target": "li.habilidade:nth-of-type(3)",
+  "reason": "Chips de tecnologia correm em linha como texto (flex-wrap); a borda de cada chip segue a largura do nome, não uma coluna"
+ },
+ {
+  "check": "off-grid",
+  "target": "span.escada__periodo",
+  "reason": "Cada degrau da trajetória tem a sua linha vertical à esquerda e o texto recuado dela, como numa linha do tempo"
+ },
+ {
+  "check": "top-stagger",
+  "target": "ol.escada",
+  "reason": "A trajetória é uma escada: cada etapa começa um degrau acima da anterior, por design"
+ },
+ {
+  "check": "scroll-linked",
+  "target": "div.projetos__quadro",
+  "reason": "Pedido do cliente: efeito de rolagem em Projetos com o GIF de cada um; o quadro só fica preso (sticky), sem scroll-jacking, e o projeto ativo troca pelo meio da tela"
+ },
+ {
+  "check": "scroll-reveal",
+  "target": "li.projeto",
+  "reason": "Não é revelação: o nome do projeto que sai do meio da tela só troca de cor (cinza legível, 3,6:1); sem script ou com movimento reduzido tudo fica em cor cheia"
+ },
+ {
+  "check": "heading-scale",
+  "target": "h3.projeto__nome",
+  "reason": "Nomes de projeto enormes são a lista editorial pedida pelo cliente (referência umbelino.dev)"
+ },
+ {
+  "check": "section-height",
+  "target": "section#projetos",
+  "reason": "Cinco projetos com a sua tela cada um; a seção cresce com a lista (pedido do cliente) em vez de caber em duas telas"
+ },
+ {
+  "check": "section-height",
+  "target": "footer#contato",
+  "reason": "Consequência da seção de Projetos com altura do conteúdo"
+ },
+ {
+  "check": "one-section",
+  "target": "h2#contato-h",
+  "reason": "Consequência da seção de Projetos com altura do conteúdo"
+ },
+ {
+  "check": "container-edges",
+  "target": "h1#hero-h",
+  "reason": "A foto pequena em círculo à esquerda do nome, como no portfólio original, foi pedida pelo cliente"
+ },
+ {
+  "check": "container-edges",
+  "target": "p.hero__kicker",
+  "reason": "O texto do hero começa à direita da foto pequena, pedida pelo cliente"
+ },
+ {
+  "check": "split-pair",
+  "target": "div.projetos__grid",
+  "reason": "O quadro preso começa alinhado ao primeiro projeto, não à linha de cima da lista"
+ },
+ {
+  "check": "photo-upscale",
+  "target": "div.projetos__janela > img",
+  "reason": "As gravações originais do Task Manager e do Xadrez têm 400 px de largura; são as telas reais dos projetos"
+ }
+]

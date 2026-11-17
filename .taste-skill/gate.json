@@ -1,0 +1,455 @@
+{
+ "start": "2026-11-12T19:28:41.124Z",
+ "round": 0,
+ "idle": 0,
+ "errors": 0,
+ "status": "pass",
+ "history": [
+  {
+   "at": "2026-11-12T19:31:08.874Z",
+   "mode": "manual",
+   "status": "pass",
+   "fails": 0,
+   "round": 0,
+   "reused": false,
+   "stopHookActive": false
+  }
+ ],
+ "max": 3,
+ "marker": {
+  "page": "dist/index.html",
+  "url": null,
+  "root": "dist",
+  "kind": "software",
+  "category": "portfólio de desenvolvedor web",
+  "primary": "Falar comigo",
+  "rounds": 3,
+  "start": "2026-11-12T19:28:41.124Z",
+  "by": "gate.mjs --start"
+ },
+ "manual": true,
+ "fp": "fa557f01b008b0f7",
+ "page": "dist/index.html",
+ "found": {
+  "fails": [
+   {
+    "check": "cut-text",
+    "where": "div.dg-nodes > div.dg-node.dg-node--dot:nth-of-type(3) > span.dg-cap > span.dg-cap__l \"Laravel\"",
+    "msg": "runs past the edge of its box div.panel.sobre__diagrama > div.dg > div.dg-nodes > div.dg-node.dg-node--dot:nth-of-type(3) (and 5 more like it: \"Nuxt.js\", \"MySQL\", \"PostgreSQL\", \"AWS\", ...)",
+    "fix": "give the text room: no overflow clipping a line, no line past its box",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "cut-text"
+    ],
+    "wheres": [
+     "div.dg-nodes > div.dg-node.dg-node--dot:nth-of-type(3) > span.dg-cap > span.dg-cap__l \"Laravel\""
+    ]
+   },
+   {
+    "check": "no-visual",
+    "where": "section#habilidades \"Habilidades e ferramentas\"",
+    "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "no-visual"
+    ],
+    "wheres": [
+     "section#habilidades \"Habilidades e ferramentas\""
+    ]
+   },
+   {
+    "check": "copy-headings",
+    "where": "h2#sobre-h \"Sobre mim\"",
+    "msg": "\"Sobre mim\" names no product, part, place or section (9 headings like it; at most one brand line per page) (and 8 more like it: \"Habilidades e ferramenta\", \"Front-end\", \"Back-end\", \"IA e ferramentas\", ...)",
+    "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "copy-headings"
+    ],
+    "wheres": [
+     "h2#sobre-h \"Sobre mim\""
+    ]
+   },
+   {
+    "check": "off-grid",
+    "where": "div.grid.habilidades__grupos > div.grupo:nth-of-type(2) > ul > li.habilidade:nth-of-type(3) \"C#\"",
+    "msg": "left edge at 969px, 19px off a common edge of its section at 950px (4 elements, like h3)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "off-grid"
+    ],
+    "wheres": [
+     "div.grid.habilidades__grupos > div.grupo:nth-of-type(2) > ul > li.habilidade:nth-of-type(3) \"C#\""
+    ]
+   }
+  ],
+  "warns": [
+   {
+    "check": "scroll-reveal",
+    "where": "section#projetos \"Projetos em destaque Task Manager Quadro\"",
+    "msg": "starts \"border-left-color\" (0.3 s) the moment it is scrolled into view (an IntersectionObserver) on li.mo-pc__step:nth-of-type(1) (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "pinned",
+    "where": "section#projetos > div.wrap.mo-pc__grid \"Projetos em destaque Task Manager Quadro\"",
+    "msg": "held on screen for 1 screen of scroll (position: sticky) while the page moves on (inside a dealt moment's section, [data-moment]: expected on every kind, two moments at most, house rule; its still is judged under reduced motion)",
+    "fix": "let the section scroll with the page",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "no-visual",
+    "where": "section#sobre \"Sobre mim\"",
+    "msg": "pictures, effects and mocks cover 15% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-buttons",
+    "where": "header#topo > div.wrap.nav__bar > a.btn.btn--primary \"Falar comigo\"",
+    "msg": "\"Falar comigo\" does not start with a verb (book, buy, try, start, get, see...) (and 2 more like it: \"Ver projetos\", \"Copiar e-mail\")",
+    "fix": "label buttons with a verb and what the visitor gets (\"Book a room\", \"Start free trial\")",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-actions",
+    "where": "(the page)",
+    "msg": "the main action \"Falar comigo\" does not read word for word the same in the closing section",
+    "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#home / section#sobre",
+    "msg": "114px between these sections, -50% against the median 230px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "links",
+    "where": "nav.nav__links > ul > li:nth-of-type(4) > a.nav__link \"Contato\"",
+    "msg": "\"Contato\" goes to #contato, in the footer",
+    "fix": "point every link at a real section, page or file",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "links",
+    "where": "header#topo > div.wrap.nav__bar > a.btn.btn--primary \"Falar comigo\"",
+    "msg": "\"Falar comigo\" goes to #contato, in the footer",
+    "fix": "point every link at a real section, page or file",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "links",
+    "where": "div#menu-celular > ul > li:nth-of-type(4) > a \"Contato\"",
+    "msg": "\"Contato\" goes to #contato, in the footer",
+    "fix": "point every link at a real section, page or file",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "links",
+    "where": "div#menu-celular > a.btn.btn--primary \"Falar comigo\"",
+    "msg": "\"Falar comigo\" goes to #contato, in the footer",
+    "fix": "point every link at a real section, page or file",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "links",
+    "where": "div.hero-text.grid > div.hero__texto.t-stagger > div.hero__acoes.t-stagger-line > a.btn.btn--primary \"Falar comigo\"",
+    "msg": "\"Falar comigo\" goes to #contato, in the footer",
+    "fix": "point every link at a real section, page or file",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "div.wrap.mo-pc__grid > div.mo-pc__visuals.frame > figure.mo-pc__visual:nth-of-type(2) > img \"forjasys.webp\"",
+    "msg": "5 photographs in more than one look: lightness from 0.22 to 0.80; warm and cool photographs mixed (b* -7 to +10); the odd one out is forjasys.webp",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "div#menu-celular > a.btn.btn--primary \"Falar comigo\"",
+    "msg": "\"Falar comigo\" opens a section headed \"Contato\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "link-styles",
+    "where": "div.wrap.grid > div.sobre__texto > p:nth-of-type(6) > a.link \"LinkedIn\"",
+    "msg": "text links in 3 looks: underline, bold (1, like \"LinkedIn\"); no line, bold (2, like \"Ver o código no GitH\"); no line, regular (4, like \"E-mail w.kauanmachad\")",
+    "fix": "give text links one look wherever they sit: one underline, one weight",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "label-centre",
+    "where": "div.closing__chamada > div.grid.closing__grid > div.closing__texto > button.btn.btn--primary \"Copiar e-mail\"",
+    "msg": "its label sits 25px off-centre (54px of room at the left, 29px at the right)",
+    "fix": "centre the label in its button, or fill the empty side with an icon",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-length",
+    "where": "section#sobre \"Sobre mim\"",
+    "msg": "2 sections over 90 words a screen outside the UI mocks (\"Sobre mim\" 285, \"Habilidades e ferramenta\" 111); 109 words a screen across the page (652 words in 6 screens): a tech page says it in about 80 or fewer",
+    "fix": "cut every section to its heading, one line and the product UI: the UI says the rest; no second paragraph, no list of feature sentences",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "ul.sobre__destaques > li.destaque:nth-of-type(1) > div > strong \"Desenvolvedor Web e Migração de Dados\"",
+    "msg": "a muted 14px line of 2 rows sits 31px under the diagram ({\"layout\":\"hub\",\"alt\":\"Na Bruning Sistemas atuo em duas frentes: web, com Laravel e Nuxt.js, e dados, com MySQL e PostgreSQL. Em paralelo estudo AWS e Linux.\",\"center\":{\"label\":\"Bruning\"},\"spokes\":[{\"label\":\"Web\",\"icon\":\"ui:monitor\",\"children\":[{\"label\":\"Laravel\",\"icon\":\"laravel\"},{\"label\":\"Nuxt.js\",\"icon\":\"nuxt\"}]},{\"label\":\"Dados\",\"icon\":\"ui:database\",\"children\":[{\"label\":\"MySQL\",\"icon\":\"mysql\"},{\"label\":\"PostgreSQL\",\"icon\":\"postgres\"}]},{\"label\":\"Em estudo\",\"icon\":\"ui:cloud\",\"children\":[{\"label\":\"AWS\",\"icon\":\"aws\"},{\"label\":\"Linux\",\"icon\":\"linux-tux\"}]}]}): it reads as a caption: \"Desenvolvedor Web e Migração de Dados\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "skip-link",
+    "where": "header#topo > div.wrap.nav__bar:nth-of-type(1) > a.skip-link:nth-of-type(1) \"Pular para o conteúdo\"",
+    "msg": "the first Tab stop is \"Pular para o conteúdo\", not a skip link: a keyboard user tabs through the whole nav on every visit",
+    "fix": "add the starter's skip link as the header's first child: <a class=\"skip-link\" href=\"#top\">Skip to content</a>",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "action-repeat",
+    "where": "header#topo > div.wrap.nav__bar:nth-of-type(1) > a.btn.btn--primary:nth-of-type(3) \"falar comigo\"",
+    "msg": "\"falar comigo\" shows 2 times on the first screen at 1440px (nav, hero): the nav's button and the hero's; nothing else on the screen may repeat it",
+    "fix": "show the action once a screen besides the nav's button: the hero's, the close's or the phone bar's, never all at once",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "container-edges",
+    "where": "div.wrap.mo-pc__grid > div.mo-pc__text > ol.mo-pc__steps > li.mo-pc__step:nth-of-type(1) \"Task ManagerQuadro kanban com API REST e\"",
+    "msg": "3 text blocks start on a left line at x 106, 26px from the container's left: text starts on the container's left, or on one split line (x 623, 732, 841) (also \"ForjaSysSistema desktop de gestã\", \"Sistema de RHSistema de Recursos\") (it is in a scroll scene: told as a WARN) (SR-6)",
+    "fix": "start the text on the container's left, or on the one split line every split shares",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "split-pair",
+    "where": "section#projetos > div.wrap.mo-pc__grid \"Projetos em destaqueTask ManagerQuadro k\"",
+    "msg": "the split's columns are off the page's one pair of lines: its right column starts at x 732, the first split's at 841 (it is in a scroll scene: told as a WARN) (SR-8)",
+    "fix": "start every split's right column on one shared line (wrap.left + k x (width + 24) / 12, k 5, 6 or 7; 6 on a place page) and end the left one 24px before it",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "section#habilidades \"Habilidades e ferramentas\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "body-size",
+    "where": "ol.mo-pc__steps > li.mo-pc__step:nth-of-type(1) > div.projeto__meta > span.projeto__tags \"Java 21 · Spring Boot · Angular · Postgr\"",
+    "msg": "14 of 17 paragraphs of running text are set under 16px (13.6, 15, 15.2px)",
+    "fix": "set running text at 16px or more",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#sobre / section#habilidades",
+    "msg": "142px between these sections, -35% against the median 220px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#projetos / section#outros-projetos",
+    "msg": "336px between these sections, +53% against the median 220px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#outros-projetos / footer#contato",
+    "msg": "uneven space at the edge of a band: 212px outside its edge, 67px inside it (the space on either side of a change of ground reads as one gap only when the two match)",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "li:nth-of-type(2) > a.card-projeto.t-learn > span.card-projeto__media > img \"xadrez.webp\"",
+    "msg": "4 photographs in more than one look: lightness from 0.24 to 0.95; the odd one out is xadrez.webp",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   }
+  ],
+  "crashed": [],
+  "seconds": {
+   "consistency": 133,
+   "layout": 14
+  }
+ },
+ "open": [],
+ "waived": [
+  {
+   "check": "cut-text",
+   "where": "div.dg-nodes > div.dg-node.dg-node--dot:nth-of-type(3) > span.dg-cap > span.dg-cap__l \"Laravel\"",
+   "msg": "runs past the edge of its box div.panel.sobre__diagrama > div.dg > div.dg-nodes > div.dg-node.dg-node--dot:nth-of-type(3) (and 5 more like it: \"Nuxt.js\", \"MySQL\", \"PostgreSQL\", \"AWS\", ...)",
+   "fix": "give the text room: no overflow clipping a line, no line past its box",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "cut-text"
+   ],
+   "wheres": [
+    "div.dg-nodes > div.dg-node.dg-node--dot:nth-of-type(3) > span.dg-cap > span.dg-cap__l \"Laravel\""
+   ],
+   "reason": "Rótulos do diagrama do próprio kit (assets/diagrams), desenhados ao lado do nó de ponto por design; todos aparecem inteiros dentro do painel"
+  },
+  {
+   "check": "no-visual",
+   "where": "section#habilidades \"Habilidades e ferramentas\"",
+   "msg": "no picture, effect or mock in this section; a feature section needs a visual",
+   "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "no-visual"
+   ],
+   "wheres": [
+    "section#habilidades \"Habilidades e ferramentas\""
+   ],
+   "reason": "O visual da seção são os 26 ícones reais e coloridos das tecnologias (house rule 7), um por item"
+  },
+  {
+   "check": "copy-headings",
+   "where": "h2#sobre-h \"Sobre mim\"",
+   "msg": "\"Sobre mim\" names no product, part, place or section (9 headings like it; at most one brand line per page) (and 8 more like it: \"Habilidades e ferramenta\", \"Front-end\", \"Back-end\", \"IA e ferramentas\", ...)",
+   "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "copy-headings"
+   ],
+   "wheres": [
+    "h2#sobre-h \"Sobre mim\""
+   ],
+   "reason": "Títulos em pt-BR que nomeiam as seções de um portfólio (Sobre mim, Habilidades e ferramentas, Front-end, Contato); a lista de substantivos do checker é em inglês"
+  },
+  {
+   "check": "off-grid",
+   "where": "div.grid.habilidades__grupos > div.grupo:nth-of-type(2) > ul > li.habilidade:nth-of-type(3) \"C#\"",
+   "msg": "left edge at 969px, 19px off a common edge of its section at 950px (4 elements, like h3)",
+   "fix": "move it onto the page margin, or the column edge its section uses",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "off-grid"
+   ],
+   "wheres": [
+    "div.grid.habilidades__grupos > div.grupo:nth-of-type(2) > ul > li.habilidade:nth-of-type(3) \"C#\""
+   ],
+   "reason": "Chips de tecnologia correm em linha como texto (flex-wrap); a borda de cada chip segue a largura do nome, não uma coluna"
+  }
+ ],
+ "warnCount": 27,
+ "at": "2026-11-12T19:31:08.874Z"
+}

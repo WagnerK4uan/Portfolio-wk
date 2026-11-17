@@ -1,0 +1,11 @@
+{
+ "page": "dist/index.html",
+ "url": null,
+ "root": "dist",
+ "kind": "software",
+ "category": "portfólio de desenvolvedor web",
+ "primary": "Falar comigo",
+ "rounds": 3,
+ "start": "2026-11-12T19:28:41.124Z",
+ "by": "gate.mjs --start"
+}

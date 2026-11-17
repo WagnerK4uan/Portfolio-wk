@@ -5,3 +5,18 @@
 .claude/agents/
 .impeccable/config.local.json
 .impeccable/hook.cache.json
+
+# Build e dependências
+node_modules/
+dist/
+
+# Gate da taste-skill (perfis do Chrome e screenshots)
+.taste-skill/chrome-*
+shots/
+dist-ssr/
+
+# Skills instaladas pelo skills-lock.json e artefatos do gate
+.claude/skills/design-taste-frontend/
+.claude/skills/transitions-dev/
+.claude/skills/transitions-polish/
+.taste-skill/gate/
