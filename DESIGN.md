@@ -192,23 +192,24 @@ Paleta neutra fria com um único acento violeta saturado.
 
 ## Layout
 
-Página única com rolagem suave e header fixo. Container centralizado de 1100px com 1.5rem de margem lateral. Cada seção tem 80px de respiro vertical e alterna fundo branco e gelo, separadas por bordas de 1px em Linha Neblina.
+Página única em duas versões (`/` em português, `/en/` em inglês), com header fixo escuro de 72px. Container `.wrap` de até 1280px com margem de 24px (48px a partir de 640px) e grade de 12 colunas com gap de 24px (12px no celular). Estrutura inspirada em umbelino.dev: hero e contato escuros (`--noite-funda`), corpo claro alternando branco e gelo. Cada seção tem pelo menos uma tela; Trajetória e Projetos crescem com o conteúdo.
 
-- **Hero:** altura total da viewport, foto circular de 220px ao lado do texto alinhado à esquerda, sobre a textura de facetas brancas (`img/background-white.png`). Abaixo de 768px empilha e centraliza, com foto de 170px.
-- **Sobre:** duas colunas flexíveis (texto a partir de 320px, destaques a partir de 280px) com 3rem de gap; empilha no mobile.
-- **Habilidades:** grade `auto-fill` de cards com mínimo de 112px, máximo de 920px de largura, gap de 1rem. Abaixo de 480px o mínimo cai para 84px.
-- **Projetos:** grade `auto-fit` com mínimo de 300px e gap de 2rem; uma coluna abaixo de 768px.
-- **Rodapé:** texto à esquerda (até 560px) e contato à direita; empilha no mobile com botão de largura total.
-- **Barra social:** fixa na lateral esquerda, centralizada verticalmente. Abaixo de 768px vira uma barra horizontal flutuante no centro inferior da tela, e o rodapé ganha 100px de padding inferior para não ser coberto.
-
-Breakpoints: 768px e 480px.
+- **Hero (escuro):** foto em círculo de 220px com anel violeta de 4px e halo (como no portfólio original), à esquerda do kicker, do h1 grande, do apoio, de dois botões e de três fatos, sobre a grade de pontos do DotGrid. Abaixo de 768px a foto fica com 170px, acima do texto.
+- **Sobre:** texto nas colunas 1 a 7; diagrama hub (Full Stack ao centro, ramos Front-end, Back-end, Dados e Em estudo) e destaques à direita. No celular os destaques saem.
+- **Trajetória:** escada de quatro etapas (SENAI, estágio, migração de dados, dev web Full Stack); cada uma um degrau acima, com fio tracejado até o ponto na linha de base. A etapa atual tem ponto violeta com pulso. Abaixo de 1024px vira lista vertical.
+- **Habilidades:** cinco grupos com título, descrição e chips com ícone.
+- **Projetos:** lista editorial (número, nome enorme, tipo, descrição, stack, link) nas colunas 1 a 6 e quadro preso (sticky) nas colunas 7 a 12 com a tela animada do projeto que está no meio da tela e o contador "03 / 05". Os outros nomes ficam em cinza legível. Botão "Pausar animações". Abaixo de 1024px cada projeto mostra a própria tela.
+- **Contato:** rodapé escuro com texto e botão Copiar e-mail à esquerda, lista de contatos à direita, a marca grande e a linha final.
 
 ### Movimento
-- **Momento principal:** na entrada do hero, a foto abre em círculo (`clip-path`, 0.8s), nome, frase e botão entram com leve desfoque em sequência (0.25s, 0.4s, 0.55s) e, aos 1s, um traço violeta de 3px se desenha sob "Cloud e DevOps".
-- **Ao rolar:** títulos de seção ganham um traço violeta de 48px × 3px que se desenha; destaques, habilidades e projetos entram como lista (subida de 18px com desfoque de 4px, atraso por item limitado a 400ms).
-- **Continuidade:** o link da seção visível fica violeta com sublinhado; o header ganha sombra mais forte ao sair do hero.
-- **Toque:** botões afundam (`scale(0.98)`) ao clicar.
-- O conteúdo nasce visível; as revelações só existem com JS (`html.js`). Em `prefers-reduced-motion`, tudo vira fade curto, sem deslocamento nem desfoque.
+Tokens do transitions.dev em `src/styles/motion.css`; cada snippet tem o seu guard de `prefers-reduced-motion`.
+- **Entrada do hero (uma vez):** o nome entra palavra por palavra com desfoque (BlurText), as frentes alternam uma vez e param na última (RotatingText), kicker, apoio, botões e fatos sobem em sequência (texts reveal) e o "3 anos" conta (CountUp).
+- **DotGrid:** os pontos acendem em violeta perto do ponteiro (só com ponteiro fino e sem movimento reduzido); sem WebGL fica a grade parada.
+- **Hover:** card sobe 2px e a imagem dá zoom de 1.025; botões mudam de tom e afundam no clique; setas dos links deslizam (learn more hover).
+- **Projetos:** só o projeto ativo carrega a versão animada (`img/anim`, cópias de 640px); o quadro troca com crossfade. Um rótulo violeta ("ver código", "repositório privado") acompanha o cursor sobre os projetos, só com mouse.
+- **Copiar e-mail:** o rótulo troca para "E-mail copiado" com text morph.
+- **Menu do celular:** painel que desce com panel reveal; Esc fecha e devolve o foco.
+- Nada aparece só ao rolar. Em movimento reduzido tudo já nasce no estado final, sem telas animadas.
 
 ## Elevation & Depth
 
@@ -232,30 +233,22 @@ Cantos arredondados moderados e consistentes. Botões e barra social usam 6px; c
 ## Components
 
 ### Buttons
-Cheios, arredondados e com brilho violeta.
-- **Shape:** cantos suaves (6px).
-- **Primary:** fundo Violeta Ação, texto branco em peso 700 a 0.95rem com 0.5px de tracking, padding 0.85rem × 2rem, ícone opcional à esquerda com 0.5rem de gap, sombra violeta.
-- **Hover:** escurece para Violeta Profundo, sombra mais intensa, sobe 2px. Transição de 0.3s ease.
-- **Repositório:** versão compacta (0.6rem × 1.2rem, 0.9rem, peso 600) no rodapé do card de projeto, sem sombra, sobe 1px no hover.
-- **Repositório privado:** mesmo formato em Ardósia Média, sem hover nem cursor de link.
-- **Rodapé:** botão principal com texto 0.9rem, sem sombra colorida (brilho violeta sobre fundo escuro vira decoração); largura total no mobile.
+Um único par em toda a página: **primário** cheio em violeta e **secundário** com contorno. Cantos suaves, altura mínima de 44px, troca de tom no hover e leve afundamento no clique. No rodapé escuro o primário é o "Copiar e-mail".
 
 ### Chips
-- **Style:** tags de tecnologia em pílula, fundo Lavanda Névoa, texto Violeta Profundo, peso 600 a 0.78rem, padding 0.3rem × 0.75rem, gap de 0.4rem, quebrando linha.
-- **State:** estáticas, sem interação.
+Tecnologias com ícone real colorido (Devicon) ou ícone Font Awesome, nome em peso 500, fundo branco com borda Linha Neblina. Estáticos.
 
 ### Cards / Containers
-- **Projeto:** fundo branco, borda Linha Neblina, cantos de 12px, sombra de repouso. Preview em GIF com 200px de altura (160px abaixo de 480px) e `object-fit: cover`, corpo com padding de 1.5rem e gap de 0.75rem, descrição que estica para alinhar os botões na base. Hover sobe 6px com sombra maior.
-- **Habilidade:** coluna centralizada com ícone de 44px (SVG colorido do Devicon ou ícone Font Awesome em violeta) e rótulo em peso 600. Hover sobe 4px, borda vira violeta e a sombra fica violeta.
-- **Destaque (Sobre):** linha com ícone violeta à esquerda, título em peso 600 e linha de apoio menor em Ardósia Média, fundo gelo. Hover só adiciona a sombra de repouso.
+- **Projeto (lista editorial):** número em violeta, nome em Poppins 700 até 5.25rem, tipo, descrição, stack em Violeta Texto e "Ver o código no GitHub" (o link cobre o projeto inteiro) ou "Repositório privado".
+- **Quadro de projetos:** janela 4:3 com fundo lavanda, a tela do projeto inteira (`object-fit: contain`) e o contador abaixo.
+- **Etapa da trajetória:** período, cargo em Poppins 700, empresa em Violeta Texto e detalhe; selo "Etapa atual" na última.
+- **Diagrama (Sobre):** hub do kit da taste-skill com Full Stack ao centro e os ramos Front-end, Back-end, Dados e Em estudo.
 
 ### Navigation
-- **Header fixo** branco com sombra leve. À esquerda, "WK" em caixa alta, visível em todos os tamanhos. Antes dele, um link "Pular para o conteúdo" que só aparece no foco do teclado.
-- **Links** em Tinta Noturna, peso 600 a 0.95rem, gap de 2rem, com 0.6rem de padding vertical (área de toque de 41px). No hover e na seção ativa ficam em Violeta Profundo e um sublinhado de 2px cresce da esquerda. No mobile o gap cai para 1rem e o texto para 0.85rem e 0.78rem; com texto ampliado, o menu quebra linha em vez de estourar a largura.
-- **Barra social:** ícones Font Awesome em Ardósia Média, separados por linhas de 1px; no hover o fundo vira violeta e o ícone branco.
+Header fixo escuro com o nome "Wagner Kauan" à esquerda, seletor PT / EN, links das seções com a seção ativa marcada (`aria-current`) e o botão "Falar comigo". Abaixo de 1024px o botão sai e um botão de menu abre o painel. O link "Pular para o conteúdo" é o primeiro foco da página.
 
 ### Hero
-A assinatura do portfólio: foto circular grande com anel e halo violeta ao lado do nome em caixa alta, sobre uma textura de facetas brancas quase imperceptível. Uma linha de apoio em Ardósia Média e o botão principal "Ver Projetos".
+Fundo escuro, foto circular pequena com anel violeta, nome grande em Poppins 700 e a grade de pontos do DotGrid que reage ao cursor.
 
 ## Do's and Don'ts
 

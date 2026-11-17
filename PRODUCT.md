@@ -30,7 +30,7 @@ Visitas curtas, muitas vezes no celular a partir do LinkedIn, ou no desktop dura
 
 ## Capabilities and Constraints
 
-- Site estático atual: `index.html` + `style.css`, Font Awesome e Google Fonts via CDN, deploy na Vercel. Manter ou não HTML/CSS puro não foi decidido como compromisso.
+- Site em Vite + React com HTML pré-renderizado no build (abre sem JavaScript), Font Awesome e Google Fonts via CDN, deploy na Vercel (preset Vite, saída `dist`).
 - Idioma atual: pt-BR. Versão em inglês não foi decidida.
 - Seções atuais: Home, Sobre, Habilidades, Projetos, rodapé de contato.
 
